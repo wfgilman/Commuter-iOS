@@ -12,9 +12,16 @@
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
 		BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577421B49DB900CDB586 /* Assets.xcassets */; };
 		BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577621B49DB900CDB586 /* LaunchScreen.storyboard */; };
+		BEBA578121B4A0C400CDB586 /* CommuterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578021B4A0C400CDB586 /* CommuterAPI.swift */; };
+		BEBA578421B4A19700CDB586 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578321B4A19700CDB586 /* Station.swift */; };
+		BEBA578621B4A21300CDB586 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578521B4A21300CDB586 /* Departure.swift */; };
+		BEBA578821B5895F00CDB586 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578721B5895F00CDB586 /* Trip.swift */; };
+		F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6451D2C341554AF11F776027 /* Pods_Commuter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.release.xcconfig"; sourceTree = "<group>"; };
+		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBA576F21B49DB800CDB586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,11 @@
 		BEBA577421B49DB900CDB586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEBA577721B49DB900CDB586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEBA577921B49DB900CDB586 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEBA578021B4A0C400CDB586 /* CommuterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuterAPI.swift; sourceTree = "<group>"; };
+		BEBA578321B4A19700CDB586 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		BEBA578521B4A21300CDB586 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
+		BEBA578721B5895F00CDB586 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		344E6721A61FD5EF89EB5689 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */,
+				23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		731535B44D5EAED8F74B5C65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6451D2C341554AF11F776027 /* Pods_Commuter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BEBA576121B49DB800CDB586 = {
 			isa = PBXGroup;
 			children = (
 				BEBA576C21B49DB800CDB586 /* Commuter */,
 				BEBA576B21B49DB800CDB586 /* Products */,
+				344E6721A61FD5EF89EB5689 /* Pods */,
+				731535B44D5EAED8F74B5C65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +86,8 @@
 		BEBA576C21B49DB800CDB586 /* Commuter */ = {
 			isa = PBXGroup;
 			children = (
+				BEBA578221B4A17900CDB586 /* Models */,
+				BEBA577F21B4A0A100CDB586 /* API */,
 				BEBA576D21B49DB800CDB586 /* AppDelegate.swift */,
 				BEBA576F21B49DB800CDB586 /* ViewController.swift */,
 				BEBA577121B49DB800CDB586 /* Main.storyboard */,
@@ -64,6 +98,24 @@
 			path = Commuter;
 			sourceTree = "<group>";
 		};
+		BEBA577F21B4A0A100CDB586 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BEBA578021B4A0C400CDB586 /* CommuterAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BEBA578221B4A17900CDB586 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BEBA578321B4A19700CDB586 /* Station.swift */,
+				BEBA578521B4A21300CDB586 /* Departure.swift */,
+				BEBA578721B5895F00CDB586 /* Trip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEBA577C21B49DB900CDB586 /* Build configuration list for PBXNativeTarget "Commuter" */;
 			buildPhases = (
+				4349EFCFD945154260E46700 /* [CP] Check Pods Manifest.lock */,
 				BEBA576621B49DB800CDB586 /* Sources */,
 				BEBA576721B49DB800CDB586 /* Frameworks */,
 				BEBA576821B49DB800CDB586 /* Resources */,
+				CE3BACF4263DB3398C3AB530 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +184,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4349EFCFD945154260E46700 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Commuter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE3BACF4263DB3398C3AB530 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Commuter/Pods-Commuter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Commuter/Pods-Commuter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BEBA576621B49DB800CDB586 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBA578821B5895F00CDB586 /* Trip.swift in Sources */,
 				BEBA577021B49DB800CDB586 /* ViewController.swift in Sources */,
+				BEBA578121B4A0C400CDB586 /* CommuterAPI.swift in Sources */,
+				BEBA578421B4A19700CDB586 /* Station.swift in Sources */,
 				BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */,
+				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +387,7 @@
 		};
 		BEBA577D21B49DB900CDB586 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +406,7 @@
 		};
 		BEBA577E21B49DB900CDB586 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
