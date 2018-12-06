@@ -11,7 +11,7 @@ import Alamofire
 import Unbox
 
 class CommuterAPI: NSObject {
-    static let sharedClient = CommuterAPI(baseURL: "https://localhost:4000/api/v1/")
+    static let sharedClient = CommuterAPI(baseURL: "http://localhost:4000/api/v1")
     var baseURL: String
     let headers = ["content-type": "application/json"]
     var af: Alamofire.SessionManager?

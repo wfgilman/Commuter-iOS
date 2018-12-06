@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
-		BEBA577021B49DB800CDB586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576F21B49DB800CDB586 /* ViewController.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
 		BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577421B49DB900CDB586 /* Assets.xcassets */; };
 		BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577621B49DB900CDB586 /* LaunchScreen.storyboard */; };
@@ -16,6 +15,9 @@
 		BEBA578421B4A19700CDB586 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578321B4A19700CDB586 /* Station.swift */; };
 		BEBA578621B4A21300CDB586 /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578521B4A21300CDB586 /* Departure.swift */; };
 		BEBA578821B5895F00CDB586 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578721B5895F00CDB586 /* Trip.swift */; };
+		BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */; };
+		BEBA578C21B8279400CDB586 /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578B21B8279400CDB586 /* GlobalVariable.swift */; };
+		BEBA578E21B82D8300CDB586 /* SelectDestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */; };
 		F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6451D2C341554AF11F776027 /* Pods_Commuter.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +26,6 @@
 		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BEBA576F21B49DB800CDB586 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BEBA577221B49DB800CDB586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BEBA577421B49DB900CDB586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEBA577721B49DB900CDB586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +34,9 @@
 		BEBA578321B4A19700CDB586 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		BEBA578521B4A21300CDB586 /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		BEBA578721B5895F00CDB586 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrigViewController.swift; sourceTree = "<group>"; };
+		BEBA578B21B8279400CDB586 /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
+		BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestViewController.swift; sourceTree = "<group>"; };
 		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,11 +93,13 @@
 				BEBA578221B4A17900CDB586 /* Models */,
 				BEBA577F21B4A0A100CDB586 /* API */,
 				BEBA576D21B49DB800CDB586 /* AppDelegate.swift */,
-				BEBA576F21B49DB800CDB586 /* ViewController.swift */,
 				BEBA577121B49DB800CDB586 /* Main.storyboard */,
 				BEBA577421B49DB900CDB586 /* Assets.xcassets */,
 				BEBA577621B49DB900CDB586 /* LaunchScreen.storyboard */,
 				BEBA577921B49DB900CDB586 /* Info.plist */,
+				BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */,
+				BEBA578B21B8279400CDB586 /* GlobalVariable.swift */,
+				BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */,
 			);
 			path = Commuter;
 			sourceTree = "<group>";
@@ -238,12 +244,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBA578E21B82D8300CDB586 /* SelectDestViewController.swift in Sources */,
 				BEBA578821B5895F00CDB586 /* Trip.swift in Sources */,
-				BEBA577021B49DB800CDB586 /* ViewController.swift in Sources */,
 				BEBA578121B4A0C400CDB586 /* CommuterAPI.swift in Sources */,
 				BEBA578421B4A19700CDB586 /* Station.swift in Sources */,
 				BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */,
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
+				BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */,
+				BEBA578C21B8279400CDB586 /* GlobalVariable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
