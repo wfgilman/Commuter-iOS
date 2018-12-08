@@ -44,7 +44,26 @@ class CommuterAPI: NSObject {
         })
     }
     
-    
+    func getTrip(orig: String, dest: String, count: Int = 10, success: @escaping (Trip) -> (), failure: @escaping (Error, String?) -> ()) {
+        let url: URLConvertible = self.baseURL + "/departures?orig=\(orig)&dest=\(dest)&count=\(count)"
+        af?.request(url).validate().responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                if let result = response.result.value {
+                    do {
+                        let response = result as! Dictionary<String, Any>
+                        let trip: Trip = try unbox(dictionary: response)
+                        success(trip)
+                    } catch {
+                        // Handle failure.
+                    }
+                }
+            case .failure(let error):
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
     
     private func getErrorMessage(error: Error, response: DataResponse<Any>) -> String? {
         if let data = response.data {

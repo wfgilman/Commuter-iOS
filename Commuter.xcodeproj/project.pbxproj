@@ -18,6 +18,10 @@
 		BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */; };
 		BEBA578C21B8279400CDB586 /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578B21B8279400CDB586 /* GlobalVariable.swift */; };
 		BEBA578E21B82D8300CDB586 /* SelectDestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */; };
+		BEBA579121B97E6400CDB586 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA579021B97E6400CDB586 /* Onboard.storyboard */; };
+		BEBA579B21BA1D2800CDB586 /* DepartureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA579A21BA1D2800CDB586 /* DepartureViewController.swift */; };
+		BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA579C21BB570100CDB586 /* DepartureCell.swift */; };
+		BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBA579D21BB570100CDB586 /* DepartureCell.xib */; };
 		F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6451D2C341554AF11F776027 /* Pods_Commuter.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrigViewController.swift; sourceTree = "<group>"; };
 		BEBA578B21B8279400CDB586 /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
 		BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDestViewController.swift; sourceTree = "<group>"; };
+		BEBA579021B97E6400CDB586 /* Onboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
+		BEBA579A21BA1D2800CDB586 /* DepartureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureViewController.swift; sourceTree = "<group>"; };
+		BEBA579C21BB570100CDB586 /* DepartureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureCell.swift; sourceTree = "<group>"; };
+		BEBA579D21BB570100CDB586 /* DepartureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureCell.xib; sourceTree = "<group>"; };
 		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +98,7 @@
 		BEBA576C21B49DB800CDB586 /* Commuter */ = {
 			isa = PBXGroup;
 			children = (
+				BEBA578F21B97E1F00CDB586 /* Storyboards */,
 				BEBA578221B4A17900CDB586 /* Models */,
 				BEBA577F21B4A0A100CDB586 /* API */,
 				BEBA576D21B49DB800CDB586 /* AppDelegate.swift */,
@@ -97,9 +106,7 @@
 				BEBA577421B49DB900CDB586 /* Assets.xcassets */,
 				BEBA577621B49DB900CDB586 /* LaunchScreen.storyboard */,
 				BEBA577921B49DB900CDB586 /* Info.plist */,
-				BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */,
 				BEBA578B21B8279400CDB586 /* GlobalVariable.swift */,
-				BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */,
 			);
 			path = Commuter;
 			sourceTree = "<group>";
@@ -120,6 +127,35 @@
 				BEBA578721B5895F00CDB586 /* Trip.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BEBA578F21B97E1F00CDB586 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BEBA579921BA1CFF00CDB586 /* Departure */,
+				BEBA579421B980E500CDB586 /* Onboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BEBA579421B980E500CDB586 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				BEBA579021B97E6400CDB586 /* Onboard.storyboard */,
+				BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */,
+				BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
+		BEBA579921BA1CFF00CDB586 /* Departure */ = {
+			isa = PBXGroup;
+			children = (
+				BEBA579A21BA1D2800CDB586 /* DepartureViewController.swift */,
+				BEBA579C21BB570100CDB586 /* DepartureCell.swift */,
+				BEBA579D21BB570100CDB586 /* DepartureCell.xib */,
+			);
+			path = Departure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,7 +219,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */,
+				BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */,
 				BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */,
+				BEBA579121B97E6400CDB586 /* Onboard.storyboard in Resources */,
 				BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,8 +288,10 @@
 				BEBA578421B4A19700CDB586 /* Station.swift in Sources */,
 				BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */,
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
+				BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */,
 				BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */,
 				BEBA578C21B8279400CDB586 /* GlobalVariable.swift in Sources */,
+				BEBA579B21BA1D2800CDB586 /* DepartureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

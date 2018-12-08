@@ -12,11 +12,11 @@ import Unbox
 class Trip: Unboxable {
     var orig: Station
     var dest: Station
-    var departure: [Departure]
+    var departures: [Departure]
     
     required init(unboxer: Unboxer) throws {
         orig = try unboxer.unbox(key: "orig")
         dest = try unboxer.unbox(key: "dest")
-        departure = try unboxer.unbox(key: "departures")
+        departures = try unboxer.unbox(key: "departures")
     }
 }

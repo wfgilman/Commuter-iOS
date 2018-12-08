@@ -11,11 +11,11 @@ import Unbox
 
 class Departure: Unboxable {
     var tripId: Int
-    var std: Int
-    var etd: Int
+    var std: Date
+    var etd: Date
     var etdMin: Int
     var delayMin: Int
-    var eta: Int
+    var eta: Date
     var durationMin: Int
     var length: Int?
     var headsign: String
@@ -23,12 +23,15 @@ class Departure: Unboxable {
     var priorStops: Int
     
     required init(unboxer: Unboxer) throws {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+
         tripId = try unboxer.unbox(key: "trip_id")
-        std = try unboxer.unbox(key: "std")
-        etd = try unboxer.unbox(key: "etd")
+        std = try unboxer.unbox(key: "std", formatter: dateFormatter)
+        etd = try unboxer.unbox(key: "etd", formatter: dateFormatter)
         etdMin = try unboxer.unbox(key: "etd_min")
         delayMin = try unboxer.unbox(key: "delay_min")
-        eta = try unboxer.unbox(key: "eta")
+        eta = try unboxer.unbox(key: "eta", formatter: dateFormatter)
         durationMin = try unboxer.unbox(key: "duration_min")
         length = unboxer.unbox(key: "length")
         headsign = try unboxer.unbox(key: "headsign")

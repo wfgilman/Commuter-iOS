@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let orig = UserDefaults.standard.object(forKey: "OrigStationCode")
+        let dest = UserDefaults.standard.object(forKey: "DestStationCode")
+        if (orig == nil) || (dest == nil) {
+            let storyboard = UIStoryboard(name: "Onboard", bundle: nil)
+            let controller = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = controller
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateInitialViewController()
+            self.window?.rootViewController = controller
+        }
+        
         return true
     }
 
