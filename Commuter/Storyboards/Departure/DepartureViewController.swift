@@ -8,15 +8,25 @@
 
 import UIKit
 
+enum Commute: String {
+    case morning
+    case evening
+}
+
 class DepartureViewController: UIViewController {
 
     @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
-    var tableView = UITableView()
+    @IBOutlet weak var origCommuteLabel: UILabel!
+    @IBOutlet weak var destCommuteLabel: UILabel!
+    @IBOutlet weak var origColorView: UIView!
+    @IBOutlet weak var destColorView: UIView!
     
+    var morningDepartureView: DepartureView!
+    var eveningDepartureView: DepartureView!
+    var commute: Commute!
     var pageHeight: CGFloat = 0
     var pageWidth: CGFloat = 0
-    var trip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,50 +36,55 @@ class DepartureViewController: UIViewController {
         let orig = UserDefaults.standard.string(forKey: "OrigStationCode")
         let dest = UserDefaults.standard.string(forKey: "DestStationCode")
         
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "a"
+        switch timeFormatter.string(from: Date()) {
+        case "AM":
+            commute = .morning
+        default:
+            commute = .evening
+        }
+        
+        morningDepartureView = DepartureView()
+        eveningDepartureView = DepartureView()
+        scrollView.addSubview(morningDepartureView)
+        scrollView.addSubview(eveningDepartureView)
+        
+        // Get Morning commute trip.
         CommuterAPI.sharedClient.getTrip(orig: orig!, dest: dest!, success: { (trip) in
-            self.trip = trip
-            self.tableView.reloadData()
+            self.morningDepartureView.trip = trip
         }) { (_, message) in
             guard let message = message else { return }
             print("\(message)")
         }
         
-        setupScrollView()
-        setupTimeTable()
+        // Get Evening commute trip.
+        CommuterAPI.sharedClient.getTrip(orig: dest!, dest: orig!, success: { (trip) in
+            self.eveningDepartureView.trip = trip
+        }) { (_, message) in
+            guard let message = message else { return }
+            print("\(message)")
+        }
+        
+        setupSubviews()
     }
     
-    func setupScrollView() {
+    func setupSubviews() {
         view.layoutIfNeeded()
         
         scrollView.contentSize.width = pageWidth * 2
         scrollView.contentSize.height = pageHeight
-        
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
         scrollView.isDirectionalLockEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
-    }
-    
-    func setupTimeTable() {
-        tableView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
-        scrollView.addSubview(tableView)
+        
+        morningDepartureView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
+        eveningDepartureView.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: pageHeight)
     }
 }
 
 extension DepartureViewController: UIScrollViewDelegate {
     
-}
-
-extension DepartureViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trip.departures.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = trip.departures[indexPath.row].headsign
-        return cell
-    }
 }

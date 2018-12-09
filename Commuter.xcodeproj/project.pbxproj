@@ -22,6 +22,8 @@
 		BEBA579B21BA1D2800CDB586 /* DepartureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA579A21BA1D2800CDB586 /* DepartureViewController.swift */; };
 		BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA579C21BB570100CDB586 /* DepartureCell.swift */; };
 		BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBA579D21BB570100CDB586 /* DepartureCell.xib */; };
+		BEBA57A121BDB2C600CDB586 /* DepartureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57A021BDB2C600CDB586 /* DepartureView.swift */; };
+		BEBA57A321BDB2D400CDB586 /* DepartureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57A221BDB2D400CDB586 /* DepartureView.xib */; };
 		F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6451D2C341554AF11F776027 /* Pods_Commuter.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		BEBA579A21BA1D2800CDB586 /* DepartureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureViewController.swift; sourceTree = "<group>"; };
 		BEBA579C21BB570100CDB586 /* DepartureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureCell.swift; sourceTree = "<group>"; };
 		BEBA579D21BB570100CDB586 /* DepartureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureCell.xib; sourceTree = "<group>"; };
+		BEBA57A021BDB2C600CDB586 /* DepartureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureView.swift; sourceTree = "<group>"; };
+		BEBA57A221BDB2D400CDB586 /* DepartureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureView.xib; sourceTree = "<group>"; };
 		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +158,8 @@
 				BEBA579A21BA1D2800CDB586 /* DepartureViewController.swift */,
 				BEBA579C21BB570100CDB586 /* DepartureCell.swift */,
 				BEBA579D21BB570100CDB586 /* DepartureCell.xib */,
+				BEBA57A021BDB2C600CDB586 /* DepartureView.swift */,
+				BEBA57A221BDB2D400CDB586 /* DepartureView.xib */,
 			);
 			path = Departure;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */,
+				BEBA57A321BDB2D400CDB586 /* DepartureView.xib in Resources */,
 				BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */,
 				BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */,
 				BEBA579121B97E6400CDB586 /* Onboard.storyboard in Resources */,
@@ -290,6 +297,7 @@
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
 				BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */,
 				BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */,
+				BEBA57A121BDB2C600CDB586 /* DepartureView.swift in Sources */,
 				BEBA578C21B8279400CDB586 /* GlobalVariable.swift in Sources */,
 				BEBA579B21BA1D2800CDB586 /* DepartureViewController.swift in Sources */,
 			);

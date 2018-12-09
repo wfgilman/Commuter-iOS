@@ -20,8 +20,50 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlH-Us-WaR">
                                 <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="BYH-Bj-a0X">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hR-Uy-Rp0">
+                                                <rect key="frame" x="0.0" y="0.0" width="151.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-lm-JaY">
+                                                <rect key="frame" x="223.5" y="0.0" width="151.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-tG-NVb">
+                                        <rect key="frame" x="0.0" y="52" width="187.5" height="8"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="nbe-Eb-Itx"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EP-Ib-Y0b">
+                                        <rect key="frame" x="187.5" y="52" width="187.5" height="8"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="eVF-47-rZM"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2EP-Ib-Y0b" secondAttribute="bottom" id="7Yb-6O-9Lh"/>
+                                    <constraint firstAttribute="trailing" secondItem="2EP-Ib-Y0b" secondAttribute="trailing" id="MBL-qE-A7S"/>
+                                    <constraint firstItem="2EP-Ib-Y0b" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="ObJ-5j-uOc"/>
+                                    <constraint firstAttribute="bottom" secondItem="bmg-tG-NVb" secondAttribute="bottom" id="RNP-aC-AIO"/>
+                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="YOg-ft-wRX"/>
+                                    <constraint firstItem="BYH-Bj-a0X" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="gtC-ca-q1s"/>
+                                    <constraint firstItem="BYH-Bj-a0X" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" id="izS-pT-ncK"/>
+                                    <constraint firstAttribute="trailing" secondItem="BYH-Bj-a0X" secondAttribute="trailing" id="jTJ-VV-pZM"/>
+                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="mGW-Qi-iIY"/>
                                     <constraint firstAttribute="height" constant="60" id="qbj-Mt-ub5"/>
                                 </constraints>
                             </view>
@@ -42,6 +84,10 @@
                         <viewLayoutGuide key="safeArea" id="6ds-5u-wiq"/>
                     </view>
                     <connections>
+                        <outlet property="destColorView" destination="2EP-Ib-Y0b" id="JMG-is-M4p"/>
+                        <outlet property="destCommuteLabel" destination="Qlb-lm-JaY" id="XUS-vT-Vpy"/>
+                        <outlet property="origColorView" destination="bmg-tG-NVb" id="aM0-lS-l6x"/>
+                        <outlet property="origCommuteLabel" destination="3hR-Uy-Rp0" id="HpS-UC-lYU"/>
                         <outlet property="scrollView" destination="shR-wT-mAo" id="ci2-Tg-9mE"/>
                         <outlet property="tabBarView" destination="LlH-Us-WaR" id="mHk-RZ-vIz"/>
                     </connections>
