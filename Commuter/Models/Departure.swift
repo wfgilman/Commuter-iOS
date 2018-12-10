@@ -21,6 +21,8 @@ class Departure: Unboxable {
     var headsign: String
     var stops: Int
     var priorStops: Int
+    private var routeHexColor: String
+    var routeColor: UIColor
     
     required init(unboxer: Unboxer) throws {
         let dateFormatter = DateFormatter()
@@ -37,6 +39,8 @@ class Departure: Unboxable {
         headsign = try unboxer.unbox(key: "headsign")
         stops = try unboxer.unbox(key: "stops")
         priorStops = try unboxer.unbox(key: "prior_stops")
+        routeHexColor = try unboxer.unbox(key: "route_hex_color")
+        routeColor = UIColor(hex: UInt32(routeHexColor, radix: 16)!)
     }
     
     class func withArray(dictionaries: [Dictionary<String, Any>]) throws -> [Departure] {

@@ -42,7 +42,9 @@ class DepartureView: UIView {
         tableView.register(departureCell, forCellReuseIdentifier: "DepartureCell")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 80.0
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 120.0
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
     }
 }

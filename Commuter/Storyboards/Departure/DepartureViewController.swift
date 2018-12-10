@@ -82,9 +82,29 @@ class DepartureViewController: UIViewController {
         
         morningDepartureView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
         eveningDepartureView.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: pageHeight)
+        
+        if commute == .morning {
+            origColorView.backgroundColor = .black
+            destColorView.backgroundColor = .clear
+            scrollView.contentOffset.x = 0
+        } else {
+            destColorView.backgroundColor = .black
+            origColorView.backgroundColor = .clear
+            scrollView.contentOffset.x = pageWidth
+            
+        }
     }
 }
 
 extension DepartureViewController: UIScrollViewDelegate {
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x == 0 {
+            origColorView.backgroundColor = .black
+            destColorView.backgroundColor = .clear
+        } else {
+            destColorView.backgroundColor = .black
+            origColorView.backgroundColor = .clear
+        }
+    }
 }

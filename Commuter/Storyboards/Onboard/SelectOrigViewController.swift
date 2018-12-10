@@ -24,7 +24,7 @@ class SelectOrigViewController: UIViewController {
         stationPickerView.dataSource = self
         
         CommuterAPI.sharedClient.getStations(success: { (stations) in
-            GlobalVariable.stations = stations
+            AppVariable.stations = stations
             self.stations = stations
             self.stationPickerView.reloadAllComponents()
             guard let startingRow = stations.firstIndex(where: { (station) -> Bool in

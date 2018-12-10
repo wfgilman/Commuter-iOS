@@ -10,30 +10,81 @@ import UIKit
 
 class DepartureCell: UITableViewCell {
 
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var footerView: UIView!
+    
     @IBOutlet weak var routeColorView: UIView!
     @IBOutlet weak var etdMinLabel: UILabel!
     @IBOutlet weak var headsignLabel: UILabel!
     @IBOutlet weak var etaLabel: UILabel!
+    @IBOutlet weak var etdLabel: UILabel!
     @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var delayMinLabel: UILabel!
+    @IBOutlet weak var stopsLabel: UILabel!
+    @IBOutlet weak var carsLabel: UILabel!
+    
+    @IBOutlet weak var departLabel: UILabel!
+    @IBOutlet weak var arriveLabel: UILabel!
     
     var departure: Departure! {
         didSet {
-            etdMinLabel.text = String(describing: departure.etdMin)
+            // No modification.
+            routeColorView.backgroundColor = departure.routeColor
             headsignLabel.text = departure.headsign
             
+            // Times.
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "h:mm a"
             timeFormatter.amSymbol = "am"
             timeFormatter.pmSymbol = "pm"
             etaLabel.text = timeFormatter.string(from: departure.eta)
+            etdLabel.text = timeFormatter.string(from: departure.etd)
+            
+            // Formatted strings.
+            etdMinLabel.text = String(describing: departure.etdMin)
+            delayMinLabel.text = String(describing: departure.delayMin)
+            stopsLabel.text = String(describing: departure.priorStops) + " stop"
+            carsLabel.text = String(describing: departure.length) + " cars"
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // Header elements.
+        routeColorView.layer.borderWidth = 0.5
+        routeColorView.layer.borderColor = AppColor.PaleGray.color.cgColor
+        
         headsignLabel.textAlignment = .right
-        dividerView.backgroundColor = UIColor.black
+        headsignLabel.font = UIFont.mySystemFont(ofSize: 19)
+        headsignLabel.textColor = AppColor.Charcoal.color
+        
+        etdMinLabel.font = UIFont.myLightSystemFont(ofSize: 24)
+        etdMinLabel.textColor = AppColor.Charcoal.color
+        
+        departLabel.font = UIFont.mySystemFont(ofSize: 15)
+        departLabel.textColor = AppColor.MediumGray.color
+        etdLabel.font = UIFont.mySystemFont(ofSize: 15)
+        etdLabel.textColor = AppColor.Charcoal.color
+        
+        arriveLabel.font = UIFont.mySystemFont(ofSize: 15)
+        arriveLabel.textColor = AppColor.MediumGray.color
+        etaLabel.font = UIFont.mySystemFont(ofSize: 15)
+        etaLabel.textColor = AppColor.Charcoal.color
+        
+        dividerView.backgroundColor = AppColor.MediumGray.color
+        
+        // Footer elements.
+        footerView.backgroundColor = AppColor.PaleGray.color
+        
+        delayMinLabel.font = UIFont.mySystemFont(ofSize: 15)
+        delayMinLabel.textColor = AppColor.MediumGray.color
+        
+        stopsLabel.font = UIFont.mySystemFont(ofSize: 15)
+        stopsLabel.textColor = AppColor.MediumGray.color
+        
+        carsLabel.font = UIFont.mySystemFont(ofSize: 15)
+        carsLabel.textColor = AppColor.MediumGray.color
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

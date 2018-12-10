@@ -104,26 +104,20 @@
                     <connections>
                         <outlet property="selectButton" destination="I99-Zt-tGd" id="EyF-Xz-zO3"/>
                         <outlet property="stationPickerView" destination="KM6-gP-g74" id="E7Y-if-Fln"/>
+                        <segue destination="cch-7z-5fW" kind="show" identifier="MainSegue" id="6uq-gH-D8F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhA-Vr-0Ul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2047" y="26"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ZYq-zk-73m">
+        <!--Main-->
+        <scene sceneID="8fD-k9-JHL">
             <objects>
-                <viewController id="qgd-W7-zwi" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LNc-bY-uTd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="z7o-Kg-8CI"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eZx-JI-few" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Main" id="cch-7z-5fW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ew8-ek-Dt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2948" y="26"/>
+            <point key="canvasLocation" x="2786" y="25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V2F-uH-Bm4">

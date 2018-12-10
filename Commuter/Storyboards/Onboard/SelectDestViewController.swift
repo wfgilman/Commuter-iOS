@@ -22,7 +22,7 @@ class SelectDestViewController: UIViewController {
         stationPickerView.delegate = self
         stationPickerView.dataSource = self
         
-        stations = GlobalVariable.stations
+        stations = AppVariable.stations
         guard let startingRow = stations.firstIndex(where: { (station) -> Bool in
             station.code == self.selectedStation
         }) else { return }
@@ -31,7 +31,7 @@ class SelectDestViewController: UIViewController {
 
     @IBAction func onTapSelectButton(_ sender: UIButton) {
         UserDefaults.standard.set(selectedStation, forKey: "DestStationCode")
-//        performSegue(withIdentifier: "SelectDestSegue", sender: nil)
+        performSegue(withIdentifier: "MainSegue", sender: nil)
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  GlobalVariable.swift
+//  AppVariable.swift
 //  Commuter
 //
 //  Created by Will Gilman on 12/5/18.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct GlobalVariable {
+struct AppVariable {
     static var stations = [Station]()
 }
