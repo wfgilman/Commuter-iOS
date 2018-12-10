@@ -43,8 +43,13 @@ class DepartureCell: UITableViewCell {
             // Formatted strings.
             etdMinLabel.text = String(describing: departure.etdMin)
             delayMinLabel.text = String(describing: departure.delayMin)
-            stopsLabel.text = String(describing: departure.priorStops) + " stop"
-            carsLabel.text = String(describing: departure.length) + " cars"
+            stopsLabel.text = String(describing: departure.priorStops)
+            if let length = departure.length {
+                carsLabel.text = String(describing: length) + " cars"
+            } else {
+                carsLabel.text = "--"
+            }
+            
         }
     }
     
@@ -56,20 +61,20 @@ class DepartureCell: UITableViewCell {
         routeColorView.layer.borderColor = AppColor.PaleGray.color.cgColor
         
         headsignLabel.textAlignment = .right
-        headsignLabel.font = UIFont.mySystemFont(ofSize: 19)
+        headsignLabel.font = UIFont.mySystemFont(ofSize: 18)
         headsignLabel.textColor = AppColor.Charcoal.color
         
-        etdMinLabel.font = UIFont.myLightSystemFont(ofSize: 24)
+        etdMinLabel.font = UIFont.mySystemFont(ofSize: 24)
         etdMinLabel.textColor = AppColor.Charcoal.color
         
-        departLabel.font = UIFont.mySystemFont(ofSize: 15)
+        departLabel.font = UIFont.mySystemFont(ofSize: 10)
         departLabel.textColor = AppColor.MediumGray.color
-        etdLabel.font = UIFont.mySystemFont(ofSize: 15)
+        etdLabel.font = UIFont.mySystemFont(ofSize: 12)
         etdLabel.textColor = AppColor.Charcoal.color
         
-        arriveLabel.font = UIFont.mySystemFont(ofSize: 15)
+        arriveLabel.font = UIFont.mySystemFont(ofSize: 10)
         arriveLabel.textColor = AppColor.MediumGray.color
-        etaLabel.font = UIFont.mySystemFont(ofSize: 15)
+        etaLabel.font = UIFont.mySystemFont(ofSize: 12)
         etaLabel.textColor = AppColor.Charcoal.color
         
         dividerView.backgroundColor = AppColor.MediumGray.color
@@ -77,14 +82,14 @@ class DepartureCell: UITableViewCell {
         // Footer elements.
         footerView.backgroundColor = AppColor.PaleGray.color
         
-        delayMinLabel.font = UIFont.mySystemFont(ofSize: 15)
-        delayMinLabel.textColor = AppColor.MediumGray.color
+        delayMinLabel.font = UIFont.mySystemFont(ofSize: 12)
+        delayMinLabel.textColor = AppColor.Charcoal.color
         
-        stopsLabel.font = UIFont.mySystemFont(ofSize: 15)
-        stopsLabel.textColor = AppColor.MediumGray.color
+        stopsLabel.font = UIFont.mySystemFont(ofSize: 12)
+        stopsLabel.textColor = AppColor.Charcoal.color
         
-        carsLabel.font = UIFont.mySystemFont(ofSize: 15)
-        carsLabel.textColor = AppColor.MediumGray.color
+        carsLabel.font = UIFont.mySystemFont(ofSize: 12)
+        carsLabel.textColor = AppColor.Charcoal.color
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

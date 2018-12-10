@@ -67,6 +67,11 @@ class DepartureViewController: UIViewController {
         }
         
         setupSubviews()
+        
+        if let navBar = navigationController?.navigationBar {
+            navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: false, isTranslucent: true)
+            navigationItem.title = "My Commute"
+        }
     }
     
     func setupSubviews() {

@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Departure View Controller-->
         <scene sceneID="GY8-vZ-vFd">
@@ -19,56 +24,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlH-Us-WaR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="BYH-Bj-a0X">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                        <rect key="frame" x="24" y="0.0" width="327" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hR-Uy-Rp0">
-                                                <rect key="frame" x="0.0" y="0.0" width="151.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="127.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-lm-JaY">
-                                                <rect key="frame" x="223.5" y="0.0" width="151.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="199.5" y="0.0" width="127.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-tG-NVb">
-                                        <rect key="frame" x="0.0" y="36" width="187.5" height="8"/>
+                                        <rect key="frame" x="24" y="28" width="125" height="4"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="8" id="nbe-Eb-Itx"/>
+                                            <constraint firstAttribute="height" constant="4" id="nbe-Eb-Itx"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EP-Ib-Y0b">
-                                        <rect key="frame" x="187.5" y="36" width="187.5" height="8"/>
+                                        <rect key="frame" x="226" y="28" width="125" height="4"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="8" id="eVF-47-rZM"/>
+                                            <constraint firstAttribute="height" constant="4" id="eVF-47-rZM"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="2EP-Ib-Y0b" secondAttribute="bottom" id="7Yb-6O-9Lh"/>
-                                    <constraint firstAttribute="trailing" secondItem="2EP-Ib-Y0b" secondAttribute="trailing" id="MBL-qE-A7S"/>
-                                    <constraint firstItem="2EP-Ib-Y0b" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="ObJ-5j-uOc"/>
-                                    <constraint firstAttribute="bottom" secondItem="bmg-tG-NVb" secondAttribute="bottom" id="RNP-aC-AIO"/>
-                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="YOg-ft-wRX"/>
-                                    <constraint firstItem="BYH-Bj-a0X" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="gtC-ca-q1s"/>
+                                    <constraint firstAttribute="bottom" secondItem="2EP-Ib-Y0b" secondAttribute="bottom" constant="8" id="7Yb-6O-9Lh"/>
+                                    <constraint firstAttribute="trailing" secondItem="2EP-Ib-Y0b" secondAttribute="trailing" constant="24" id="MBL-qE-A7S"/>
+                                    <constraint firstItem="2EP-Ib-Y0b" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.333" id="ObJ-5j-uOc"/>
+                                    <constraint firstAttribute="bottom" secondItem="bmg-tG-NVb" secondAttribute="bottom" constant="8" id="RNP-aC-AIO"/>
+                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" constant="24" id="YOg-ft-wRX"/>
+                                    <constraint firstItem="BYH-Bj-a0X" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" constant="24" id="gtC-ca-q1s"/>
                                     <constraint firstItem="BYH-Bj-a0X" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" id="izS-pT-ncK"/>
-                                    <constraint firstAttribute="trailing" secondItem="BYH-Bj-a0X" secondAttribute="trailing" id="jTJ-VV-pZM"/>
-                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="mGW-Qi-iIY"/>
-                                    <constraint firstAttribute="height" constant="44" id="qbj-Mt-ub5"/>
+                                    <constraint firstAttribute="trailing" secondItem="BYH-Bj-a0X" secondAttribute="trailing" constant="24" id="jTJ-VV-pZM"/>
+                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.333" id="mGW-Qi-iIY"/>
+                                    <constraint firstAttribute="height" constant="40" id="qbj-Mt-ub5"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shR-wT-mAo">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -83,7 +88,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ds-5u-wiq"/>
                     </view>
-                    <navigationItem key="navigationItem" id="21S-Sf-qT2"/>
+                    <navigationItem key="navigationItem" id="21S-Sf-qT2">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="9WI-kf-D4w"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="destColorView" destination="2EP-Ib-Y0b" id="JMG-is-M4p"/>
                         <outlet property="destCommuteLabel" destination="Qlb-lm-JaY" id="XUS-vT-Vpy"/>

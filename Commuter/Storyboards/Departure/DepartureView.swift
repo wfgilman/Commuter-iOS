@@ -43,7 +43,7 @@ class DepartureView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 120.0
+        tableView.estimatedRowHeight = 160.0
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
     }
@@ -59,8 +59,7 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DepartureCell", for: indexPath) as! DepartureCell
         cell.departure = trip.departures[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
-    
-    
 }

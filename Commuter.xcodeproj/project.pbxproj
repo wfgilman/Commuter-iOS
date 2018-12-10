@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
 		BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577421B49DB900CDB586 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.release.xcconfig"; sourceTree = "<group>"; };
 		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBA577221B49DB800CDB586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				BEBA57A421BDD09800CDB586 /* UIColor.swift */,
 				BEBA57D121BDD69A00CDB586 /* UIFont.swift */,
+				BE08ECC221BE05D1000410FB /* UINavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				BEBA578E21B82D8300CDB586 /* SelectDestViewController.swift in Sources */,
 				BEBA57A521BDD09800CDB586 /* UIColor.swift in Sources */,
 				BEBA57CE21BDD5FB00CDB586 /* AppFontName.swift in Sources */,
+				BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */,
 				BEBA578821B5895F00CDB586 /* Trip.swift in Sources */,
 				BEBA578121B4A0C400CDB586 /* CommuterAPI.swift in Sources */,
 				BEBA578421B4A19700CDB586 /* Station.swift in Sources */,

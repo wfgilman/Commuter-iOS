@@ -18,6 +18,10 @@ extension UIFont {
         return UIFont(name: AppFontName.bold, size: size)!
     }
     
+    class func mySemiboldSystemFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: AppFontName.semibold, size: size)!
+    }
+    
     class func myHeavySystemFont(ofSize size: CGFloat) -> UIFont {
         return UIFont(name: AppFontName.heavy, size: size)!
     }
