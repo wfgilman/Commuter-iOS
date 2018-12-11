@@ -10,6 +10,7 @@ import UIKit
 
 class DepartureCell: UITableViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
     
@@ -55,6 +56,11 @@ class DepartureCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.backgroundColor = .clear
+        containerView.layer.cornerRadius = 8
+        containerView.layer.borderWidth = 0.5
+        containerView.layer.borderColor = AppColor.PaleGray.color.cgColor
         
         // Header elements.
         routeColorView.layer.borderWidth = 0.5
