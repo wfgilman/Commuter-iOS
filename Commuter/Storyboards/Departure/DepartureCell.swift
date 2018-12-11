@@ -61,12 +61,16 @@ class DepartureCell: UITableViewCell {
         containerView.layer.cornerRadius = 8
         containerView.layer.borderWidth = 0.5
         containerView.layer.borderColor = AppColor.PaleGray.color.cgColor
+        containerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        containerView.layer.shadowOffset = .zero
+        containerView.layer.shadowOpacity = 1
+        containerView.layer.shadowRadius = 4
         
         // Header elements.
         routeColorView.layer.borderWidth = 0.5
         routeColorView.layer.borderColor = AppColor.PaleGray.color.cgColor
         
-        headsignLabel.textAlignment = .right
+        headsignLabel.textAlignment = .left
         headsignLabel.font = UIFont.mySystemFont(ofSize: 18)
         headsignLabel.textColor = AppColor.Charcoal.color
         
