@@ -10,4 +10,5 @@ import Foundation
 
 struct AppVariable {
     static var stations = [Station]()
+    static let duration: TimeInterval = 0.36
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class DepartureCell: UITableViewCell {
 
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var footerView: UIView!
     
@@ -26,6 +25,8 @@ class DepartureCell: UITableViewCell {
     
     @IBOutlet weak var departLabel: UILabel!
     @IBOutlet weak var arriveLabel: UILabel!
+    
+    @IBOutlet weak var footerViewTop: NSLayoutConstraint!
     
     var departure: Departure! {
         didSet {
@@ -58,13 +59,21 @@ class DepartureCell: UITableViewCell {
         super.awakeFromNib()
         
         self.backgroundColor = .clear
-        containerView.layer.cornerRadius = 8
-        containerView.layer.borderWidth = 0.5
-        containerView.layer.borderColor = AppColor.PaleGray.color.cgColor
-        containerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
-        containerView.layer.shadowOffset = .zero
-        containerView.layer.shadowOpacity = 1
-        containerView.layer.shadowRadius = 4
+        headerView.layer.cornerRadius = 8
+        headerView.layer.borderWidth = 0.5
+        headerView.layer.borderColor = AppColor.PaleGray.color.cgColor
+        headerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        headerView.layer.shadowOffset = .zero
+        headerView.layer.shadowOpacity = 1
+        headerView.layer.shadowRadius = 4
+        
+        footerView.layer.cornerRadius = 8
+        footerView.layer.borderWidth = 0.5
+        footerView.layer.borderColor = AppColor.PaleGray.color.cgColor
+        footerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        footerView.layer.shadowOffset = .zero
+        footerView.layer.shadowOpacity = 1
+        footerView.layer.shadowRadius = 4
         
         // Header elements.
         routeColorView.layer.borderWidth = 0.5
@@ -100,12 +109,24 @@ class DepartureCell: UITableViewCell {
         
         carsLabel.font = UIFont.mySystemFont(ofSize: 12)
         carsLabel.textColor = AppColor.Charcoal.color
+        
+        // Constraints.
+        footerViewTop.constant = -60
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func expand() {
+        UIView.animate(withDuration: AppVariable.duration, delay: 0, options: .curveEaseOut, animations: {
+            self.footerViewTop.constant = -10
+            self.layoutIfNeeded()
+        }, completion: nil)
+        
     }
     
+    func collapse() {
+        UIView.animate(withDuration: AppVariable.duration, delay: 0, options: .curveEaseOut, animations: {
+            self.footerViewTop.constant = -60
+            self.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
 }

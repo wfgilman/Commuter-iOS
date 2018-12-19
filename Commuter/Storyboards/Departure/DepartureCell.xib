@@ -20,180 +20,156 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="170" id="KGk-i7-Jjw" customClass="DepartureCell" customModule="Commuter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="401" height="180"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="190" id="KGk-i7-Jjw" customClass="DepartureCell" customModule="Commuter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="401" height="179.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="401" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C35-0o-hDi">
-                        <rect key="frame" x="8" y="8" width="385" height="163.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUx-gg-ESL">
+                        <rect key="frame" x="16" y="128" width="369" height="60"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUx-gg-ESL">
-                                <rect key="frame" x="8" y="113.5" width="377" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="NEo-PZ-eNS">
+                                <rect key="frame" x="16" y="8" width="236" height="44"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="NEo-PZ-eNS">
-                                        <rect key="frame" x="16" y="8" width="236" height="34"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Pb-E0-kep">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="44"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Pb-E0-kep">
-                                                <rect key="frame" x="0.0" y="0.0" width="43" height="34"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="DELAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT8-ed-cKh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="43" height="19.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="On time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2z-BZ-MfW">
-                                                        <rect key="frame" x="0.0" y="19.5" width="43" height="14.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vP3-0M-PIG">
-                                                <rect key="frame" x="114" y="0.0" width="25.5" height="34"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="STOP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ON-Uw-Kss">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25.5" height="19.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1st" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ua1-uJ-T2d">
-                                                        <rect key="frame" x="0.0" y="19.5" width="16.5" height="14.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3uu-of-RHa">
-                                                <rect key="frame" x="210.5" y="0.0" width="25.5" height="34"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="CARS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzX-3v-P1j">
-                                                        <rect key="frame" x="0.0" y="0.0" width="25.5" height="19.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w59-dJ-zod">
-                                                        <rect key="frame" x="0.0" y="19.5" width="7" height="14.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="DELAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT8-ed-cKh">
+                                                <rect key="frame" x="0.0" y="0.0" width="43" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="On time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2z-BZ-MfW">
+                                                <rect key="frame" x="0.0" y="29.5" width="43" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vP3-0M-PIG">
+                                        <rect key="frame" x="114" y="0.0" width="25.5" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="STOP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ON-Uw-Kss">
+                                                <rect key="frame" x="0.0" y="0.0" width="25.5" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1st" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ua1-uJ-T2d">
+                                                <rect key="frame" x="0.0" y="29.5" width="16.5" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="3uu-of-RHa">
+                                        <rect key="frame" x="210.5" y="0.0" width="25.5" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="CARS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzX-3v-P1j">
+                                                <rect key="frame" x="0.0" y="0.0" width="25.5" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w59-dJ-zod">
+                                                <rect key="frame" x="0.0" y="29.5" width="7" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.94154894406392686" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.94154894406392686" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NEo-PZ-eNS" secondAttribute="bottom" constant="8" id="IUG-IV-jQo"/>
+                            <constraint firstAttribute="height" constant="60" id="LwA-wr-1uv"/>
+                            <constraint firstItem="NEo-PZ-eNS" firstAttribute="leading" secondItem="fUx-gg-ESL" secondAttribute="leading" constant="16" id="Rmt-aG-DpR"/>
+                            <constraint firstItem="NEo-PZ-eNS" firstAttribute="top" secondItem="fUx-gg-ESL" secondAttribute="top" constant="8" id="aLv-kY-uGf"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Af9-FV-pWi">
+                        <rect key="frame" x="8" y="8" width="385" height="120"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc4-TN-SDZ">
+                                <rect key="frame" x="31.5" y="24" width="28" height="29"/>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-6r-SBv">
+                                <rect key="frame" x="80" y="4" width="1" height="112"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="De0-15-P0O"/>
-                                    <constraint firstAttribute="bottom" secondItem="NEo-PZ-eNS" secondAttribute="bottom" constant="8" id="IUG-IV-jQo"/>
-                                    <constraint firstItem="NEo-PZ-eNS" firstAttribute="leading" secondItem="fUx-gg-ESL" secondAttribute="leading" constant="16" id="Rmt-aG-DpR"/>
-                                    <constraint firstItem="NEo-PZ-eNS" firstAttribute="top" secondItem="fUx-gg-ESL" secondAttribute="top" constant="8" id="aLv-kY-uGf"/>
+                                    <constraint firstAttribute="width" constant="1" id="tfs-5C-fuh"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Af9-FV-pWi">
-                                <rect key="frame" x="8" y="0.0" width="377" height="113.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Francisco International Airport" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73A-Ba-4qK">
+                                <rect key="frame" x="97" y="16" width="161.5" height="49.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="1fo-nn-kb1">
+                                <rect key="frame" x="97" y="73.5" width="272" height="30.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc4-TN-SDZ">
-                                        <rect key="frame" x="23.5" y="24" width="28" height="29"/>
-                                        <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIC-6r-SBv">
-                                        <rect key="frame" x="80" y="4" width="1" height="105.5"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1" id="tfs-5C-fuh"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Montgomery St" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73A-Ba-4qK">
-                                        <rect key="frame" x="97" y="16" width="123" height="43"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="1fo-nn-kb1">
-                                        <rect key="frame" x="97" y="67" width="264" height="30.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="X4q-et-LpB">
+                                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="30.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="X4q-et-LpB">
-                                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="30.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="DEPARTURE TIME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-UA-o0l">
-                                                        <rect key="frame" x="0.0" y="0.0" width="83.5" height="12"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6:52am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8B-Ml-eoJ">
-                                                        <rect key="frame" x="0.0" y="16" width="40" height="14.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="d8J-bS-XOz">
-                                                <rect key="frame" x="167.5" y="0.0" width="96.5" height="30.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="ARRIVAL TIME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUE-yC-gev">
-                                                        <rect key="frame" x="0.0" y="0.0" width="66" height="12"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6:52am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OI-Hg-T6f">
-                                                        <rect key="frame" x="0.0" y="16" width="40" height="14.5"/>
-                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="DEPARTURE TIME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-UA-o0l">
+                                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="12"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6:52am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8B-Ml-eoJ">
+                                                <rect key="frame" x="0.0" y="16" width="40" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYP-DH-SOi">
-                                        <rect key="frame" x="28" y="57" width="19.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDP-vE-gUW">
-                                        <rect key="frame" x="16" y="8" width="43" height="12"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="d8J-bS-XOz">
+                                        <rect key="frame" x="171.5" y="0.0" width="100.5" height="30.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="ARRIVAL TIME" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUE-yC-gev">
+                                                <rect key="frame" x="0.0" y="0.0" width="66" height="12"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6:52am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OI-Hg-T6f">
+                                                <rect key="frame" x="0.0" y="16" width="40" height="14.5"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="SIC-6r-SBv" firstAttribute="leading" secondItem="Af9-FV-pWi" secondAttribute="leading" constant="80" id="17P-7b-zit"/>
-                                    <constraint firstItem="IYP-DH-SOi" firstAttribute="top" secondItem="hc4-TN-SDZ" secondAttribute="bottom" constant="4" id="2r9-bu-nyg"/>
-                                    <constraint firstItem="IYP-DH-SOi" firstAttribute="centerX" secondItem="hc4-TN-SDZ" secondAttribute="centerX" id="39k-bO-z8b"/>
-                                    <constraint firstAttribute="bottom" secondItem="1fo-nn-kb1" secondAttribute="bottom" constant="16" id="3Sb-Kh-Bek"/>
-                                    <constraint firstItem="73A-Ba-4qK" firstAttribute="leading" secondItem="SIC-6r-SBv" secondAttribute="trailing" constant="16" id="Cdd-Cw-fPb"/>
-                                    <constraint firstItem="1fo-nn-kb1" firstAttribute="top" secondItem="73A-Ba-4qK" secondAttribute="bottom" constant="8" id="El7-Xi-QX9"/>
-                                    <constraint firstItem="SIC-6r-SBv" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" constant="4" id="RDn-ag-fhX"/>
-                                    <constraint firstAttribute="bottom" secondItem="SIC-6r-SBv" secondAttribute="bottom" constant="4" id="RWF-4o-8EZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="1fo-nn-kb1" secondAttribute="trailing" constant="16" id="U0n-mf-imb"/>
-                                    <constraint firstItem="QDP-vE-gUW" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" constant="8" id="ZMi-4B-5Q7"/>
-                                    <constraint firstItem="73A-Ba-4qK" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" constant="16" id="bIq-Xu-WgF"/>
-                                    <constraint firstItem="1fo-nn-kb1" firstAttribute="leading" secondItem="SIC-6r-SBv" secondAttribute="trailing" constant="16" id="jvn-9L-tMe"/>
-                                    <constraint firstItem="hc4-TN-SDZ" firstAttribute="top" secondItem="QDP-vE-gUW" secondAttribute="bottom" constant="4" id="ouv-UW-x4E"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="73A-Ba-4qK" secondAttribute="trailing" constant="16" id="rsd-GY-oEk"/>
-                                    <constraint firstItem="hc4-TN-SDZ" firstAttribute="centerX" secondItem="QDP-vE-gUW" secondAttribute="centerX" id="xq8-Y5-4ql"/>
-                                    <constraint firstItem="QDP-vE-gUW" firstAttribute="leading" secondItem="Af9-FV-pWi" secondAttribute="leading" constant="16" id="y7k-I7-15p"/>
-                                </constraints>
-                            </view>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IYP-DH-SOi">
+                                <rect key="frame" x="36" y="57" width="19.5" height="14.5"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDP-vE-gUW">
+                                <rect key="frame" x="24" y="8" width="43" height="12"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cya-YK-jRb">
-                                <rect key="frame" x="0.0" y="0.0" width="8" height="163.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="8" height="120"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.29147046232876711" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="BED-TO-Djh"/>
@@ -202,45 +178,57 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cya-YK-jRb" firstAttribute="top" secondItem="C35-0o-hDi" secondAttribute="top" id="4uz-hD-MLF"/>
-                            <constraint firstAttribute="bottom" secondItem="cya-YK-jRb" secondAttribute="bottom" id="DKn-IY-Z8n"/>
-                            <constraint firstAttribute="trailing" secondItem="fUx-gg-ESL" secondAttribute="trailing" id="FjH-f7-TEA"/>
-                            <constraint firstItem="Af9-FV-pWi" firstAttribute="leading" secondItem="cya-YK-jRb" secondAttribute="trailing" id="a4r-Be-U3W"/>
-                            <constraint firstItem="fUx-gg-ESL" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="bottom" id="fYu-ZR-Rkv"/>
-                            <constraint firstAttribute="bottom" secondItem="fUx-gg-ESL" secondAttribute="bottom" id="jVA-Qq-9cd"/>
-                            <constraint firstAttribute="trailing" secondItem="Af9-FV-pWi" secondAttribute="trailing" id="kkE-vS-aJE"/>
-                            <constraint firstItem="cya-YK-jRb" firstAttribute="leading" secondItem="C35-0o-hDi" secondAttribute="leading" id="o2h-IZ-DZP"/>
-                            <constraint firstItem="Af9-FV-pWi" firstAttribute="top" secondItem="C35-0o-hDi" secondAttribute="top" id="pJb-Wg-AYC"/>
-                            <constraint firstItem="fUx-gg-ESL" firstAttribute="leading" secondItem="cya-YK-jRb" secondAttribute="trailing" id="wME-Iw-gHP"/>
+                            <constraint firstItem="SIC-6r-SBv" firstAttribute="leading" secondItem="Af9-FV-pWi" secondAttribute="leading" constant="80" id="17P-7b-zit"/>
+                            <constraint firstItem="IYP-DH-SOi" firstAttribute="top" secondItem="hc4-TN-SDZ" secondAttribute="bottom" constant="4" id="2r9-bu-nyg"/>
+                            <constraint firstItem="IYP-DH-SOi" firstAttribute="centerX" secondItem="hc4-TN-SDZ" secondAttribute="centerX" id="39k-bO-z8b"/>
+                            <constraint firstAttribute="bottom" secondItem="1fo-nn-kb1" secondAttribute="bottom" constant="16" id="3Sb-Kh-Bek"/>
+                            <constraint firstItem="cya-YK-jRb" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" id="4a9-tq-ZM5"/>
+                            <constraint firstItem="73A-Ba-4qK" firstAttribute="leading" secondItem="SIC-6r-SBv" secondAttribute="trailing" constant="16" id="Cdd-Cw-fPb"/>
+                            <constraint firstItem="1fo-nn-kb1" firstAttribute="top" secondItem="73A-Ba-4qK" secondAttribute="bottom" constant="8" id="El7-Xi-QX9"/>
+                            <constraint firstAttribute="height" constant="120" id="Fut-cZ-y2y"/>
+                            <constraint firstItem="cya-YK-jRb" firstAttribute="leading" secondItem="Af9-FV-pWi" secondAttribute="leading" id="PhL-o6-ar7"/>
+                            <constraint firstItem="SIC-6r-SBv" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" constant="4" id="RDn-ag-fhX"/>
+                            <constraint firstAttribute="bottom" secondItem="SIC-6r-SBv" secondAttribute="bottom" constant="4" id="RWF-4o-8EZ"/>
+                            <constraint firstAttribute="trailing" secondItem="1fo-nn-kb1" secondAttribute="trailing" constant="16" id="U0n-mf-imb"/>
+                            <constraint firstItem="QDP-vE-gUW" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" constant="8" id="ZMi-4B-5Q7"/>
+                            <constraint firstItem="73A-Ba-4qK" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="top" constant="16" id="bIq-Xu-WgF"/>
+                            <constraint firstItem="1fo-nn-kb1" firstAttribute="leading" secondItem="SIC-6r-SBv" secondAttribute="trailing" constant="16" id="jvn-9L-tMe"/>
+                            <constraint firstItem="hc4-TN-SDZ" firstAttribute="top" secondItem="QDP-vE-gUW" secondAttribute="bottom" constant="4" id="ouv-UW-x4E"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="73A-Ba-4qK" secondAttribute="trailing" constant="16" id="rsd-GY-oEk"/>
+                            <constraint firstAttribute="bottom" secondItem="cya-YK-jRb" secondAttribute="bottom" id="xfb-TV-qww"/>
+                            <constraint firstItem="hc4-TN-SDZ" firstAttribute="centerX" secondItem="QDP-vE-gUW" secondAttribute="centerX" id="xq8-Y5-4ql"/>
+                            <constraint firstItem="QDP-vE-gUW" firstAttribute="leading" secondItem="Af9-FV-pWi" secondAttribute="leading" constant="24" id="y7k-I7-15p"/>
                         </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="C35-0o-hDi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="76p-jI-r5R"/>
-                    <constraint firstAttribute="trailing" secondItem="C35-0o-hDi" secondAttribute="trailing" constant="8" id="SDm-Qa-yh9"/>
-                    <constraint firstItem="C35-0o-hDi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="llY-LJ-fJ9"/>
-                    <constraint firstAttribute="bottom" secondItem="C35-0o-hDi" secondAttribute="bottom" constant="8" id="ybb-Z5-Azp"/>
+                    <constraint firstItem="fUx-gg-ESL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2iM-9n-dCl"/>
+                    <constraint firstAttribute="trailing" secondItem="Af9-FV-pWi" secondAttribute="trailing" constant="8" id="3Qj-CK-rOM"/>
+                    <constraint firstAttribute="trailing" secondItem="fUx-gg-ESL" secondAttribute="trailing" constant="16" id="CpC-AN-vEE"/>
+                    <constraint firstItem="Af9-FV-pWi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="acl-go-w6G"/>
+                    <constraint firstItem="fUx-gg-ESL" firstAttribute="top" secondItem="Af9-FV-pWi" secondAttribute="bottom" id="fO3-y5-rAt"/>
+                    <constraint firstItem="Af9-FV-pWi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="mk8-dV-eKD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="arriveLabel" destination="ZUE-yC-gev" id="32C-dp-fZB"/>
                 <outlet property="carsLabel" destination="w59-dJ-zod" id="yCp-z6-DKH"/>
-                <outlet property="containerView" destination="C35-0o-hDi" id="8Jv-Xh-9X9"/>
                 <outlet property="delayMinLabel" destination="t2z-BZ-MfW" id="Ghy-gU-IUa"/>
                 <outlet property="departLabel" destination="9wh-UA-o0l" id="M59-g0-1HK"/>
                 <outlet property="dividerView" destination="SIC-6r-SBv" id="sR7-au-Z2D"/>
                 <outlet property="etaLabel" destination="0OI-Hg-T6f" id="AfE-IW-Su1"/>
                 <outlet property="etdLabel" destination="z8B-Ml-eoJ" id="GYo-HB-hKo"/>
                 <outlet property="etdMinLabel" destination="hc4-TN-SDZ" id="3ht-tq-eSe"/>
-                <outlet property="footerView" destination="fUx-gg-ESL" id="hJj-9J-3dh"/>
+                <outlet property="footerView" destination="fUx-gg-ESL" id="sij-Za-dhg"/>
+                <outlet property="footerViewTop" destination="fO3-y5-rAt" id="WSL-sS-zLB"/>
                 <outlet property="headerView" destination="Af9-FV-pWi" id="8cP-Sy-nP5"/>
                 <outlet property="headsignLabel" destination="73A-Ba-4qK" id="jxt-bq-bA8"/>
                 <outlet property="routeColorView" destination="cya-YK-jRb" id="eBe-NB-ogX"/>
                 <outlet property="stopsLabel" destination="ua1-uJ-T2d" id="Xt4-FE-HER"/>
             </connections>
-            <point key="canvasLocation" x="194.40000000000001" y="214.99250374812596"/>
+            <point key="canvasLocation" x="194.40000000000001" y="223.98800599700152"/>
         </tableViewCell>
     </objects>
 </document>

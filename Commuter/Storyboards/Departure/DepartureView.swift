@@ -9,6 +9,11 @@
 import UIKit
 
 class DepartureView: UIView {
+    
+    enum Constant {
+        static let expandedCellHeight: CGFloat = 186.0
+        static let collapsedCellHeight: CGFloat = 136.0
+    }
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -16,8 +21,12 @@ class DepartureView: UIView {
     var trip: Trip! {
         didSet {
             tableView.reloadData()
+            for _ in trip.departures {
+                cellHeights.append((expanded: false, height: Constant.collapsedCellHeight))
+            }
         }
     }
+    var cellHeights = [(expanded: Bool, height: CGFloat)]()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -43,7 +52,7 @@ class DepartureView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 160.0
+        tableView.estimatedRowHeight = Constant.collapsedCellHeight
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
     }
@@ -56,10 +65,37 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
         return trip.departures.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if cellHeights.count > 0 {
+            return cellHeights[indexPath.row].height
+        } else {
+            return 120
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DepartureCell", for: indexPath) as! DepartureCell
         cell.departure = trip.departures[indexPath.row]
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! DepartureCell
+        
+        if cellHeights[indexPath.row].expanded {
+            cellHeights[indexPath.row].expanded = false
+            cellHeights[indexPath.row].height -= 50
+            cell.collapse()
+        } else {
+            cellHeights[indexPath.row].expanded = true
+            cellHeights[indexPath.row].height += 50
+            cell.expand()
+        }
+        
+        UIView.animate(withDuration: AppVariable.duration, delay: 0, options: .curveEaseInOut, animations: {
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
+        }, completion: nil)
     }
 }
