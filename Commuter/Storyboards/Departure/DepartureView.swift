@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol DepartureViewDelegate {
+    
+    func refreshDepartures(commute: Commute)
+}
+
 class DepartureView: UIView {
     
     enum Constant {
@@ -18,9 +23,13 @@ class DepartureView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: DepartureViewDelegate!
+    var refreshControl: UIRefreshControl!
+    var commute: Commute!
     var trip: Trip! {
         didSet {
             tableView.reloadData()
+            refreshControl.endRefreshing()
             for _ in trip.departures {
                 cellHeights.append((expanded: false, height: Constant.collapsedCellHeight))
             }
@@ -44,6 +53,7 @@ class DepartureView: UIView {
         contentView.frame = bounds
         addSubview(contentView)
         setupTableView()
+        setupRefreshControl()
     }
     
     func setupTableView() {
@@ -56,6 +66,18 @@ class DepartureView: UIView {
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
     }
+    
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+    }
+    
+    @objc func onRefresh() {
+        delegate.refreshDepartures(commute: commute)
+    }
+    
+    
 }
 
 extension DepartureView: UITableViewDelegate, UITableViewDataSource {

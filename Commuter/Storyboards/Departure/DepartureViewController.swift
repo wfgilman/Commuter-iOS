@@ -25,6 +25,8 @@ class DepartureViewController: UIViewController {
     var morningDepartureView: DepartureView!
     var eveningDepartureView: DepartureView!
     var commute: Commute!
+    var orig: String!
+    var dest: String!
     var pageHeight: CGFloat = 0
     var pageWidth: CGFloat = 0
     
@@ -33,8 +35,8 @@ class DepartureViewController: UIViewController {
         
         pageHeight = self.view.bounds.height
         pageWidth = self.view.bounds.width
-        let orig = UserDefaults.standard.string(forKey: "OrigStationCode")
-        let dest = UserDefaults.standard.string(forKey: "DestStationCode")
+        orig = UserDefaults.standard.string(forKey: "OrigStationCode")
+        dest = UserDefaults.standard.string(forKey: "DestStationCode")
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "a"
@@ -47,6 +49,10 @@ class DepartureViewController: UIViewController {
         
         morningDepartureView = DepartureView()
         eveningDepartureView = DepartureView()
+        morningDepartureView.commute = .morning
+        eveningDepartureView.commute = .evening
+        morningDepartureView.delegate = self
+        eveningDepartureView.delegate = self
         scrollView.addSubview(morningDepartureView)
         scrollView.addSubview(eveningDepartureView)
         
@@ -99,6 +105,29 @@ class DepartureViewController: UIViewController {
             
         }
     }
+    
+    func getDepartures(commute: Commute) {
+        var commuteView: DepartureView
+        var orig: String
+        var dest: String
+        
+        if commute == .morning {
+            orig = self.orig
+            dest = self.dest
+            commuteView = self.morningDepartureView
+        } else {
+            orig = self.dest
+            dest = self.orig
+            commuteView = self.eveningDepartureView
+        }
+        
+        CommuterAPI.sharedClient.getTrip(orig: orig, dest: dest, success: { (trip) in
+            commuteView.trip = trip
+        }) { (_, message) in
+            guard let message = message else { return }
+            print("\(message)")
+        }
+    }
 }
 
 extension DepartureViewController: UIScrollViewDelegate {
@@ -111,5 +140,12 @@ extension DepartureViewController: UIScrollViewDelegate {
             destColorView.backgroundColor = .black
             origColorView.backgroundColor = .clear
         }
+    }
+}
+
+extension DepartureViewController: DepartureViewDelegate {
+    
+    func refreshDepartures(commute: Commute) {
+        getDepartures(commute: commute)
     }
 }

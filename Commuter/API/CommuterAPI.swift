@@ -11,7 +11,7 @@ import Alamofire
 import Unbox
 
 class CommuterAPI: NSObject {
-    static let sharedClient = CommuterAPI(baseURL: "https://commuter.gigalixirapp.com/api/v1")
+    static let sharedClient = CommuterAPI(baseURL: AppVariable.baseURL)
     var baseURL: String
     let headers = ["content-type": "application/json"]
     var af: Alamofire.SessionManager?
@@ -19,7 +19,7 @@ class CommuterAPI: NSObject {
     init(baseURL: String) {
         self.baseURL = baseURL
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 10
+        configuration.timeoutIntervalForRequest = 15
         configuration.urlCache = URLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
         self.af = Alamofire.SessionManager(configuration: configuration)
     }
