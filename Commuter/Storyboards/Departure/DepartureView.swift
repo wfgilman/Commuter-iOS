@@ -25,11 +25,15 @@ class DepartureView: UIView {
     
     var delegate: DepartureViewDelegate!
     var refreshControl: UIRefreshControl!
+    var activityAnimation: UIActivityIndicatorView!
     var commute: Commute!
     var trip: Trip! {
         didSet {
             tableView.reloadData()
             refreshControl.endRefreshing()
+            if activityAnimation.isAnimating {
+                activityAnimation.stopAnimating()
+            }
             for _ in trip.departures {
                 cellHeights.append((expanded: false, height: Constant.collapsedCellHeight))
             }
@@ -65,6 +69,10 @@ class DepartureView: UIView {
         tableView.estimatedRowHeight = Constant.collapsedCellHeight
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
+        activityAnimation = UIActivityIndicatorView(style: .whiteLarge)
+        tableView.backgroundView = activityAnimation
+        activityAnimation.color = AppColor.MediumGray.color
+        activityAnimation.startAnimating()
     }
     
     func setupRefreshControl() {
