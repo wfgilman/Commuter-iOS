@@ -22,6 +22,7 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var delayMinLabel: UILabel!
     @IBOutlet weak var stopsLabel: UILabel!
     @IBOutlet weak var carsLabel: UILabel!
+    @IBOutlet weak var isEmptyLabel: UILabel!
     
     @IBOutlet weak var departLabel: UILabel!
     @IBOutlet weak var arriveLabel: UILabel!
@@ -52,6 +53,7 @@ class DepartureCell: UITableViewCell {
                 carsLabel.text = "--"
             }
             
+            isEmptyLabel.isHidden = !departure.isEmpty
         }
     }
     
@@ -97,6 +99,9 @@ class DepartureCell: UITableViewCell {
         etaLabel.textColor = AppColor.Charcoal.color
         
         dividerView.backgroundColor = AppColor.MediumGray.color
+        
+        isEmptyLabel.font = UIFont.mySystemFont(ofSize: 12)
+        isEmptyLabel.textColor = AppColor.Charcoal.color
         
         // Footer elements.
         footerView.backgroundColor = AppColor.PaleGray.color

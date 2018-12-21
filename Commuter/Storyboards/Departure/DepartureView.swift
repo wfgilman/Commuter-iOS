@@ -77,6 +77,7 @@ class DepartureView: UIView {
     
     func setupRefreshControl() {
         refreshControl = UIRefreshControl()
+        refreshControl.tintColor = AppColor.MediumGray.color
         refreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
     }
@@ -99,7 +100,7 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
         if cellHeights.count > 0 {
             return cellHeights[indexPath.row].height
         } else {
-            return 120
+            return Constant.collapsedCellHeight
         }
     }
     
@@ -113,13 +114,14 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DepartureCell
         
+        let height = Constant.expandedCellHeight - Constant.collapsedCellHeight
         if cellHeights[indexPath.row].expanded {
             cellHeights[indexPath.row].expanded = false
-            cellHeights[indexPath.row].height -= 50
+            cellHeights[indexPath.row].height -= height
             cell.collapse()
         } else {
             cellHeights[indexPath.row].expanded = true
-            cellHeights[indexPath.row].height += 50
+            cellHeights[indexPath.row].height += height
             cell.expand()
         }
         

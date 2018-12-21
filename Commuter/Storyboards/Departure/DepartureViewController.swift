@@ -27,14 +27,10 @@ class DepartureViewController: UIViewController {
     var commute: Commute!
     var orig: String!
     var dest: String!
-    var pageHeight: CGFloat = 0
-    var pageWidth: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pageHeight = self.view.bounds.height
-        pageWidth = self.view.bounds.width
         orig = UserDefaults.standard.string(forKey: "OrigStationCode")
         dest = UserDefaults.standard.string(forKey: "DestStationCode")
         
@@ -48,29 +44,16 @@ class DepartureViewController: UIViewController {
         }
         
         morningDepartureView = DepartureView()
-        eveningDepartureView = DepartureView()
         morningDepartureView.commute = .morning
-        eveningDepartureView.commute = .evening
         morningDepartureView.delegate = self
-        eveningDepartureView.delegate = self
         scrollView.addSubview(morningDepartureView)
+        getDepartures(commute: .morning)
+        
+        eveningDepartureView = DepartureView()
+        eveningDepartureView.commute = .evening
+        eveningDepartureView.delegate = self
         scrollView.addSubview(eveningDepartureView)
-        
-        // Get Morning commute trip.
-        CommuterAPI.sharedClient.getTrip(orig: orig!, dest: dest!, success: { (trip) in
-            self.morningDepartureView.trip = trip
-        }) { (_, message) in
-            guard let message = message else { return }
-            print("\(message)")
-        }
-        
-        // Get Evening commute trip.
-        CommuterAPI.sharedClient.getTrip(orig: dest!, dest: orig!, success: { (trip) in
-            self.eveningDepartureView.trip = trip
-        }) { (_, message) in
-            guard let message = message else { return }
-            print("\(message)")
-        }
+        getDepartures(commute: .evening)
         
         setupSubviews()
         
@@ -80,16 +63,14 @@ class DepartureViewController: UIViewController {
         }
     }
     
-    func setupSubviews() {
-        view.layoutIfNeeded()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let pageHeight = scrollView.bounds.height
+        let pageWidth = scrollView.bounds.width
         
         scrollView.contentSize.width = pageWidth * 2
         scrollView.contentSize.height = pageHeight
-        scrollView.delegate = self
-        scrollView.isPagingEnabled = true
-        scrollView.bounces = false
-        scrollView.isDirectionalLockEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
         
         morningDepartureView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
         eveningDepartureView.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: pageHeight)
@@ -104,6 +85,15 @@ class DepartureViewController: UIViewController {
             scrollView.contentOffset.x = pageWidth
             
         }
+    }
+    
+    func setupSubviews() {
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        scrollView.bounces = false
+        scrollView.isDirectionalLockEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .automatic
     }
     
     func getDepartures(commute: Commute) {
