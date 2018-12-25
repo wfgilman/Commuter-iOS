@@ -13,8 +13,8 @@ extension UINavigationBar {
     func setup(titleColor: UIColor?, hasBottomBorder: Bool, isTranslucent: Bool) {
         self.tintColor = AppColor.Charcoal.color
         self.barTintColor = UIColor.white
-//        self.backIndicatorImage = UIImage(named: "left_chevron")
-//        self.backIndicatorTransitionMaskImage = UIImage(named: "left_chevron")
+        self.backIndicatorImage = UIImage(named: "left_chevron")
+        self.backIndicatorTransitionMaskImage = UIImage(named: "left_chevron")
         if !hasBottomBorder {
             self.setBackgroundImage(UIImage(), for: .default)
             self.shadowImage = UIImage()

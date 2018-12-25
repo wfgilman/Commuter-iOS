@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
+		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
 		BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577421B49DB900CDB586 /* Assets.xcassets */; };
@@ -47,6 +48,8 @@
 		BEBA57CC21BDD52500CDB586 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57BA21BDD52500CDB586 /* Lato-Heavy.ttf */; };
 		BEBA57CE21BDD5FB00CDB586 /* AppFontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57CD21BDD5FB00CDB586 /* AppFontName.swift */; };
 		BEBA57D221BDD69A00CDB586 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57D121BDD69A00CDB586 /* UIFont.swift */; };
+		BEE8E02421D2C98600F3AA0F /* CommuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */; };
+		BEE8E02521D2C98600F3AA0F /* CommuteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */; };
 		F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6451D2C341554AF11F776027 /* Pods_Commuter.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +57,7 @@
 		23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.release.xcconfig"; sourceTree = "<group>"; };
 		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBA577221B49DB800CDB586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		BEBA57BA21BDD52500CDB586 /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
 		BEBA57CD21BDD5FB00CDB586 /* AppFontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFontName.swift; sourceTree = "<group>"; };
 		BEBA57D121BDD69A00CDB586 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteCell.swift; sourceTree = "<group>"; };
+		BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommuteCell.xib; sourceTree = "<group>"; };
 		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +131,16 @@
 				6451D2C341554AF11F776027 /* Pods_Commuter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEB7207B21CC87CC00112AF0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */,
+				BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */,
+				BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		BEBA576121B49DB800CDB586 = {
@@ -184,6 +200,7 @@
 		BEBA578F21B97E1F00CDB586 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7207B21CC87CC00112AF0 /* Settings */,
 				BEBA579921BA1CFF00CDB586 /* Departure */,
 				BEBA579421B980E500CDB586 /* Onboard */,
 			);
@@ -340,6 +357,7 @@
 				BEBA57BD21BDD52500CDB586 /* Lato-Bold.ttf in Resources */,
 				BEBA57BC21BDD52500CDB586 /* Lato-Light.ttf in Resources */,
 				BEBA57C321BDD52500CDB586 /* Lato-Black.ttf in Resources */,
+				BEE8E02521D2C98600F3AA0F /* CommuteCell.xib in Resources */,
 				BEBA57C221BDD52500CDB586 /* Lato-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +430,8 @@
 				BEBA57D221BDD69A00CDB586 /* UIFont.swift in Sources */,
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
 				BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */,
+				BEE8E02421D2C98600F3AA0F /* CommuteCell.swift in Sources */,
+				BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */,
 				BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */,
 				BEBA57A121BDB2C600CDB586 /* DepartureView.swift in Sources */,
 				BEBA578C21B8279400CDB586 /* AppVariable.swift in Sources */,

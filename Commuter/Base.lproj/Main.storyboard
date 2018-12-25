@@ -89,7 +89,11 @@
                         <viewLayoutGuide key="safeArea" id="6ds-5u-wiq"/>
                     </view>
                     <navigationItem key="navigationItem" id="21S-Sf-qT2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="9WI-kf-D4w"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9WI-kf-D4w">
+                            <connections>
+                                <action selector="onTapSettingsButton:" destination="Ps7-lw-UWX" id="x1Q-eD-Ggc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="destColorView" destination="2EP-Ib-Y0b" id="JMG-is-M4p"/>
@@ -97,12 +101,44 @@
                         <outlet property="origColorView" destination="bmg-tG-NVb" id="aM0-lS-l6x"/>
                         <outlet property="origCommuteLabel" destination="3hR-Uy-Rp0" id="HpS-UC-lYU"/>
                         <outlet property="scrollView" destination="shR-wT-mAo" id="ci2-Tg-9mE"/>
+                        <outlet property="settingsButton" destination="9WI-kf-D4w" id="UEf-2D-yp8"/>
                         <outlet property="tabBarView" destination="LlH-Us-WaR" id="mHk-RZ-vIz"/>
+                        <segue destination="Prp-8v-Yzg" kind="show" identifier="SettingsSegue" id="iTb-LV-HWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7U-fG-GJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="980" y="25.637181409295355"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="Xgg-kr-vsq">
+            <objects>
+                <viewController id="Prp-8v-Yzg" customClass="SettingsViewController" customModule="Commuter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yFS-iZ-QON">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cyY-vh-yMK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cyY-vh-yMK" firstAttribute="trailing" secondItem="ABj-vM-IEE" secondAttribute="trailing" id="1oN-hE-oTT"/>
+                            <constraint firstItem="cyY-vh-yMK" firstAttribute="bottom" secondItem="ABj-vM-IEE" secondAttribute="bottom" id="OTY-K7-KFR"/>
+                            <constraint firstItem="cyY-vh-yMK" firstAttribute="leading" secondItem="ABj-vM-IEE" secondAttribute="leading" id="yxq-xs-VNs"/>
+                            <constraint firstItem="cyY-vh-yMK" firstAttribute="top" secondItem="ABj-vM-IEE" secondAttribute="top" id="zi1-Cq-3gL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ABj-vM-IEE"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="cyY-vh-yMK" id="6WB-d2-8dS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ren-3t-7M4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944.8" y="25.637181409295355"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="B7K-bM-LLs">

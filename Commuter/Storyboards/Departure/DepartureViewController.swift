@@ -21,6 +21,7 @@ class DepartureViewController: UIViewController {
     @IBOutlet weak var destCommuteLabel: UILabel!
     @IBOutlet weak var origColorView: UIView!
     @IBOutlet weak var destColorView: UIView!
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
     
     var morningDepartureView: DepartureView!
     var eveningDepartureView: DepartureView!
@@ -57,10 +58,18 @@ class DepartureViewController: UIViewController {
         
         setupSubviews()
         
-        if let navBar = navigationController?.navigationBar {
-            navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: false, isTranslucent: true)
-            navigationItem.title = "My Commute"
-        }
+        formatNavigationBar()
+        navigationItem.title = "My Commute"
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        settingsButton.setTitleTextAttributes([
+            NSAttributedString.Key.font : UIFont.mySystemFont(ofSize: 17)
+        ], for: .normal)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        formatNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,6 +93,12 @@ class DepartureViewController: UIViewController {
             origColorView.backgroundColor = .clear
             scrollView.contentOffset.x = pageWidth
             
+        }
+    }
+    
+    func formatNavigationBar() {
+        if let navBar = navigationController?.navigationBar {
+            navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: false, isTranslucent: true)
         }
     }
     
@@ -117,6 +132,10 @@ class DepartureViewController: UIViewController {
             guard let message = message else { return }
             print("\(message)")
         }
+    }
+    
+    @IBAction func onTapSettingsButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "SettingsSegue", sender: nil)
     }
 }
 
