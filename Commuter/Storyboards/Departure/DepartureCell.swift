@@ -82,37 +82,37 @@ class DepartureCell: UITableViewCell {
         routeColorView.layer.borderColor = AppColor.PaleGray.color.cgColor
         
         headsignLabel.textAlignment = .left
-        headsignLabel.font = UIFont.mySystemFont(ofSize: 18)
+        headsignLabel.font = UIFont.systemFont(ofSize: 17)
         headsignLabel.textColor = AppColor.Charcoal.color
         
-        etdMinLabel.font = UIFont.mySystemFont(ofSize: 24)
+        etdMinLabel.font = UIFont.systemFont(ofSize: 24)
         etdMinLabel.textColor = AppColor.Charcoal.color
         
-        departLabel.font = UIFont.mySystemFont(ofSize: 10)
+        departLabel.font = UIFont.systemFont(ofSize: 10)
         departLabel.textColor = AppColor.MediumGray.color
-        etdLabel.font = UIFont.mySystemFont(ofSize: 12)
+        etdLabel.font = UIFont.systemFont(ofSize: 13)
         etdLabel.textColor = AppColor.Charcoal.color
         
-        arriveLabel.font = UIFont.mySystemFont(ofSize: 10)
+        arriveLabel.font = UIFont.systemFont(ofSize: 10)
         arriveLabel.textColor = AppColor.MediumGray.color
-        etaLabel.font = UIFont.mySystemFont(ofSize: 12)
+        etaLabel.font = UIFont.systemFont(ofSize: 13)
         etaLabel.textColor = AppColor.Charcoal.color
         
         dividerView.backgroundColor = AppColor.MediumGray.color
         
-        isEmptyLabel.font = UIFont.mySystemFont(ofSize: 12)
+        isEmptyLabel.font = UIFont.systemFont(ofSize: 13)
         isEmptyLabel.textColor = AppColor.Charcoal.color
         
         // Footer elements.
         footerView.backgroundColor = AppColor.PaleGray.color
         
-        delayMinLabel.font = UIFont.mySystemFont(ofSize: 12)
+        delayMinLabel.font = UIFont.systemFont(ofSize: 13)
         delayMinLabel.textColor = AppColor.Charcoal.color
         
-        stopsLabel.font = UIFont.mySystemFont(ofSize: 12)
+        stopsLabel.font = UIFont.systemFont(ofSize: 13)
         stopsLabel.textColor = AppColor.Charcoal.color
         
-        carsLabel.font = UIFont.mySystemFont(ofSize: 12)
+        carsLabel.font = UIFont.systemFont(ofSize: 13)
         carsLabel.textColor = AppColor.Charcoal.color
         
         // Constraints.

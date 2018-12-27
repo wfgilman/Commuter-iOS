@@ -46,7 +46,6 @@ class SettingsViewController: UIViewController {
         if let navBar = navigationController?.navigationBar {
             navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: true, isTranslucent: true)
             navigationItem.title = "Settings"
-            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
     }
     
@@ -78,8 +77,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let labelFrame = CGRect(x: 16, y: frame.height - labelSize.height - 8, width: labelSize.width, height: labelSize.height)
         let label = UILabel(frame: labelFrame)
         label.text = "Commute"
-        label.font = UIFont.mySystemFont(ofSize: 15)
-        label.textColor = AppColor.MediumGray.color
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.textColor = AppColor.Charcoal.color
         label.textAlignment = .left
         view.addSubview(label)
         return view

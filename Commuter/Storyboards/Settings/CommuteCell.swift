@@ -16,10 +16,10 @@ class CommuteCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        commuteLabel.font = UIFont.mySystemFont(ofSize: 15)
+        commuteLabel.font = UIFont.systemFont(ofSize: 17)
         commuteLabel.textColor = AppColor.Charcoal.color
         
-        stationLabel.font = UIFont.mySystemFont(ofSize: 15)
+        stationLabel.font = UIFont.systemFont(ofSize: 17)
         stationLabel.textColor = AppColor.MediumGray.color
     }
 

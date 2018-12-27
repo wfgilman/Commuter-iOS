@@ -60,9 +60,9 @@ class DepartureViewController: UIViewController {
         
         formatNavigationBar()
         navigationItem.title = "My Commute"
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         settingsButton.setTitleTextAttributes([
-            NSAttributedString.Key.font : UIFont.mySystemFont(ofSize: 17)
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)
         ], for: .normal)
     }
     
@@ -109,6 +109,10 @@ class DepartureViewController: UIViewController {
         scrollView.isDirectionalLockEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .automatic
+    }
+    
+    func getStations() {
+        
     }
     
     func getDepartures(commute: Commute) {

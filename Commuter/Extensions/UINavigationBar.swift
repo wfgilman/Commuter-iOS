@@ -13,8 +13,8 @@ extension UINavigationBar {
     func setup(titleColor: UIColor?, hasBottomBorder: Bool, isTranslucent: Bool) {
         self.tintColor = AppColor.Charcoal.color
         self.barTintColor = UIColor.white
-        self.backIndicatorImage = UIImage(named: "left_chevron")
-        self.backIndicatorTransitionMaskImage = UIImage(named: "left_chevron")
+//        self.backIndicatorImage = UIImage(named: "left_chevron")
+//        self.backIndicatorTransitionMaskImage = UIImage(named: "left_chevron")
         if !hasBottomBorder {
             self.setBackgroundImage(UIImage(), for: .default)
             self.shadowImage = UIImage()
@@ -23,7 +23,7 @@ extension UINavigationBar {
         }
         self.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : titleColor ?? UIColor.black,
-            NSAttributedString.Key.font : UIFont.mySemiboldSystemFont(ofSize: 17)
+            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17, weight: .semibold)
         ]
         self.isTranslucent = isTranslucent
     }
