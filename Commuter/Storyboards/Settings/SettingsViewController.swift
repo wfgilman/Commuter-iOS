@@ -22,12 +22,17 @@ class SettingsViewController: UIViewController {
     var stations = [Station]()
     var direction: CommuteDirection!
     var selectedStation: Station!
+    var origCode: String!
+    var destCode: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        commuteStations.append(UserDefaults.standard.string(forKey: "OrigStationCode") ?? "")
-        commuteStations.append(UserDefaults.standard.string(forKey: "DestStationCode") ?? "")
+        origCode = UserDefaults.standard.string(forKey: "OrigStationCode") ?? ""
+        destCode = UserDefaults.standard.string(forKey: "DestStationCode") ?? ""
+        
+        commuteStations.append(origCode)
+        commuteStations.append(destCode)
 
         if AppVariable.stations.count == 0 {
             CommuterAPI.sharedClient.getStations(success: { (stations) in
@@ -46,6 +51,17 @@ class SettingsViewController: UIViewController {
         if let navBar = navigationController?.navigationBar {
             navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: true, isTranslucent: true)
             navigationItem.title = "Settings"
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        if self.isMovingFromParent {
+            if (origCode != commuteStations[0]) || (destCode != commuteStations[1]) {
+                let name = NSNotification.Name(rawValue: "refreshTrip")
+                NotificationCenter.default.post(name: name, object: nil)
+            }
         }
     }
     
@@ -131,12 +147,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         let okay = UIAlertAction(title: "Okay", style: .default) { (_) in
+            guard let selectedStation: Station = self.selectedStation else { return }
             if direction == .from {
-                UserDefaults.standard.set(self.selectedStation.code, forKey: "OrigStationCode")
-                self.commuteStations[0] = self.selectedStation.code
+                UserDefaults.standard.set(selectedStation.code, forKey: "OrigStationCode")
+                self.commuteStations[0] = selectedStation.code
             } else {
-                UserDefaults.standard.set(self.selectedStation.code, forKey: "DestStationCode")
-                self.commuteStations[1] = self.selectedStation.code
+                UserDefaults.standard.set(selectedStation.code, forKey: "DestStationCode")
+                self.commuteStations[1] = selectedStation.code
             }
             self.tableView.reloadData()
         }

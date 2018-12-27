@@ -26,14 +26,9 @@ class DepartureViewController: UIViewController {
     var morningDepartureView: DepartureView!
     var eveningDepartureView: DepartureView!
     var commute: Commute!
-    var orig: String!
-    var dest: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        orig = UserDefaults.standard.string(forKey: "OrigStationCode")
-        dest = UserDefaults.standard.string(forKey: "DestStationCode")
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "a"
@@ -46,17 +41,16 @@ class DepartureViewController: UIViewController {
         
         morningDepartureView = DepartureView()
         morningDepartureView.commute = .morning
-        morningDepartureView.delegate = self
         scrollView.addSubview(morningDepartureView)
         getDepartures(commute: .morning)
         
         eveningDepartureView = DepartureView()
         eveningDepartureView.commute = .evening
-        eveningDepartureView.delegate = self
         scrollView.addSubview(eveningDepartureView)
         getDepartures(commute: .evening)
         
         setupSubviews()
+        addListener()
         
         formatNavigationBar()
         navigationItem.title = "My Commute"
@@ -116,13 +110,23 @@ class DepartureViewController: UIViewController {
         var orig: String
         var dest: String
         
+        guard let savedOrig = UserDefaults.standard.string(forKey: "OrigStationCode") else {
+            // Show error
+            return
+        }
+        
+        guard let savedDest = UserDefaults.standard.string(forKey: "DestStationCode") else {
+            // Show error
+            return
+        }
+        
         if commute == .morning {
-            orig = self.orig
-            dest = self.dest
+            orig = savedOrig
+            dest = savedDest
             commuteView = self.morningDepartureView
         } else {
-            orig = self.dest
-            dest = self.orig
+            orig = savedDest
+            dest = savedOrig
             commuteView = self.eveningDepartureView
         }
         
@@ -131,6 +135,27 @@ class DepartureViewController: UIViewController {
         }) { (_, message) in
             guard let message = message else { return }
             print("\(message)")
+        }
+    }
+    
+    func addListener() {
+        let name = NSNotification.Name("refreshTrip")
+        NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { (notification) in
+            guard let commute: Commute = notification.object as? Commute else {
+                // User changed commute. Wipe and reload the data.
+                self.getDepartures(commute: .morning)
+                self.morningDepartureView.trip.departures = []
+                self.morningDepartureView.tableView.reloadData()
+                self.morningDepartureView.activityAnimation.startAnimating()
+                
+                self.getDepartures(commute: .evening)
+                self.eveningDepartureView.trip.departures = []
+                self.eveningDepartureView.tableView.reloadData()
+                self.eveningDepartureView.activityAnimation.startAnimating()
+                return
+            }
+            // User refreshed. Don't wipe the existing data.
+            self.getDepartures(commute: commute)
         }
     }
     
@@ -149,12 +174,5 @@ extension DepartureViewController: UIScrollViewDelegate {
             destColorView.backgroundColor = .black
             origColorView.backgroundColor = .clear
         }
-    }
-}
-
-extension DepartureViewController: DepartureViewDelegate {
-    
-    func refreshDepartures(commute: Commute) {
-        getDepartures(commute: commute)
     }
 }

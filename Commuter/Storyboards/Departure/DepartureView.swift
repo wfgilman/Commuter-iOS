@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol DepartureViewDelegate {
-    
-    func refreshDepartures(commute: Commute)
-}
-
 class DepartureView: UIView {
     
     enum Constant {
@@ -23,7 +18,6 @@ class DepartureView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    var delegate: DepartureViewDelegate!
     var refreshControl: UIRefreshControl!
     var activityAnimation: UIActivityIndicatorView!
     var commute: Commute!
@@ -83,10 +77,9 @@ class DepartureView: UIView {
     }
     
     @objc func onRefresh() {
-        delegate.refreshDepartures(commute: commute)
+        let name = NSNotification.Name(rawValue: "refreshTrip")
+        NotificationCenter.default.post(Notification(name: name, object: commute))
     }
-    
-    
 }
 
 extension DepartureView: UITableViewDelegate, UITableViewDataSource {

@@ -68,6 +68,7 @@ class DepartureCell: UITableViewCell {
         headerView.layer.shadowOffset = .zero
         headerView.layer.shadowOpacity = 1
         headerView.layer.shadowRadius = 4
+        headerView.layer.masksToBounds = true
         
         footerView.layer.cornerRadius = 8
         footerView.layer.borderWidth = 0.5
