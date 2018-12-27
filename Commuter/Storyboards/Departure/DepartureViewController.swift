@@ -111,10 +111,6 @@ class DepartureViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .automatic
     }
     
-    func getStations() {
-        
-    }
-    
     func getDepartures(commute: Commute) {
         var commuteView: DepartureView
         var orig: String
