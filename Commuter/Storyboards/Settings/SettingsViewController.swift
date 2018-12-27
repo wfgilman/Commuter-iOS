@@ -70,11 +70,14 @@ class SettingsViewController: UIViewController {
         tableView.register(commuteCell, forCellReuseIdentifier: "CommuteCell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.bounces = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = AppColor.PaleGray.color
-        tableView.tableFooterView = UIView()
+        let borderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.5))
+        borderView.backgroundColor = tableView.separatorColor
+        tableView.tableFooterView = borderView
     }
 
 }
@@ -96,7 +99,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.textColor = AppColor.Charcoal.color
         label.textAlignment = .left
+        let viewFrame = CGRect(x: 0, y: frame.height - 0.5, width: frame.width, height: 0.5)
+        let borderView = UIView(frame: viewFrame)
+        borderView.backgroundColor = tableView.separatorColor
         view.addSubview(label)
+        view.addSubview(borderView)
         return view
     }
     
