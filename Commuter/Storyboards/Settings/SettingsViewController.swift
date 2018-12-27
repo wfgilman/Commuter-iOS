@@ -8,11 +8,20 @@
 
 import UIKit
 
+enum CommuteDirection: String {
+    case from
+    case to
+}
+
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var commuteStations = [String]()
+    var pickerView: UIPickerView!
+    var stations = [Station]()
+    var direction: CommuteDirection!
+    var selectedStation: Station!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +29,17 @@ class SettingsViewController: UIViewController {
         commuteStations.append(UserDefaults.standard.string(forKey: "OrigStationCode") ?? "")
         commuteStations.append(UserDefaults.standard.string(forKey: "DestStationCode") ?? "")
 
+        if AppVariable.stations.count == 0 {
+            CommuterAPI.sharedClient.getStations(success: { (stations) in
+                AppVariable.stations = stations
+                self.stations = stations
+            }) { (_, message) in
+                guard let message = message else { return }
+                print("\(message)")
+            }
+        } else {
+            stations = AppVariable.stations
+        }
         
         setupTableView()
         
@@ -81,13 +101,75 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.commuteLabel.text = "To"
         }
         cell.stationLabel.text = commuteStations[indexPath.row]
-        cell.selectionStyle = .none
+        cell.selectionStyle = .gray
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            showPicker(direction: .from, stationCode: commuteStations[indexPath.row])
+        } else {
+            showPicker(direction: .to, stationCode: commuteStations[indexPath.row])
+        }
+    }
     
+    func showPicker(direction: CommuteDirection, stationCode: String) {
+        let message = "\n\n\n\n\n\n\n\n\n\n\n"
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
+
+        let margin: CGFloat = 8
+        pickerView = UIPickerView()
+        pickerView.frame = CGRect(x: margin, y: margin, width: self.view.bounds.width - margin * 4, height: 216)
+        alert.view.addSubview(pickerView)
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        guard let startingRow = stations.firstIndex(where: { (station) -> Bool in
+            station.code == stationCode
+        }) else { return }
+        pickerView.selectRow(startingRow, inComponent: 0, animated: false)
+        
+        
+        let okay = UIAlertAction(title: "Okay", style: .default) { (_) in
+            if direction == .from {
+                UserDefaults.standard.set(self.selectedStation.code, forKey: "OrigStationCode")
+                self.commuteStations[0] = self.selectedStation.code
+            } else {
+                UserDefaults.standard.set(self.selectedStation.code, forKey: "DestStationCode")
+                self.commuteStations[1] = self.selectedStation.code
+            }
+            self.tableView.reloadData()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(okay)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return stations.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return stations[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedStation = stations[row]
+        return
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return CGFloat(40)
+    }
     
 }
