@@ -8,5 +8,5 @@ target 'Commuter' do
   # Pods for Commuter
   pod 'Alamofire', '~> 4.4'
   pod 'Unbox', '~> 2.4'
-
+  pod 'NotificationBannerSwift'
 end

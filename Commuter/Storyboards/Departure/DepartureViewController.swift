@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 enum Commute: String {
     case morning
@@ -50,11 +51,13 @@ class DepartureViewController: UIViewController {
         destCommuteLabel.addGestureRecognizer(eveningTap)
         
         morningDepartureView = DepartureView()
+        morningDepartureView.delegate = self
         morningDepartureView.commute = .morning
         scrollView.addSubview(morningDepartureView)
         getDepartures(commute: .morning)
         
         eveningDepartureView = DepartureView()
+        eveningDepartureView.delegate = self
         eveningDepartureView.commute = .evening
         scrollView.addSubview(eveningDepartureView)
         getDepartures(commute: .evening)
@@ -190,5 +193,16 @@ extension DepartureViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         hightlightViewLeft.constant = scrollView.contentOffset.x / 2
+    }
+}
+
+extension DepartureViewController: DepartureViewDelegate {
+    
+    func displayMessage(message: String) {
+        let banner = NotificationBanner(title: "No Connection", subtitle: message, style: .warning)
+        // Only show the banner once.
+        if NotificationBannerQueue.default.numberOfBanners == 0 {
+            banner.show()
+        }
     }
 }

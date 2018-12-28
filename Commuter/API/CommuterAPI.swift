@@ -59,6 +59,8 @@ class CommuterAPI: NSObject {
                     }
                 }
             case .failure(let error):
+                let name = NSNotification.Name("failedLoad")
+                NotificationCenter.default.post(name: name, object: nil)
                 let message = self.getErrorMessage(error: error, response: response)
                 failure(error, message)
             }

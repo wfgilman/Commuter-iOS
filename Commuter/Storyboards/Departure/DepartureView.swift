@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol DepartureViewDelegate {
+ 
+    func displayMessage(message: String)
+}
+
 class DepartureView: UIView {
     
     enum Constant {
@@ -18,11 +23,15 @@ class DepartureView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    var delegate: DepartureViewDelegate!
     var refreshControl: UIRefreshControl!
     var activityAnimation: UIActivityIndicatorView!
     var commute: Commute!
     var trip: Trip! {
         didSet {
+            if let label = tableView.viewWithTag(1) {
+                label.removeFromSuperview()
+            }
             tableView.reloadData()
             refreshControl.endRefreshing()
             if activityAnimation.isAnimating {
@@ -34,6 +43,7 @@ class DepartureView: UIView {
         }
     }
     var cellHeights = [(expanded: Bool, height: CGFloat)]()
+    var failedLoadLabel: UILabel!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -52,6 +62,7 @@ class DepartureView: UIView {
         addSubview(contentView)
         setupTableView()
         setupRefreshControl()
+        addListener()
     }
     
     func setupTableView() {
@@ -79,6 +90,49 @@ class DepartureView: UIView {
     @objc func onRefresh() {
         let name = NSNotification.Name(rawValue: "refreshTrip")
         NotificationCenter.default.post(Notification(name: name, object: commute))
+    }
+    
+    func addListener() {
+        let name = NSNotification.Name("failedLoad")
+        NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { (_) in
+            if self.errorStateIsDisplayed() == false {
+                if self.dataInitiallyLoaded() == false {
+                    // Only show an error in the background if the initial load fails.
+                    self.activityAnimation.stopAnimating()
+                    let margin: CGFloat = 32
+                    let frame = CGRect(x: margin, y: self.tableView.bounds.height / 3, width: self.tableView.bounds.width - margin * 2, height: 44)
+                    let label = UILabel(frame: frame)
+                    label.text = "Oops, we couldn't to load your commute."
+                    label.font = UIFont.systemFont(ofSize: 17)
+                    label.textAlignment = .center
+                    label.numberOfLines = 0
+                    label.tag = 1
+                    self.tableView.addSubview(label)
+                    return
+                }
+            }
+            // Display a banner that the refresh failed.
+            if self.refreshControl.isRefreshing {
+                self.delegate.displayMessage(message: "We couldn't to load your commute.")
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
+    private func errorStateIsDisplayed() -> Bool {
+        if self.tableView.viewWithTag(1) == nil {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    private func dataInitiallyLoaded() -> Bool {
+        if self.trip == nil {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
