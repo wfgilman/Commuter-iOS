@@ -33,7 +33,9 @@ class DepartureView: UIView {
                 label.removeFromSuperview()
             }
             tableView.reloadData()
-            refreshControl.endRefreshing()
+            if refreshControl.isRefreshing {
+                refreshControl.endRefreshing()
+            }
             if activityAnimation.isAnimating {
                 activityAnimation.stopAnimating()
             }
@@ -154,6 +156,7 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DepartureCell", for: indexPath) as! DepartureCell
         cell.departure = trip.departures[indexPath.row]
+        cell.isExpanded = cellHeights[indexPath.row].expanded
         cell.selectionStyle = .none
         return cell
     }

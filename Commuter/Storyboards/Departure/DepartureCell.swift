@@ -56,6 +56,17 @@ class DepartureCell: UITableViewCell {
             isEmptyLabel.isHidden = !departure.isEmpty
         }
     }
+    var isExpanded: Bool! {
+        didSet {
+            if isExpanded {
+                self.footerViewTop.constant = -10
+                self.layoutIfNeeded()
+            } else {
+                self.footerViewTop.constant = -60
+                self.layoutIfNeeded()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
