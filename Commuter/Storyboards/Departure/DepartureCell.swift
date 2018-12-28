@@ -84,7 +84,7 @@ class DepartureCell: UITableViewCell {
         routeColorView.layer.borderColor = AppColor.PaleGray.color.cgColor
         
         headsignLabel.textAlignment = .left
-        headsignLabel.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        headsignLabel.font = UIFont.systemFont(ofSize: 17)
         headsignLabel.textColor = AppColor.Charcoal.color
         
         etdMinLabel.font = UIFont.systemFont(ofSize: 24)

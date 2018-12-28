@@ -35,6 +35,9 @@ class SelectOrigViewController: UIViewController {
             guard let message = message else { return }
             print("\(message)")
         }
+        
+        selectButton.setTitle("Next", for: .normal)
+        selectButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
     }
     
     @IBAction func onTapSelectButton(_ sender: UIButton) {

@@ -55,7 +55,7 @@ class CommuterAPI: NSObject {
                         let trip: Trip = try unbox(dictionary: response)
                         success(trip)
                     } catch {
-                        // Handle failure.
+                        // Handle error.
                     }
                 }
             case .failure(let error):
@@ -73,9 +73,9 @@ class CommuterAPI: NSObject {
                     return dict?["message"]
                 }
             } catch {
-                // Unhandled.
+                // Handle error.
             }
         }
-        return "An error occurred"
+        return "An error occurred."
     }
 }

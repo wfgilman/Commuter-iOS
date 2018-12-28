@@ -97,7 +97,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let label = UILabel(frame: labelFrame)
         label.text = "Commute"
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = AppColor.Charcoal.color
+        label.textColor = AppColor.MediumGray.color
         label.textAlignment = .left
         let viewFrame = CGRect(x: 0, y: frame.height - 0.5, width: frame.width, height: 0.5)
         let borderView = UIView(frame: viewFrame)

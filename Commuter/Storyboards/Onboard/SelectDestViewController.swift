@@ -27,6 +27,9 @@ class SelectDestViewController: UIViewController {
             station.code == self.selectedStation
         }) else { return }
         self.stationPickerView.selectRow(startingRow, inComponent: 0, animated: false)
+        
+        selectButton.setTitle("Finish", for: .normal)
+        selectButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
     }
 
     @IBAction func onTapSelectButton(_ sender: UIButton) {

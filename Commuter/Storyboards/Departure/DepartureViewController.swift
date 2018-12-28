@@ -19,9 +19,9 @@ class DepartureViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var origCommuteLabel: UILabel!
     @IBOutlet weak var destCommuteLabel: UILabel!
-    @IBOutlet weak var origColorView: UIView!
-    @IBOutlet weak var destColorView: UIView!
+    @IBOutlet weak var highlightView: UIView!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
+    @IBOutlet weak var hightlightViewLeft: NSLayoutConstraint!
     
     var morningDepartureView: DepartureView!
     var eveningDepartureView: DepartureView!
@@ -48,6 +48,8 @@ class DepartureViewController: UIViewController {
         eveningDepartureView.commute = .evening
         scrollView.addSubview(eveningDepartureView)
         getDepartures(commute: .evening)
+        
+        highlightView.backgroundColor = AppColor.Charcoal.color
         
         setupSubviews()
         addListener()
@@ -79,12 +81,8 @@ class DepartureViewController: UIViewController {
         eveningDepartureView.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: pageHeight)
         
         if commute == .morning {
-            origColorView.backgroundColor = .black
-            destColorView.backgroundColor = .clear
             scrollView.contentOffset.x = 0
         } else {
-            destColorView.backgroundColor = .black
-            origColorView.backgroundColor = .clear
             scrollView.contentOffset.x = pageWidth
             
         }
@@ -166,13 +164,7 @@ class DepartureViewController: UIViewController {
 
 extension DepartureViewController: UIScrollViewDelegate {
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x == 0 {
-            origColorView.backgroundColor = .black
-            destColorView.backgroundColor = .clear
-        } else {
-            destColorView.backgroundColor = .black
-            origColorView.backgroundColor = .clear
-        }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        hightlightViewLeft.constant = scrollView.contentOffset.x / 2
     }
 }

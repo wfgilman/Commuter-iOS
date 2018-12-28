@@ -26,50 +26,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlH-Us-WaR">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="BYH-Bj-a0X">
-                                        <rect key="frame" x="24" y="0.0" width="327" height="20.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hR-Uy-Rp0">
-                                                <rect key="frame" x="0.0" y="0.5" width="127.5" height="20"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-lm-JaY">
-                                                <rect key="frame" x="199.5" y="0.0" width="127.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmg-tG-NVb">
-                                        <rect key="frame" x="24" y="28" width="125" height="4"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-F3-Gfu">
+                                        <rect key="frame" x="0.0" y="32" width="187.5" height="4"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="4" id="nbe-Eb-Itx"/>
+                                            <constraint firstAttribute="height" constant="4" id="xJX-xj-WwK"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2EP-Ib-Y0b">
-                                        <rect key="frame" x="226" y="28" width="125" height="4"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="4" id="eVF-47-rZM"/>
-                                        </constraints>
-                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hR-Uy-Rp0">
+                                        <rect key="frame" x="0.0" y="4" width="187.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-lm-JaY">
+                                        <rect key="frame" x="187.5" y="4" width="187.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="2EP-Ib-Y0b" secondAttribute="bottom" constant="8" id="7Yb-6O-9Lh"/>
-                                    <constraint firstAttribute="trailing" secondItem="2EP-Ib-Y0b" secondAttribute="trailing" constant="24" id="MBL-qE-A7S"/>
-                                    <constraint firstItem="2EP-Ib-Y0b" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.333" id="ObJ-5j-uOc"/>
-                                    <constraint firstAttribute="bottom" secondItem="bmg-tG-NVb" secondAttribute="bottom" constant="8" id="RNP-aC-AIO"/>
-                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" constant="24" id="YOg-ft-wRX"/>
-                                    <constraint firstItem="BYH-Bj-a0X" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" constant="24" id="gtC-ca-q1s"/>
-                                    <constraint firstItem="BYH-Bj-a0X" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" id="izS-pT-ncK"/>
-                                    <constraint firstAttribute="trailing" secondItem="BYH-Bj-a0X" secondAttribute="trailing" constant="24" id="jTJ-VV-pZM"/>
-                                    <constraint firstItem="bmg-tG-NVb" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.333" id="mGW-Qi-iIY"/>
+                                    <constraint firstItem="5hS-F3-Gfu" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="7S0-gl-FSz"/>
+                                    <constraint firstItem="Qlb-lm-JaY" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" constant="4" id="Esj-W1-vsK"/>
+                                    <constraint firstItem="Qlb-lm-JaY" firstAttribute="leading" secondItem="3hR-Uy-Rp0" secondAttribute="trailing" id="Rv5-AZ-w0l"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qlb-lm-JaY" secondAttribute="trailing" id="WdY-Dd-8vo"/>
+                                    <constraint firstItem="3hR-Uy-Rp0" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="dAO-Rr-5oo"/>
+                                    <constraint firstAttribute="bottom" secondItem="5hS-F3-Gfu" secondAttribute="bottom" constant="4" id="iQk-0p-8PZ"/>
                                     <constraint firstAttribute="height" constant="40" id="qbj-Mt-ub5"/>
+                                    <constraint firstItem="3hR-Uy-Rp0" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" constant="4" id="tmb-QZ-cWR"/>
+                                    <constraint firstItem="Qlb-lm-JaY" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="uIv-fa-fiG"/>
+                                    <constraint firstItem="5hS-F3-Gfu" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="w3d-jb-EmT"/>
+                                    <constraint firstItem="3hR-Uy-Rp0" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="xoe-J2-q9a"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shR-wT-mAo">
@@ -96,9 +85,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="destColorView" destination="2EP-Ib-Y0b" id="JMG-is-M4p"/>
                         <outlet property="destCommuteLabel" destination="Qlb-lm-JaY" id="XUS-vT-Vpy"/>
-                        <outlet property="origColorView" destination="bmg-tG-NVb" id="aM0-lS-l6x"/>
+                        <outlet property="highlightView" destination="5hS-F3-Gfu" id="Lo1-OR-A83"/>
+                        <outlet property="hightlightViewLeft" destination="7S0-gl-FSz" id="1YU-u2-F7C"/>
                         <outlet property="origCommuteLabel" destination="3hR-Uy-Rp0" id="HpS-UC-lYU"/>
                         <outlet property="scrollView" destination="shR-wT-mAo" id="ci2-Tg-9mE"/>
                         <outlet property="settingsButton" destination="9WI-kf-D4w" id="UEf-2D-yp8"/>
