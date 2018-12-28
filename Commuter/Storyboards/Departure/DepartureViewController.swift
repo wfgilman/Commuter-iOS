@@ -26,6 +26,8 @@ class DepartureViewController: UIViewController {
     var morningDepartureView: DepartureView!
     var eveningDepartureView: DepartureView!
     var commute: Commute!
+    var pageWidth: CGFloat!
+    var pageHeight: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,14 @@ class DepartureViewController: UIViewController {
             commute = .evening
         }
         
+        origCommuteLabel.isUserInteractionEnabled = true
+        let morningTap = UITapGestureRecognizer(target: self, action: #selector(showMorningView))
+        origCommuteLabel.addGestureRecognizer(morningTap)
+        
+        destCommuteLabel.isUserInteractionEnabled = true
+        let eveningTap = UITapGestureRecognizer(target: self, action: #selector(showEveningView))
+        destCommuteLabel.addGestureRecognizer(eveningTap)
+        
         morningDepartureView = DepartureView()
         morningDepartureView.commute = .morning
         scrollView.addSubview(morningDepartureView)
@@ -50,6 +60,8 @@ class DepartureViewController: UIViewController {
         getDepartures(commute: .evening)
         
         highlightView.backgroundColor = AppColor.Charcoal.color
+        highlightView.layer.cornerRadius = 1
+        highlightView.layer.masksToBounds = true
         
         setupSubviews()
         addListener()
@@ -71,8 +83,8 @@ class DepartureViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let pageHeight = scrollView.bounds.height
-        let pageWidth = scrollView.bounds.width
+        pageHeight = scrollView.bounds.height
+        pageWidth = scrollView.bounds.width
         
         scrollView.contentSize.width = pageWidth * 2
         scrollView.contentSize.height = pageHeight
@@ -154,6 +166,18 @@ class DepartureViewController: UIViewController {
             }
             // User refreshed. Don't wipe the existing data.
             self.getDepartures(commute: commute)
+        }
+    }
+    
+    @objc func showMorningView() {
+        UIView.animate(withDuration: AppVariable.duration) {
+            self.scrollView.contentOffset.x = 0
+        }
+    }
+    
+    @objc func showEveningView() {
+        UIView.animate(withDuration: AppVariable.duration) {
+            self.scrollView.contentOffset.x = self.pageWidth
         }
     }
     
