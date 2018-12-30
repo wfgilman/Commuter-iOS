@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationBannerSwift
+import UserNotifications
 
 enum Commute: String {
     case morning
@@ -204,5 +205,62 @@ extension DepartureViewController: DepartureViewDelegate {
         if NotificationBannerQueue.default.numberOfBanners == 0 {
             banner.show()
         }
+    }
+    
+    func setNotification(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
+        let client = UNUserNotificationCenter.current()
+        client.getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                client.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (granted, error) in
+                    if granted == true {
+                        DispatchQueue.main.async {
+                            UIApplication.shared.registerForRemoteNotifications()
+                        }
+                    }
+                })
+            } else if settings.authorizationStatus == .authorized {
+                guard let token: String = UserDefaults.standard.string(forKey: "DeviceToken") else {
+                    print("no device token")
+                    // Device didn't register correctly. Prompt to try again.
+                    return
+                }
+                CommuterAPI.sharedClient.setNotification(deviceId: token, tripId: departure.tripId, action: action, success: {
+                    // Cascade update to notify property to corresponding view.
+                    self.updateDeparture(departure: departure, commute: commute, action: action)
+                }, failure: { (_, message) in
+                    // Failed to store the notification. Do nothing.
+                    guard let message = message else { return }
+                    print("\(message)")
+                })
+                
+            } else {
+                // User didn't allow notifications. Remind him.
+                print("user didn't allow notifications")
+                return
+            }
+        }
+    }
+    
+    private func updateDeparture(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
+        var commuteView: DepartureView
+        var trip: Trip
+        
+        if commute == .morning {
+            commuteView = self.morningDepartureView
+        } else {
+            commuteView = self.eveningDepartureView
+        }
+        trip = commuteView.trip
+        
+        // Set the notify property to 'true' for the relevant departure.
+        let updatedDepartures = trip.departures.map { (d) -> Departure in
+            if d.tripId == departure.tripId {
+                let notify = (action == .store) ? true : false
+                d.notify = notify
+            }
+            return d
+        }
+        trip.departures = updatedDepartures
+        commuteView.trip = trip
     }
 }

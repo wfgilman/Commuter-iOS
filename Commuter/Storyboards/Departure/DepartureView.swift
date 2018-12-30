@@ -11,6 +11,8 @@ import UIKit
 protocol DepartureViewDelegate {
  
     func displayMessage(message: String)
+    
+    func setNotification(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction)
 }
 
 class DepartureView: UIView {
@@ -155,6 +157,7 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DepartureCell", for: indexPath) as! DepartureCell
+        cell.delegate = self
         cell.departure = trip.departures[indexPath.row]
         cell.isExpanded = cellHeights[indexPath.row].expanded
         cell.selectionStyle = .none
@@ -179,5 +182,12 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
         }, completion: nil)
+    }
+}
+
+extension DepartureView: DepartureCellDelegate {
+    
+    func setNotification(departure: Departure, action: CommuterAPI.NotificationAction) {
+        delegate.setNotification(departure: departure, commute: self.commute, action: action)
     }
 }

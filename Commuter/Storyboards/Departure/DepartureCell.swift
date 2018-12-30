@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DepartureCellDelegate {
+    func setNotification(departure: Departure, action: CommuterAPI.NotificationAction)
+}
+
 class DepartureCell: UITableViewCell {
 
     @IBOutlet weak var headerView: UIView!
@@ -23,12 +27,14 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var stopsLabel: UILabel!
     @IBOutlet weak var carsLabel: UILabel!
     @IBOutlet weak var isEmptyLabel: UILabel!
+    @IBOutlet weak var notificationButton: UIButton!
     
     @IBOutlet weak var departLabel: UILabel!
     @IBOutlet weak var arriveLabel: UILabel!
     
     @IBOutlet weak var footerViewTop: NSLayoutConstraint!
     
+    var delegate: DepartureCellDelegate!
     var departure: Departure! {
         didSet {
             // No modification.
@@ -54,6 +60,12 @@ class DepartureCell: UITableViewCell {
             }
             
             isEmptyLabel.isHidden = !departure.isEmpty
+            
+            if departure.notify == true {
+                notificationButton.setImage(UIImage(named: "alarm-filled-50"), for: .normal)
+            } else {
+                notificationButton.setImage(UIImage(named: "alarm-50"), for: .normal)
+            }
         }
     }
     var isExpanded: Bool! {
@@ -146,5 +158,19 @@ class DepartureCell: UITableViewCell {
             self.layoutIfNeeded()
         }, completion: nil)
         
+    }
+    
+    @IBAction func onTapNotificationButton(_ sender: Any) {
+        if departure.notify == true {
+            delegate.setNotification(departure: self.departure, action: .delete)
+        } else {
+            delegate.setNotification(departure: self.departure, action: .store)
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        notificationButton.setImage(nil, for: .normal)
     }
 }

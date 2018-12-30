@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let orig = UserDefaults.standard.object(forKey: "OrigStationCode")
-        let dest = UserDefaults.standard.object(forKey: "DestStationCode")
+        let orig = UserDefaults.standard.string(forKey: "OrigStationCode")
+        let dest = UserDefaults.standard.string(forKey: "DestStationCode")
         if (orig == nil) || (dest == nil) {
             let storyboard = UIStoryboard(name: "Onboard", bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let controller = storyboard.instantiateInitialViewController()
             self.window?.rootViewController = controller
         }
+        
+        AppVariable.deviceId = UserDefaults.standard.string(forKey: "DeviceToken")
         
         return true
     }
@@ -52,7 +55,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        UserDefaults.standard.set(token, forKey: "DeviceToken")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
 
 }
 

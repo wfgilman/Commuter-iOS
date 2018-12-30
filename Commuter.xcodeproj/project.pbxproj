@@ -101,6 +101,7 @@
 		BEBA57D121BDD69A00CDB586 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteCell.swift; sourceTree = "<group>"; };
 		BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommuteCell.xib; sourceTree = "<group>"; };
+		BEF7F97121D7EA02005A44ED /* Commuter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commuter.entitlements; sourceTree = "<group>"; };
 		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +165,7 @@
 		BEBA576C21B49DB800CDB586 /* Commuter */ = {
 			isa = PBXGroup;
 			children = (
+				BEF7F97121D7EA02005A44ED /* Commuter.entitlements */,
 				BEBA57D021BDD61100CDB586 /* Extensions */,
 				BEBA57CF21BDD60C00CDB586 /* Common */,
 				BEBA57A821BDD4C000CDB586 /* Fonts */,
@@ -308,6 +310,11 @@
 				TargetAttributes = {
 					BEBA576921B49DB800CDB586 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -588,6 +595,7 @@
 			baseConfigurationReference = FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Commuter/Commuter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7F8UFQ5X;
 				INFOPLIST_FILE = Commuter/Info.plist;
@@ -607,6 +615,7 @@
 			baseConfigurationReference = 23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Commuter/Commuter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7F8UFQ5X;
 				INFOPLIST_FILE = Commuter/Info.plist;

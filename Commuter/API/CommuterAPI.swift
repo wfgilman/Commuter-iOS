@@ -45,7 +45,12 @@ class CommuterAPI: NSObject {
     }
     
     func getTrip(orig: String, dest: String, count: Int = 10, success: @escaping (Trip) -> (), failure: @escaping (Error, String?) -> ()) {
-        let url: URLConvertible = self.baseURL + "/departures?orig=\(orig)&dest=\(dest)&count=\(count)"
+        var url: URLConvertible
+        if let deviceId = AppVariable.deviceId {
+            url = self.baseURL + "/departures?orig=\(orig)&dest=\(dest)&count=\(count)&device_id=\(deviceId)"
+        } else {
+            url = self.baseURL + "/departures?orig=\(orig)&dest=\(dest)&count=\(count)"
+        }
         af?.request(url).validate().responseJSON(completionHandler: { (response) in
             switch response.result {
             case .success:
@@ -61,6 +66,31 @@ class CommuterAPI: NSObject {
             case .failure(let error):
                 let name = NSNotification.Name("failedLoad")
                 NotificationCenter.default.post(name: name, object: nil)
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
+    
+    enum NotificationAction: String {
+        case store
+        case delete
+    }
+    
+    func setNotification(deviceId: String, tripId: Int, action: NotificationAction, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
+        let url: URLConvertible = self.baseURL + "/notifications"
+        var params: Parameters = ["device_id" : deviceId, "trip_id" : tripId]
+        if action == .delete {
+            params["delete"] = true
+        }
+        let header: HTTPHeaders = ["content-type": "application/json"]
+        af?.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
+            .validate()
+            .responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                success()
+            case .failure(let error):
                 let message = self.getErrorMessage(error: error, response: response)
                 failure(error, message)
             }
