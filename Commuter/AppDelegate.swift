@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = controller
         }
         
-        AppVariable.deviceId = "100"
+        AppVariable.deviceId = "100" // Remove this line when running on a device.
         
         return true
     }

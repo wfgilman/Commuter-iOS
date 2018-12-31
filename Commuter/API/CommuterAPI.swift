@@ -119,12 +119,40 @@ class CommuterAPI: NSObject {
                 if let result = response.result.value {
                     do {
                         let response = result as! Dictionary<String, Any>
-                        let notifications: [Notification] = try Notification.withArray(dictionaries: response["data"] as! Array)
+                        AppVariable.muted = response["muted"] as! Bool
+                        let notifications: [Notification] = try Notification.withArray(dictionaries: response["notifications"] as! Array)
                         success(notifications)
                     } catch {
                         // Handle failure.
                     }
                 }
+            case .failure(let error):
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
+    
+    enum NotificationSettingAction: String {
+        case mute
+        case unmute
+    }
+
+    func setDeviceNotificationSetting(action: NotificationSettingAction, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
+        guard let deviceId = AppVariable.deviceId else {
+            // Inform user he doesn't have any notifications setup yet.
+            return
+        }
+        var params: Parameters = ["device_id" : deviceId, "mute" : true]
+        if action == .unmute {
+            params["mute"] = false
+        }
+        let url: URLConvertible = self.baseURL + "/notifications/action"
+        let header: HTTPHeaders = ["content-type": "application/json"]
+        af?.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).validate().responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                success()
             case .failure(let error):
                 let message = self.getErrorMessage(error: error, response: response)
                 failure(error, message)

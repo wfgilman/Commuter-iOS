@@ -54,4 +54,13 @@ struct AppVariable {
             }
         }
     }
+    
+    static var muted: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "Muted") 
+        }
+        set (newValue) {
+            UserDefaults.standard.set(newValue, forKey: "Muted")
+        }
+    }
 }

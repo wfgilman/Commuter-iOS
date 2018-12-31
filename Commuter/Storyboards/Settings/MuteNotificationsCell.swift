@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol MuteNotificationsCellDelegate {
+    func changedNotificationSetting(action: CommuterAPI.NotificationSettingAction)
+}
+
 class MuteNotificationsCell: UITableViewCell {
 
     @IBOutlet weak var muteLabel: UILabel!
     @IBOutlet weak var muteSwitch: UISwitch!
+    
+    var delegate: MuteNotificationsCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,11 +25,12 @@ class MuteNotificationsCell: UITableViewCell {
         muteLabel.font = UIFont.systemFont(ofSize: 17)
         muteLabel.textColor = AppColor.Charcoal.color
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    @IBAction func onSwitch(_ sender: UISwitch) {
+        if muteSwitch.isOn {
+            delegate.changedNotificationSetting(action: .mute)
+        } else {
+            delegate.changedNotificationSetting(action: .unmute)
+        }
+    }
 }

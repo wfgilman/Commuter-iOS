@@ -171,6 +171,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MuteCell", for: indexPath) as! MuteNotificationsCell
+            cell.delegate = self
+            cell.muteSwitch.isOn = AppVariable.muted
             cell.selectionStyle = .none
             if notifications.count == 0 {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.frame.width)
@@ -272,4 +274,18 @@ extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         return CGFloat(40)
     }
     
+}
+
+extension SettingsViewController: MuteNotificationsCellDelegate {
+    
+    func changedNotificationSetting(action: CommuterAPI.NotificationSettingAction) {
+        CommuterAPI.sharedClient.setDeviceNotificationSetting(action: action, success: {
+            let muted: Bool = (action == .mute) ? true : false
+            AppVariable.muted = muted
+            self.tableView.reloadSections([1], with: .none)
+        }) { (_, _) in
+            // Show a notificaton to user that the setting wasn't saved.
+            self.tableView.reloadSections([1], with: .none)
+        }
+    }
 }
