@@ -14,7 +14,7 @@ class SelectDestViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     var stations = [Station]()
-    var selectedStation: String = "MONT"
+    var selectedStation: Station?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,12 @@ class SelectDestViewController: UIViewController {
         
         stations = AppVariable.stations
         guard let startingRow = stations.firstIndex(where: { (station) -> Bool in
-            station.code == self.selectedStation
-        }) else { return }
+            station.code == "MONT"
+        }) else {
+            self.selectedStation = self.stations[0]
+            return
+        }
+        self.selectedStation = self.stations[startingRow]
         self.stationPickerView.selectRow(startingRow, inComponent: 0, animated: false)
         
         selectButton.setTitle("Finish", for: .normal)
@@ -33,7 +37,7 @@ class SelectDestViewController: UIViewController {
     }
 
     @IBAction func onTapSelectButton(_ sender: UIButton) {
-        UserDefaults.standard.set(selectedStation, forKey: "DestStationCode")
+        AppVariable.destStation = selectedStation
         performSegue(withIdentifier: "MainSegue", sender: nil)
     }
     
@@ -54,7 +58,7 @@ extension SelectDestViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        UserDefaults.standard.set(stations[row].code, forKey: "DestStationCode")
+        selectedStation = stations[row]
         return
     }
     

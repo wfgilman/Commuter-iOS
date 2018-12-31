@@ -93,7 +93,7 @@ class DepartureView: UIView {
     
     @objc func onRefresh() {
         let name = NSNotification.Name(rawValue: "refreshTrip")
-        NotificationCenter.default.post(Notification(name: name, object: commute))
+        NotificationCenter.default.post(name: name, object: commute)
     }
     
     func addListener() {

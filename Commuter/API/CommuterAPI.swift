@@ -44,12 +44,12 @@ class CommuterAPI: NSObject {
         })
     }
     
-    func getTrip(orig: String, dest: String, count: Int = 10, success: @escaping (Trip) -> (), failure: @escaping (Error, String?) -> ()) {
+    func getTrip(origCode: String, destCode: String, count: Int = 10, success: @escaping (Trip) -> (), failure: @escaping (Error, String?) -> ()) {
         var url: URLConvertible
         if let deviceId = AppVariable.deviceId {
-            url = self.baseURL + "/departures?orig=\(orig)&dest=\(dest)&count=\(count)&device_id=\(deviceId)"
+            url = self.baseURL + "/departures?orig=\(origCode)&dest=\(destCode)&count=\(count)&device_id=\(deviceId)"
         } else {
-            url = self.baseURL + "/departures?orig=\(orig)&dest=\(dest)&count=\(count)"
+            url = self.baseURL + "/departures?orig=\(origCode)&dest=\(destCode)&count=\(count)"
         }
         af?.request(url).validate().responseJSON(completionHandler: { (response) in
             switch response.result {
@@ -77,11 +77,11 @@ class CommuterAPI: NSObject {
         case delete
     }
     
-    func setNotification(deviceId: String, tripId: Int, action: NotificationAction, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
+    func setNotification(deviceId: String, tripId: Int, stationId: Int, action: NotificationAction, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
         let url: URLConvertible = self.baseURL + "/notifications"
-        var params: Parameters = ["device_id" : deviceId, "trip_id" : tripId]
+        var params: Parameters = ["device_id" : deviceId, "trip_id" : tripId, "station_id" : stationId]
         if action == .delete {
-            params["delete"] = true
+            params["remove"] = true
         }
         let header: HTTPHeaders = ["content-type": "application/json"]
         af?.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header)
@@ -90,6 +90,41 @@ class CommuterAPI: NSObject {
             switch response.result {
             case .success:
                 success()
+            case .failure(let error):
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
+    
+    func deleteNotification(notification: Notification, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
+        let url: URLConvertible = self.baseURL + "/notifications/\(notification.id)"
+        af?.request(url, method: .delete).validate().responseJSON(completionHandler: { (response) in
+                switch response.result {
+                case .success:
+                    success()
+                case .failure(let error):
+                    let message = self.getErrorMessage(error: error, response: response)
+                    failure(error, message)
+                }
+            })
+    }
+    
+    func getNotifications(success: @escaping ([Notification]) -> (), failure: @escaping (Error, String?) -> ()) {
+        guard let deviceId = AppVariable.deviceId else { return }
+        let url: URLConvertible = self.baseURL + "/notifications?device_id=\(deviceId)"
+        af?.request(url).validate().responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                if let result = response.result.value {
+                    do {
+                        let response = result as! Dictionary<String, Any>
+                        let notifications: [Notification] = try Notification.withArray(dictionaries: response["data"] as! Array)
+                        success(notifications)
+                    } catch {
+                        // Handle failure.
+                    }
+                }
             case .failure(let error):
                 let message = self.getErrorMessage(error: error, response: response)
                 failure(error, message)

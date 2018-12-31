@@ -17,22 +17,27 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var commuteStations = [String]()
+    var commuteStations = [Station]()
     var pickerView: UIPickerView!
     var stations = [Station]()
     var direction: CommuteDirection!
     var selectedStation: Station!
-    var origCode: String!
-    var destCode: String!
+    var orig: Station!
+    var dest: Station!
+    var notifications = [Notification]() {
+        didSet {
+            tableView.reloadSections([1, 2], with: .none)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        origCode = UserDefaults.standard.string(forKey: "OrigStationCode") ?? ""
-        destCode = UserDefaults.standard.string(forKey: "DestStationCode") ?? ""
+        orig = AppVariable.origStation!
+        dest = AppVariable.destStation!
         
-        commuteStations.append(origCode)
-        commuteStations.append(destCode)
+        commuteStations.append(orig)
+        commuteStations.append(dest)
 
         if AppVariable.stations.count == 0 {
             CommuterAPI.sharedClient.getStations(success: { (stations) in
@@ -46,6 +51,9 @@ class SettingsViewController: UIViewController {
             stations = AppVariable.stations
         }
         
+        notifications.removeAll()
+        getNotifications()
+        
         setupTableView()
         
         if let navBar = navigationController?.navigationBar {
@@ -58,7 +66,7 @@ class SettingsViewController: UIViewController {
         super.viewWillDisappear(true)
         
         if self.isMovingFromParent {
-            if (origCode != commuteStations[0]) || (destCode != commuteStations[1]) {
+            if (orig.code != commuteStations[0].code) || (dest.code != commuteStations[1].code) {
                 let name = NSNotification.Name(rawValue: "refreshTrip")
                 NotificationCenter.default.post(name: name, object: nil)
             }
@@ -67,7 +75,11 @@ class SettingsViewController: UIViewController {
     
     func setupTableView() {
         let commuteCell = UINib(nibName: "CommuteCell", bundle: nil)
+        let muteCell = UINib(nibName: "MuteNotificationsCell", bundle: nil)
+        let notifCell = UINib(nibName: "NotificationCell", bundle: nil)
         tableView.register(commuteCell, forCellReuseIdentifier: "CommuteCell")
+        tableView.register(muteCell, forCellReuseIdentifier: "MuteCell")
+        tableView.register(notifCell, forCellReuseIdentifier: "NotifCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.bounces = false
@@ -79,13 +91,22 @@ class SettingsViewController: UIViewController {
         borderView.backgroundColor = tableView.separatorColor
         tableView.tableFooterView = borderView
     }
+    
+    func getNotifications() {
+        CommuterAPI.sharedClient.getNotifications(success: { (notifications) in
+            self.notifications = notifications
+        }) { (_, message) in
+            guard let message = message else { return }
+            print("\(message)")
+        }
+    }
 
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -99,44 +120,101 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.textColor = AppColor.MediumGray.color
         label.textAlignment = .left
-        let viewFrame = CGRect(x: 0, y: frame.height - 0.5, width: frame.width, height: 0.5)
-        let borderView = UIView(frame: viewFrame)
-        borderView.backgroundColor = tableView.separatorColor
+        let topBorderFrame = CGRect(x: 0, y: 0, width: frame.width, height: 0.5)
+        let bottomBorderFrame = CGRect(x: 0, y: frame.height - 0.5, width: frame.width, height: 0.5)
+        let topBorderView = UIView(frame: topBorderFrame)
+        let bottomBorderView = UIView(frame: bottomBorderFrame)
+        topBorderView.backgroundColor = tableView.separatorColor
+        bottomBorderView.backgroundColor = tableView.separatorColor
         view.addSubview(label)
-        view.addSubview(borderView)
+        view.addSubview(topBorderView)
+        view.addSubview(bottomBorderView)
+        if section == 0 {
+            label.text = "Commute"
+        } else {
+            label.text = "Notifications"
+        }
         return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        if (section == 0) || (section == 1) {
+            return 44
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commuteStations.count
+        if section == 0 {
+            return commuteStations.count
+            
+        } else if section == 1 {
+            return 1
+            
+        } else {
+            return notifications.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommuteCell", for: indexPath) as! CommuteCell
-        if indexPath.row == 0 {
-            cell.commuteLabel.text = "From"
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommuteCell", for: indexPath) as! CommuteCell
+            if indexPath.row == 0 {
+                cell.commuteLabel.text = "From"
+            } else {
+                cell.commuteLabel.text = "To"
+            }
+            cell.stationLabel.text = commuteStations[indexPath.row].code
+            cell.selectionStyle = .gray
+            return cell
+            
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MuteCell", for: indexPath) as! MuteNotificationsCell
+            cell.selectionStyle = .none
+            if notifications.count == 0 {
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.frame.width)
+            }
+            return cell
+            
         } else {
-            cell.commuteLabel.text = "To"
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NotifCell", for: indexPath) as! NotificationCell
+            cell.notification = notifications[indexPath.row]
+            cell.selectionStyle = .none
+            return cell
         }
-        cell.stationLabel.text = commuteStations[indexPath.row]
-        cell.selectionStyle = .gray
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath.section == 2 {
+            return UITableViewCell.EditingStyle.delete
+        }
+        return UITableViewCell.EditingStyle.none
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            CommuterAPI.sharedClient.deleteNotification(notification: notifications[indexPath.row], success: {
+                self.notifications.remove(at: indexPath.row)
+            }) { (_, message) in
+                guard let message = message else { return }
+                print("\(message)")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 0 {
-            showPicker(direction: .from, stationCode: commuteStations[indexPath.row])
-        } else {
-            showPicker(direction: .to, stationCode: commuteStations[indexPath.row])
+        if indexPath.section == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            if indexPath.row == 0 {
+                showPicker(direction: .from, station: commuteStations[indexPath.row])
+            } else {
+                showPicker(direction: .to, station: commuteStations[indexPath.row])
+            }
         }
     }
     
-    func showPicker(direction: CommuteDirection, stationCode: String) {
+    private func showPicker(direction: CommuteDirection, station: Station) {
         let message = "\n\n\n\n\n\n\n\n\n\n\n"
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
 
@@ -147,20 +225,19 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         
         pickerView.delegate = self
         pickerView.dataSource = self
-        guard let startingRow = stations.firstIndex(where: { (station) -> Bool in
-            station.code == stationCode
+        guard let startingRow = stations.firstIndex(where: { (s) -> Bool in
+            s.code == station.code
         }) else { return }
         pickerView.selectRow(startingRow, inComponent: 0, animated: false)
-        
         
         let okay = UIAlertAction(title: "Okay", style: .default) { (_) in
             guard let selectedStation: Station = self.selectedStation else { return }
             if direction == .from {
-                UserDefaults.standard.set(selectedStation.code, forKey: "OrigStationCode")
-                self.commuteStations[0] = selectedStation.code
+                AppVariable.origStation = selectedStation
+                self.commuteStations[0] = selectedStation
             } else {
-                UserDefaults.standard.set(selectedStation.code, forKey: "DestStationCode")
-                self.commuteStations[1] = selectedStation.code
+                AppVariable.destStation = selectedStation
+                self.commuteStations[1] = selectedStation
             }
             self.tableView.reloadData()
         }

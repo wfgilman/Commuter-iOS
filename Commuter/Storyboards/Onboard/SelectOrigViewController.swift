@@ -14,8 +14,7 @@ class SelectOrigViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     
     var stations = [Station]()
-    var selectedStation: String = "PHIL"
-
+    var selectedStation: Station?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +27,12 @@ class SelectOrigViewController: UIViewController {
             self.stations = stations
             self.stationPickerView.reloadAllComponents()
             guard let startingRow = stations.firstIndex(where: { (station) -> Bool in
-                station.code == self.selectedStation
-            }) else { return }
+                station.code == "PHIL"
+            }) else {
+                self.selectedStation = self.stations[0]
+                return
+            }
+            self.selectedStation = self.stations[startingRow]
             self.stationPickerView.selectRow(startingRow, inComponent: 0, animated: false)
         }) { (_, message) in
             guard let message = message else { return }
@@ -41,7 +44,7 @@ class SelectOrigViewController: UIViewController {
     }
     
     @IBAction func onTapSelectButton(_ sender: UIButton) {
-        UserDefaults.standard.set(selectedStation, forKey: "OrigStationCode")
+        AppVariable.origStation = selectedStation
         performSegue(withIdentifier: "SelectDestSegue", sender: nil)
     }
 }
@@ -61,7 +64,7 @@ extension SelectOrigViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedStation = stations[row].code
+        selectedStation = stations[row]
         return
     }
     

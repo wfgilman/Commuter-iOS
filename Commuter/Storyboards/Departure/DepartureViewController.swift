@@ -121,30 +121,20 @@ class DepartureViewController: UIViewController {
     
     func getDepartures(commute: Commute) {
         var commuteView: DepartureView
-        var orig: String
-        var dest: String
-        
-        guard let savedOrig = UserDefaults.standard.string(forKey: "OrigStationCode") else {
-            // Show error
-            return
-        }
-        
-        guard let savedDest = UserDefaults.standard.string(forKey: "DestStationCode") else {
-            // Show error
-            return
-        }
+        var origCode: String
+        var destCode: String
         
         if commute == .morning {
-            orig = savedOrig
-            dest = savedDest
+            origCode = AppVariable.origStation!.code
+            destCode = AppVariable.destStation!.code
             commuteView = self.morningDepartureView
         } else {
-            orig = savedDest
-            dest = savedOrig
+            origCode = AppVariable.destStation!.code
+            destCode = AppVariable.origStation!.code
             commuteView = self.eveningDepartureView
         }
         
-        CommuterAPI.sharedClient.getTrip(orig: orig, dest: dest, success: { (trip) in
+        CommuterAPI.sharedClient.getTrip(origCode: origCode, destCode: destCode, success: { (trip) in
             commuteView.trip = trip
         }) { (_, message) in
             guard let message = message else { return }
@@ -219,12 +209,13 @@ extension DepartureViewController: DepartureViewDelegate {
                     }
                 })
             } else if settings.authorizationStatus == .authorized {
-                guard let token: String = UserDefaults.standard.string(forKey: "DeviceToken") else {
+                guard let token: String = AppVariable.deviceId else {
                     print("no device token")
                     // Device didn't register correctly. Prompt to try again.
                     return
                 }
-                CommuterAPI.sharedClient.setNotification(deviceId: token, tripId: departure.tripId, action: action, success: {
+                let station: Station = (commute == .morning) ? AppVariable.origStation! : AppVariable.destStation!
+                CommuterAPI.sharedClient.setNotification(deviceId: token, tripId: departure.tripId, stationId: station.id, action: action, success: {
                     // Cascade update to notify property to corresponding view.
                     self.updateDeparture(departure: departure, commute: commute, action: action)
                 }, failure: { (_, message) in

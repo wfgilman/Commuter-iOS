@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let orig = UserDefaults.standard.string(forKey: "OrigStationCode")
-        let dest = UserDefaults.standard.string(forKey: "DestStationCode")
+        let orig = AppVariable.origStation
+        let dest = AppVariable.destStation
         if (orig == nil) || (dest == nil) {
             let storyboard = UIStoryboard(name: "Onboard", bundle: nil)
             let controller = storyboard.instantiateInitialViewController()
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = controller
         }
         
-        AppVariable.deviceId = UserDefaults.standard.string(forKey: "DeviceToken")
+        AppVariable.deviceId = "100"
         
         return true
     }
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
-        UserDefaults.standard.set(token, forKey: "DeviceToken")
+        AppVariable.deviceId = token
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

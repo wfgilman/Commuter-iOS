@@ -50,6 +50,11 @@
 		BEBA57D221BDD69A00CDB586 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57D121BDD69A00CDB586 /* UIFont.swift */; };
 		BEE8E02421D2C98600F3AA0F /* CommuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */; };
 		BEE8E02521D2C98600F3AA0F /* CommuteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */; };
+		BEF7F97321D98226005A44ED /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF7F97221D98226005A44ED /* Notification.swift */; };
+		BEF7F97621D986CB005A44ED /* MuteNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF7F97421D986CB005A44ED /* MuteNotificationsCell.swift */; };
+		BEF7F97721D986CB005A44ED /* MuteNotificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF7F97521D986CB005A44ED /* MuteNotificationsCell.xib */; };
+		BEF7F97A21D98A4A005A44ED /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF7F97821D98A4A005A44ED /* NotificationCell.swift */; };
+		BEF7F97B21D98A4A005A44ED /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEF7F97921D98A4A005A44ED /* NotificationCell.xib */; };
 		F48C1A44C99F833D5F90E14A /* Pods_Commuter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6451D2C341554AF11F776027 /* Pods_Commuter.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +107,11 @@
 		BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteCell.swift; sourceTree = "<group>"; };
 		BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommuteCell.xib; sourceTree = "<group>"; };
 		BEF7F97121D7EA02005A44ED /* Commuter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Commuter.entitlements; sourceTree = "<group>"; };
+		BEF7F97221D98226005A44ED /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		BEF7F97421D986CB005A44ED /* MuteNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuteNotificationsCell.swift; sourceTree = "<group>"; };
+		BEF7F97521D986CB005A44ED /* MuteNotificationsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MuteNotificationsCell.xib; sourceTree = "<group>"; };
+		BEF7F97821D98A4A005A44ED /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		BEF7F97921D98A4A005A44ED /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		FC99AB5721311F6E1F74C1A4 /* Pods-Commuter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +150,10 @@
 				BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */,
 				BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */,
 				BEE8E02321D2C98600F3AA0F /* CommuteCell.xib */,
+				BEF7F97421D986CB005A44ED /* MuteNotificationsCell.swift */,
+				BEF7F97521D986CB005A44ED /* MuteNotificationsCell.xib */,
+				BEF7F97821D98A4A005A44ED /* NotificationCell.swift */,
+				BEF7F97921D98A4A005A44ED /* NotificationCell.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -195,6 +209,7 @@
 				BEBA578321B4A19700CDB586 /* Station.swift */,
 				BEBA578521B4A21300CDB586 /* Departure.swift */,
 				BEBA578721B5895F00CDB586 /* Trip.swift */,
+				BEF7F97221D98226005A44ED /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,6 +357,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA57C721BDD52500CDB586 /* Lato-BlackItalic.ttf in Resources */,
+				BEF7F97721D986CB005A44ED /* MuteNotificationsCell.xib in Resources */,
+				BEF7F97B21D98A4A005A44ED /* NotificationCell.xib in Resources */,
 				BEBA57C121BDD52500CDB586 /* Lato-Hairline.ttf in Resources */,
 				BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */,
 				BEBA57A321BDB2D400CDB586 /* DepartureView.xib in Resources */,
@@ -443,12 +460,15 @@
 				BEBA57D221BDD69A00CDB586 /* UIFont.swift in Sources */,
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
 				BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */,
+				BEF7F97321D98226005A44ED /* Notification.swift in Sources */,
+				BEF7F97A21D98A4A005A44ED /* NotificationCell.swift in Sources */,
 				BEE8E02421D2C98600F3AA0F /* CommuteCell.swift in Sources */,
 				BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */,
 				BEBA578A21B774E600CDB586 /* SelectOrigViewController.swift in Sources */,
 				BEBA57A121BDB2C600CDB586 /* DepartureView.swift in Sources */,
 				BEBA578C21B8279400CDB586 /* AppVariable.swift in Sources */,
 				BEBA579B21BA1D2800CDB586 /* DepartureViewController.swift in Sources */,
+				BEF7F97621D986CB005A44ED /* MuteNotificationsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
