@@ -25,6 +25,7 @@ class Departure: Unboxable {
     var routeColor: UIColor
     var isEmpty: Bool
     var notify: Bool
+    var realTime: Bool
     
     required init(unboxer: Unboxer) throws {
         let dateFormatter = DateFormatter()
@@ -45,6 +46,7 @@ class Departure: Unboxable {
         routeColor = UIColor(hex: UInt32(routeHexColor, radix: 16)!)
         isEmpty = (priorStops == 0)
         notify = try unboxer.unbox(key: "notify")
+        realTime = try unboxer.unbox(key: "real_time")
     }
     
     class func withArray(dictionaries: [Dictionary<String, Any>]) throws -> [Departure] {
