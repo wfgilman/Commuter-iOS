@@ -44,12 +44,12 @@ class CommuterAPI: NSObject {
         })
     }
     
-    func getTrip(origCode: String, destCode: String, count: Int = 10, success: @escaping (Trip) -> (), failure: @escaping (Error, String?) -> ()) {
+    func getTrip(origCode: String, destCode: String, count: Int = 10, realTime: Bool = true, success: @escaping (Trip) -> (), failure: @escaping (Error, String?) -> ()) {
         var url: URLConvertible
         if let deviceId = AppVariable.deviceId {
-            url = self.baseURL + "/departures?orig=\(origCode)&dest=\(destCode)&count=\(count)&device_id=\(deviceId)"
+            url = self.baseURL + "/departures?orig=\(origCode)&dest=\(destCode)&count=\(count)&real_time=\(realTime)&device_id=\(deviceId)"
         } else {
-            url = self.baseURL + "/departures?orig=\(origCode)&dest=\(destCode)&count=\(count)"
+            url = self.baseURL + "/departures?orig=\(origCode)&dest=\(destCode)&count=\(count)&real_time=\(realTime)"
         }
         af?.request(url).validate().responseJSON(completionHandler: { (response) in
             switch response.result {

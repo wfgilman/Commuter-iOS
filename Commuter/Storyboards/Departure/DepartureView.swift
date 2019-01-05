@@ -44,10 +44,12 @@ class DepartureView: UIView {
             for _ in trip.departures {
                 cellHeights.append((expanded: false, height: Constant.collapsedCellHeight))
             }
+            refreshTimestampLabel()
         }
     }
     var cellHeights = [(expanded: Bool, height: CGFloat)]()
     var failedLoadLabel: UILabel!
+    var timestampLabel: UILabel!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -69,6 +71,13 @@ class DepartureView: UIView {
         addListener()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        timestampLabel.frame = CGRect(x: 0, y: -24, width: tableView.contentSize.width, height: 20)
+        timestampLabel.isHidden = true
+    }
+    
     func setupTableView() {
         let departureCell = UINib(nibName: "DepartureCell", bundle: nil)
         tableView.register(departureCell, forCellReuseIdentifier: "DepartureCell")
@@ -82,6 +91,12 @@ class DepartureView: UIView {
         tableView.backgroundView = activityAnimation
         activityAnimation.color = AppColor.MediumGray.color
         activityAnimation.startAnimating()
+        
+        timestampLabel = UILabel()
+        timestampLabel.font = UIFont.mySystemFont(ofSize: 13)
+        timestampLabel.textColor = AppColor.MediumGray.color
+        timestampLabel.textAlignment = .center
+        tableView.addSubview(timestampLabel)
     }
     
     func setupRefreshControl() {
@@ -138,6 +153,22 @@ class DepartureView: UIView {
             return true
         }
     }
+    
+    func refreshTimestampLabel() {
+        let comp = Calendar.current.dateComponents([.second], from: trip.asOf, to: Date())
+        if let sec = comp.second {
+            let min: Int = sec / 60
+            if sec == 0 {
+                timestampLabel.text = "Last updated just now"
+            } else if sec < 60 {
+                timestampLabel.text = "Last updated \(sec) sec ago"
+            } else if min <= 5 {
+                timestampLabel.text = "Last updated \(min) min ago"
+            } else {
+                timestampLabel.text = "Last updated more than 5 min ago"
+            }
+        }
+    }
 }
 
 extension DepartureView: UITableViewDelegate, UITableViewDataSource {
@@ -182,6 +213,21 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
             self.tableView.beginUpdates()
             self.tableView.endUpdates()
         }, completion: nil)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let isScrollingUp = scrollView.contentOffset.y == 0
+        if isScrollingUp {
+            refreshTimestampLabel()
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let isScrollingUp = scrollView.contentOffset.y < 0
+        if isScrollingUp {
+            timestampLabel.frame.offsetBy(dx: 0, dy: scrollView.contentOffset.y)
+            timestampLabel.isHidden = false
+        }
     }
 }
 
