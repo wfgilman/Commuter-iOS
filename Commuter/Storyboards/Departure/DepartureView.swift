@@ -71,13 +71,6 @@ class DepartureView: UIView {
         addListener()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        timestampLabel.frame = CGRect(x: 0, y: -24, width: tableView.contentSize.width, height: 20)
-        timestampLabel.isHidden = true
-    }
-    
     func setupTableView() {
         let departureCell = UINib(nibName: "DepartureCell", bundle: nil)
         tableView.register(departureCell, forCellReuseIdentifier: "DepartureCell")
@@ -97,6 +90,8 @@ class DepartureView: UIView {
         timestampLabel.textColor = AppColor.MediumGray.color
         timestampLabel.textAlignment = .center
         tableView.addSubview(timestampLabel)
+        timestampLabel.frame = CGRect(x: 0, y: -24, width: tableView.bounds.width, height: 20)
+        timestampLabel.isHidden = true
     }
     
     func setupRefreshControl() {
