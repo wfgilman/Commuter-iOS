@@ -29,6 +29,7 @@ class SettingsViewController: UIViewController {
             tableView.reloadSections([1, 2], with: .none)
         }
     }
+    var didDeleteNotification: Bool! = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +66,11 @@ class SettingsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         
+        let didChangeOrig: Bool = (orig.code != commuteStations[0].code)
+        let didChangeDest: Bool = (dest.code != commuteStations[1].code)
+        
         if self.isMovingFromParent {
-            if (orig.code != commuteStations[0].code) || (dest.code != commuteStations[1].code) {
+            if didChangeOrig || didChangeDest || didDeleteNotification {
                 let name = NSNotification.Name(rawValue: "refreshTrip")
                 NotificationCenter.default.post(name: name, object: nil)
             }
@@ -197,6 +201,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             CommuterAPI.sharedClient.deleteNotification(notification: notifications[indexPath.row], success: {
+                self.didDeleteNotification = true
                 self.notifications.remove(at: indexPath.row)
             }) { (_, message) in
                 guard let message = message else { return }
