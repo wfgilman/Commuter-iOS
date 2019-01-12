@@ -154,13 +154,13 @@ class DepartureView: UIView {
         if let sec = comp.second {
             let min: Int = sec / 60
             if sec == 0 {
-                timestampLabel.text = "Last updated just now"
+                timestampLabel.text = "Updated just now"
             } else if sec < 60 {
-                timestampLabel.text = "Last updated \(sec) sec ago"
+                timestampLabel.text = "Updated \(sec) sec ago"
             } else if min <= 5 {
-                timestampLabel.text = "Last updated \(min) min ago"
+                timestampLabel.text = "Updated \(min) min ago"
             } else {
-                timestampLabel.text = "Last updated more than 5 min ago"
+                timestampLabel.text = "Updated more than 5 min ago"
             }
         }
     }
