@@ -9,7 +9,8 @@
 import UIKit
 
 protocol DepartureCellDelegate {
-    func setNotification(departure: Departure, action: CommuterAPI.NotificationAction)
+    
+    func showActions(departure: Departure, action: CommuterAPI.NotificationAction)
 }
 
 class DepartureCell: UITableViewCell {
@@ -27,7 +28,8 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var stopsLabel: UILabel!
     @IBOutlet weak var carsLabel: UILabel!
     @IBOutlet weak var isEmptyLabel: UILabel!
-    @IBOutlet weak var notificationButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var notifcationImageView: UIImageView!
     
     @IBOutlet weak var departLabel: UILabel!
     @IBOutlet weak var arriveLabel: UILabel!
@@ -62,9 +64,9 @@ class DepartureCell: UITableViewCell {
             isEmptyLabel.isHidden = !departure.isEmpty
             
             if departure.notify == true {
-                notificationButton.setImage(UIImage(named: "alarm-filled-50"), for: .normal)
+                notifcationImageView.isHidden = false
             } else {
-                notificationButton.setImage(UIImage(named: "alarm-50"), for: .normal)
+                notifcationImageView.isHidden = true
             }
         }
     }
@@ -160,17 +162,11 @@ class DepartureCell: UITableViewCell {
         
     }
     
-    @IBAction func onTapNotificationButton(_ sender: Any) {
+    @IBAction func onTapActionButton(_ sender: Any) {
         if departure.notify == true {
-            delegate.setNotification(departure: self.departure, action: .delete)
+            delegate.showActions(departure: self.departure, action: .delete)
         } else {
-            delegate.setNotification(departure: self.departure, action: .store)
+            delegate.showActions(departure: self.departure, action: .store)
         }
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        notificationButton.setImage(nil, for: .normal)
     }
 }

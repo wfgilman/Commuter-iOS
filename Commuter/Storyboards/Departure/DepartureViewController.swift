@@ -178,24 +178,6 @@ class DepartureViewController: UIViewController {
     @IBAction func onTapSettingsButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "SettingsSegue", sender: nil)
     }
-}
-
-extension DepartureViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        hightlightViewLeft.constant = scrollView.contentOffset.x / 2
-    }
-}
-
-extension DepartureViewController: DepartureViewDelegate {
-    
-    func displayMessage(message: String) {
-        let banner = NotificationBanner(title: "No Connection", subtitle: message, style: .warning)
-        // Only show the banner once.
-        if NotificationBannerQueue.default.numberOfBanners == 0 {
-            banner.show()
-        }
-    }
     
     func setNotification(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
         let client = UNUserNotificationCenter.current()
@@ -253,5 +235,64 @@ extension DepartureViewController: DepartureViewDelegate {
         }
         trip.departures = updatedDepartures
         commuteView.trip = trip
+    }
+}
+
+extension DepartureViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        hightlightViewLeft.constant = scrollView.contentOffset.x / 2
+    }
+}
+
+extension DepartureViewController: DepartureViewDelegate {
+    
+    func showActions(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
+        let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let setNotif = UIAlertAction(title: "Set Notification", style: .default) { (_) in
+            self.setNotification(departure: departure, commute: commute, action: .store)
+        }
+        
+        let deleteNotif = UIAlertAction(title: "Delete Notification", style: .destructive) { (_) in
+            self.setNotification(departure: departure, commute: commute, action: .delete)
+        }
+        
+        let share = UIAlertAction(title: "Share my ETA", style: .default) { (_) in
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "h:mm a"
+            timeFormatter.amSymbol = "am"
+            timeFormatter.pmSymbol = "pm"
+            let time = timeFormatter.string(from: departure.eta)
+            
+            var station = AppVariable.destStation!.code
+            if commute == .evening {
+                station = AppVariable.origStation!.code
+            }
+            
+            let eta = "Arriving \(station) at \(time)"
+            let activity = UIActivityViewController(activityItems: [eta], applicationActivities: nil)
+            
+            self.present(activity, animated: true, completion: nil)
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        if action == .store {
+            actions.addAction(setNotif)
+        } else {
+            actions.addAction(deleteNotif)
+        }
+        actions.addAction(share)
+        actions.addAction(cancel)
+        present(actions, animated: true, completion: nil)
+    }
+    
+    func displayMessage(message: String) {
+        let banner = NotificationBanner(title: "No Connection", subtitle: message, style: .warning)
+        // Only show the banner once.
+        if NotificationBannerQueue.default.numberOfBanners == 0 {
+            banner.show()
+        }
     }
 }

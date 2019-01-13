@@ -11,8 +11,8 @@ import UIKit
 protocol DepartureViewDelegate {
  
     func displayMessage(message: String)
-    
-    func setNotification(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction)
+        
+    func showActions(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction)
 }
 
 class DepartureView: UIView {
@@ -228,7 +228,7 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
 
 extension DepartureView: DepartureCellDelegate {
     
-    func setNotification(departure: Departure, action: CommuterAPI.NotificationAction) {
-        delegate.setNotification(departure: departure, commute: self.commute, action: action)
+    func showActions(departure: Departure, action: CommuterAPI.NotificationAction) {
+        delegate.showActions(departure: departure, commute: self.commute, action: action)
     }
 }
