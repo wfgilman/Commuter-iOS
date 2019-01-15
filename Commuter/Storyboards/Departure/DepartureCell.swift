@@ -28,6 +28,7 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var stopsLabel: UILabel!
     @IBOutlet weak var carsLabel: UILabel!
     @IBOutlet weak var isEmptyLabel: UILabel!
+    @IBOutlet weak var isEmptyView: UIView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var notifcationImageView: UIImageView!
     
@@ -61,13 +62,8 @@ class DepartureCell: UITableViewCell {
                 carsLabel.text = "--"
             }
             
-            isEmptyLabel.isHidden = !departure.isEmpty
-            
-            if departure.notify == true {
-                notifcationImageView.isHidden = false
-            } else {
-                notifcationImageView.isHidden = true
-            }
+            isEmptyView.isHidden = !departure.isEmpty
+            notifcationImageView.isHidden = !departure.notify
         }
     }
     var isExpanded: Bool! {
@@ -127,8 +123,11 @@ class DepartureCell: UITableViewCell {
         
         dividerView.backgroundColor = AppColor.MediumGray.color
         
-        isEmptyLabel.font = UIFont.systemFont(ofSize: 13)
-        isEmptyLabel.textColor = AppColor.Charcoal.color
+        isEmptyLabel.font = UIFont.systemFont(ofSize: 10)
+        isEmptyLabel.textColor = UIColor.white
+        isEmptyView.backgroundColor = AppColor.Red.color
+        isEmptyView.layer.cornerRadius = 4
+        isEmptyView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         
         // Footer elements.
         footerView.backgroundColor = AppColor.PaleGray.color
