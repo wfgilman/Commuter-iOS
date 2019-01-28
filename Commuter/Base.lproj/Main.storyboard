@@ -64,16 +64,38 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shR-wT-mAo">
                                 <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8n-uy-gwi">
+                                <rect key="frame" x="303" y="595" width="56" height="56"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send-50" translatesAutoresizingMaskIntoConstraints="NO" id="k31-CM-H7W">
+                                        <rect key="frame" x="12.5" y="15.5" width="28" height="28"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="kWw-MF-wU6"/>
+                                            <constraint firstAttribute="width" constant="28" id="up9-pU-rXK"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="k31-CM-H7W" firstAttribute="centerX" secondItem="p8n-uy-gwi" secondAttribute="centerX" multiplier="0.95" id="4IN-rC-kR1"/>
+                                    <constraint firstAttribute="height" constant="56" id="Jmg-Mr-Lzo"/>
+                                    <constraint firstItem="k31-CM-H7W" firstAttribute="centerY" secondItem="p8n-uy-gwi" secondAttribute="centerY" multiplier="1.05" id="QsS-Dv-ld2"/>
+                                    <constraint firstAttribute="width" constant="56" id="qem-eb-2Lf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="shR-wT-mAo" firstAttribute="trailing" secondItem="6ds-5u-wiq" secondAttribute="trailing" id="CRv-Jv-k0S"/>
                             <constraint firstItem="shR-wT-mAo" firstAttribute="bottom" secondItem="6ds-5u-wiq" secondAttribute="bottom" id="DOc-lU-e46"/>
                             <constraint firstItem="LlH-Us-WaR" firstAttribute="top" secondItem="6ds-5u-wiq" secondAttribute="top" id="HSp-B1-kU6"/>
+                            <constraint firstItem="6ds-5u-wiq" firstAttribute="bottom" secondItem="p8n-uy-gwi" secondAttribute="bottom" constant="16" id="Lnq-Fs-fJF"/>
                             <constraint firstItem="shR-wT-mAo" firstAttribute="leading" secondItem="6ds-5u-wiq" secondAttribute="leading" id="R6v-yk-WCt"/>
                             <constraint firstItem="shR-wT-mAo" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="bottom" id="d9X-Uy-eX9"/>
                             <constraint firstItem="LlH-Us-WaR" firstAttribute="leading" secondItem="6ds-5u-wiq" secondAttribute="leading" id="tyy-oO-CYu"/>
                             <constraint firstItem="LlH-Us-WaR" firstAttribute="trailing" secondItem="6ds-5u-wiq" secondAttribute="trailing" id="vPD-0Q-dgM"/>
+                            <constraint firstItem="6ds-5u-wiq" firstAttribute="trailing" secondItem="p8n-uy-gwi" secondAttribute="trailing" constant="16" id="yrX-sK-Dk5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ds-5u-wiq"/>
                     </view>
@@ -86,6 +108,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="destCommuteLabel" destination="Qlb-lm-JaY" id="XUS-vT-Vpy"/>
+                        <outlet property="fabView" destination="p8n-uy-gwi" id="OXb-VY-eOL"/>
                         <outlet property="highlightView" destination="5hS-F3-Gfu" id="Lo1-OR-A83"/>
                         <outlet property="hightlightViewLeft" destination="7S0-gl-FSz" id="1YU-u2-F7C"/>
                         <outlet property="origCommuteLabel" destination="3hR-Uy-Rp0" id="HpS-UC-lYU"/>
@@ -148,4 +171,7 @@
             <point key="canvasLocation" x="40.799999999999997" y="25.637181409295355"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="send-50" width="37.5" height="37.5"/>
+    </resources>
 </document>

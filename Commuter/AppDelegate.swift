@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         AppVariable.deviceId = token
+        NotificationCenter.default.post(name: AppVariable.grantedNotificationAuth, object: nil)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

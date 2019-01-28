@@ -13,6 +13,7 @@ class Trip: Unboxable {
     var orig: Station
     var dest: Station
     var asOf: Date
+    var includesRealTime: Bool
     var departures: [Departure]
     
     required init(unboxer: Unboxer) throws {
@@ -23,6 +24,7 @@ class Trip: Unboxable {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         asOf = try unboxer.unbox(key: "as_of", formatter: dateFormatter)
+        includesRealTime = try unboxer.unbox(key: "includes_real_time")
         departures = try unboxer.unbox(key: "departures")
     }
 }

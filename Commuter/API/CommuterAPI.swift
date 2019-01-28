@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import Unbox
+import MapKit
 
 class CommuterAPI: NSObject {
     static let sharedClient = CommuterAPI(baseURL: AppVariable.baseURL)
@@ -153,6 +154,27 @@ class CommuterAPI: NSObject {
             switch response.result {
             case .success:
                 success()
+            case .failure(let error):
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
+    
+    func getEta(location: CLLocation, origCode: String, destCode: String, success: @escaping (ETA) -> (), failure: @escaping (Error, String?) -> ()) {
+        let url: URLConvertible = self.baseURL + "/eta?lat=\(location.coordinate.latitude)&lon=\(location.coordinate.longitude)&orig=\(origCode)&dest=\(destCode)"
+        af?.request(url).validate().responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                if let result = response.result.value {
+                    do {
+                        let response = result as! Dictionary<String, Any>
+                        let eta: ETA = try unbox(dictionary: response)
+                        success(eta)
+                    } catch {
+                        // Handle failure.
+                    }
+                }
             case .failure(let error):
                 let message = self.getErrorMessage(error: error, response: response)
                 failure(error, message)

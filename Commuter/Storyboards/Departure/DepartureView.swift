@@ -191,23 +191,23 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! DepartureCell
-        
-        let height = Constant.expandedCellHeight - Constant.collapsedCellHeight
-        if cellHeights[indexPath.row].expanded {
-            cellHeights[indexPath.row].expanded = false
-            cellHeights[indexPath.row].height -= height
-            cell.collapse()
-        } else {
-            cellHeights[indexPath.row].expanded = true
-            cellHeights[indexPath.row].height += height
-            cell.expand()
-        }
-        
-        UIView.animate(withDuration: AppVariable.duration, delay: 0, options: .curveEaseInOut, animations: {
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }, completion: nil)
+//        let cell = tableView.cellForRow(at: indexPath) as! DepartureCell
+//        
+//        let height = Constant.expandedCellHeight - Constant.collapsedCellHeight
+//        if cellHeights[indexPath.row].expanded {
+//            cellHeights[indexPath.row].expanded = false
+//            cellHeights[indexPath.row].height -= height
+//            cell.collapse()
+//        } else {
+//            cellHeights[indexPath.row].expanded = true
+//            cellHeights[indexPath.row].height += height
+//            cell.expand()
+//        }
+//        
+//        UIView.animate(withDuration: AppVariable.duration, delay: 0, options: .curveEaseInOut, animations: {
+//            self.tableView.beginUpdates()
+//            self.tableView.endUpdates()
+//        }, completion: nil)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

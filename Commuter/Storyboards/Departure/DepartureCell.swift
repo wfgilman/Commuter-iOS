@@ -54,14 +54,15 @@ class DepartureCell: UITableViewCell {
             
             // Formatted strings.
             etdMinLabel.text = String(describing: departure.etdMin)
-            delayMinLabel.text = String(describing: departure.delayMin)
-            stopsLabel.text = String(describing: departure.priorStops)
-            if let length = departure.length {
-                carsLabel.text = String(describing: length) + " cars"
-            } else {
-                carsLabel.text = "--"
-            }
-            
+
+//            delayMinLabel.text = String(describing: departure.delayMin)
+//            stopsLabel.text = String(describing: departure.priorStops)
+//            if let length = departure.length {
+//                carsLabel.text = String(describing: length) + " cars"
+//            } else {
+//                carsLabel.text = "--"
+//            }
+        
             isEmptyView.isHidden = !departure.isEmpty
             notifcationImageView.isHidden = !departure.notify
         }
@@ -108,17 +109,17 @@ class DepartureCell: UITableViewCell {
         headsignLabel.font = UIFont.systemFont(ofSize: 17)
         headsignLabel.textColor = AppColor.Charcoal.color
         
-        etdMinLabel.font = UIFont.systemFont(ofSize: 24)
+        etdMinLabel.font = UIFont.systemFont(ofSize: 32, weight: .light)
         etdMinLabel.textColor = AppColor.Charcoal.color
         
-        departLabel.font = UIFont.systemFont(ofSize: 10)
+        departLabel.font = UIFont.systemFont(ofSize: 13)
         departLabel.textColor = AppColor.MediumGray.color
-        etdLabel.font = UIFont.systemFont(ofSize: 13)
+        etdLabel.font = UIFont.systemFont(ofSize: 15)
         etdLabel.textColor = AppColor.Charcoal.color
         
-        arriveLabel.font = UIFont.systemFont(ofSize: 10)
+        arriveLabel.font = UIFont.systemFont(ofSize: 13)
         arriveLabel.textColor = AppColor.MediumGray.color
-        etaLabel.font = UIFont.systemFont(ofSize: 13)
+        etaLabel.font = UIFont.systemFont(ofSize: 15)
         etaLabel.textColor = AppColor.Charcoal.color
         
         dividerView.backgroundColor = AppColor.MediumGray.color

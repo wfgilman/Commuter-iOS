@@ -9,6 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 import UserNotifications
+import MapKit
 
 enum Commute: String {
     case morning
@@ -24,12 +25,19 @@ class DepartureViewController: UIViewController {
     @IBOutlet weak var highlightView: UIView!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var hightlightViewLeft: NSLayoutConstraint!
+    @IBOutlet weak var fabView: UIView!
     
     var morningDepartureView: DepartureView!
     var eveningDepartureView: DepartureView!
     var commute: Commute!
     var pageWidth: CGFloat!
     var pageHeight: CGFloat!
+    var fab: UIImageView!
+    var bannerDisplayDuration: TimeInterval = 3
+    
+    private var notifDeparture: Departure?
+    private var notifCommute: Commute?
+    private var notifAction: CommuterAPI.NotificationAction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +77,7 @@ class DepartureViewController: UIViewController {
         
         setupSubviews()
         addListener()
+        addInitialNotificationListener()
         
         formatNavigationBar()
         navigationItem.title = "My Commute"
@@ -104,22 +113,31 @@ class DepartureViewController: UIViewController {
         }
     }
     
-    func formatNavigationBar() {
+    private func formatNavigationBar() {
         if let navBar = navigationController?.navigationBar {
             navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: false, isTranslucent: true)
         }
     }
     
-    func setupSubviews() {
+    private func setupSubviews() {
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
         scrollView.isDirectionalLockEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .automatic
+        
+        fabView.backgroundColor = AppColor.Red.color
+        fabView.layer.cornerRadius = fabView.frame.width / 2
+        fabView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
+        fabView.layer.shadowOffset = .zero
+        fabView.layer.shadowOpacity = 1
+        fabView.layer.shadowRadius = 4
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(getETA))
+        fabView.addGestureRecognizer(tapGesture)
     }
     
-    func getDepartures(commute: Commute) {
+    private func getDepartures(commute: Commute) {
         var commuteView: DepartureView
         var origCode: String
         var destCode: String
@@ -136,13 +154,24 @@ class DepartureViewController: UIViewController {
         
         CommuterAPI.sharedClient.getTrip(origCode: origCode, destCode: destCode, success: { (trip) in
             commuteView.trip = trip
+            self.checkRealTime(trip: trip)
         }) { (_, message) in
             guard let message = message else { return }
             print("\(message)")
         }
     }
     
-    func addListener() {
+    private func checkRealTime(trip: Trip) {
+        if trip.includesRealTime == false {
+            let banner = NotificationBanner(title: "No Real-Time", subtitle: "Real-time data didn't load. Pull to refresh.", style: .warning)
+            banner.duration = bannerDisplayDuration
+            if NotificationBannerQueue.default.numberOfBanners == 0 {
+                banner.show()
+            }
+        }
+    }
+    
+    private func addListener() {
         let name = NSNotification.Name("refreshTrip")
         NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { (notification) in
             guard let commute: Commute = notification.object as? Commute else {
@@ -163,6 +192,15 @@ class DepartureViewController: UIViewController {
         }
     }
     
+    private func addInitialNotificationListener() {
+        NotificationCenter.default.addObserver(forName: AppVariable.grantedNotificationAuth, object: nil, queue: .main, using: { (_) in
+            guard let departure = self.notifDeparture else { return }
+            guard let commute = self.notifCommute else { return }
+            guard let action = self.notifAction else { return }
+            self.setNotification(departure: departure, commute: commute, action: action)
+        })
+    }
+    
     @objc func showMorningView() {
         UIView.animate(withDuration: AppVariable.duration) {
             self.scrollView.contentOffset.x = 0
@@ -179,13 +217,17 @@ class DepartureViewController: UIViewController {
         performSegue(withIdentifier: "SettingsSegue", sender: nil)
     }
     
-    func setNotification(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
+    private func setNotification(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
         let client = UNUserNotificationCenter.current()
         client.getNotificationSettings { (settings) in
             if settings.authorizationStatus == .notDetermined {
                 client.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (granted, error) in
                     if granted == true {
                         DispatchQueue.main.async {
+                            // Store the notification parameters so the notification can be set after the device token is issued to complete the function.
+                            self.notifDeparture = departure
+                            self.notifCommute = commute
+                            self.notifAction = action
                             UIApplication.shared.registerForRemoteNotifications()
                         }
                     }
@@ -236,6 +278,49 @@ class DepartureViewController: UIViewController {
         trip.departures = updatedDepartures
         commuteView.trip = trip
     }
+    
+    @objc func getETA() {
+        let locationManager = CLLocationManager()
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+            getETA()
+        } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            guard let location = locationManager.location else { return }
+            let orig: Station = AppVariable.origStation!
+            let dest: Station = AppVariable.destStation!
+            CommuterAPI.sharedClient.getEta(location: location, origCode: orig.code, destCode: dest.code, success: { (eta) in
+                self.showETA(eta: eta)
+            }) { (_, message) in
+                guard let message = message else { return }
+                print("\(message)")
+            }
+        }
+    }
+    
+    private func showETA(eta: ETA) {
+        let station = AppVariable.destStation!
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+        timeFormatter.amSymbol = "am"
+        timeFormatter.pmSymbol = "pm"
+        let time = timeFormatter.string(from: eta.eta)
+        let title = "ETA: \(time)"
+        let message = "You are closest to \(eta.station.code) and \(eta.etaMin) min from \(station.code)."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        
+        let share = UIAlertAction(title: "Share", style: .default) { (_) in
+            let eta = "Arriving \(station.code) at \(time)"
+            let activity = UIActivityViewController(activityItems: [eta], applicationActivities: nil)
+            
+            self.present(activity, animated: true, completion: nil)
+        }
+        
+        alert.addAction(dismiss)
+        alert.addAction(share)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension DepartureViewController: UIScrollViewDelegate {
@@ -258,7 +343,7 @@ extension DepartureViewController: DepartureViewDelegate {
             self.setNotification(departure: departure, commute: commute, action: .delete)
         }
         
-        let share = UIAlertAction(title: "Share my ETA", style: .default) { (_) in
+        let share = UIAlertAction(title: "Share ETA", style: .default) { (_) in
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "h:mm a"
             timeFormatter.amSymbol = "am"
@@ -290,6 +375,7 @@ extension DepartureViewController: DepartureViewDelegate {
     
     func displayMessage(message: String) {
         let banner = NotificationBanner(title: "No Connection", subtitle: message, style: .warning)
+        banner.duration = bannerDisplayDuration
         // Only show the banner once.
         if NotificationBannerQueue.default.numberOfBanners == 0 {
             banner.show()

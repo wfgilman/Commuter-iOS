@@ -13,6 +13,7 @@ struct AppVariable {
     static let duration: TimeInterval = 0.36
 //    static let baseURL = "http://localhost:4000/api/v1"
     static let baseURL = "https://commuter.gigalixirapp.com/api/v1"
+    static let grantedNotificationAuth = NSNotification.Name("grantedNotificationAuth")
     
     static var deviceId: String? {
         get {

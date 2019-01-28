@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
+		BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B664D21FAA9BA002E2A96 /* ETA.swift */; };
 		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.release.xcconfig"; sourceTree = "<group>"; };
 		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		BE1B664D21FAA9BA002E2A96 /* ETA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA.swift; sourceTree = "<group>"; };
 		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				BEBA578521B4A21300CDB586 /* Departure.swift */,
 				BEBA578721B5895F00CDB586 /* Trip.swift */,
 				BEF7F97221D98226005A44ED /* Notification.swift */,
+				BE1B664D21FAA9BA002E2A96 /* ETA.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				BEBA57A721BDD0CE00CDB586 /* AppColor.swift in Sources */,
 				BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */,
 				BEBA57D221BDD69A00CDB586 /* UIFont.swift in Sources */,
+				BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */,
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
 				BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */,
 				BEF7F97321D98226005A44ED /* Notification.swift in Sources */,
