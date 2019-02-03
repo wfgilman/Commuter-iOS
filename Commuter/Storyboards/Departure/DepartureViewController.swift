@@ -261,8 +261,8 @@ class DepartureViewController: UIViewController {
             commuteView = self.eveningDepartureView
         }
         
+        var i = 0
         for d in commuteView.trip.departures {
-            var i = 0
             if d.tripId == departure.tripId {
                 let notify = (action == .store) ? true : false
                 d.notify = notify
@@ -270,7 +270,7 @@ class DepartureViewController: UIViewController {
                 let indexPath = IndexPath(row: i, section: 0)
                 commuteView.tableView.reloadRows(at: [indexPath], with: .none)
             }
-            i += i
+            i += 1
         }
     }
     
