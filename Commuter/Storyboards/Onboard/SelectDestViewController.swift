@@ -36,6 +36,7 @@ class SelectDestViewController: UIViewController {
         selectButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         selectButton.backgroundColor = AppColor.Blue.color
         selectButton.tintColor = UIColor.white
+        selectButton.layer.cornerRadius = 4
     }
 
     @IBAction func onTapSelectButton(_ sender: UIButton) {
