@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE05E3F12206A65500A69B75 /* ExpandedTouchAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */; };
 		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
 		BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B664D21FAA9BA002E2A96 /* ETA.swift */; };
 		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		23888710879E019DC0C372F5 /* Pods-Commuter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Commuter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Commuter/Pods-Commuter.release.xcconfig"; sourceTree = "<group>"; };
 		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedTouchAreaButton.swift; sourceTree = "<group>"; };
 		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		BE1B664D21FAA9BA002E2A96 /* ETA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA.swift; sourceTree = "<group>"; };
 		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BE05E3EF2206A62700A69B75 /* SubClasses */ = {
+			isa = PBXGroup;
+			children = (
+				BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */,
+			);
+			path = SubClasses;
+			sourceTree = "<group>";
+		};
 		BEB7207B21CC87CC00112AF0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +191,7 @@
 		BEBA576C21B49DB800CDB586 /* Commuter */ = {
 			isa = PBXGroup;
 			children = (
+				BE05E3EF2206A62700A69B75 /* SubClasses */,
 				BEF7F97121D7EA02005A44ED /* Commuter.entitlements */,
 				BEBA57D021BDD61100CDB586 /* Extensions */,
 				BEBA57CF21BDD60C00CDB586 /* Common */,
@@ -457,6 +468,7 @@
 				BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */,
 				BEBA578821B5895F00CDB586 /* Trip.swift in Sources */,
 				BEBA578121B4A0C400CDB586 /* CommuterAPI.swift in Sources */,
+				BE05E3F12206A65500A69B75 /* ExpandedTouchAreaButton.swift in Sources */,
 				BEBA578421B4A19700CDB586 /* Station.swift in Sources */,
 				BEBA57A721BDD0CE00CDB586 /* AppColor.swift in Sources */,
 				BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */,

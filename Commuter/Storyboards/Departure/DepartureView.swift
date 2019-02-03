@@ -17,11 +17,6 @@ protocol DepartureViewDelegate {
 
 class DepartureView: UIView {
     
-    enum Constant {
-        static let expandedCellHeight: CGFloat = 186.0
-        static let collapsedCellHeight: CGFloat = 136.0
-    }
-
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,20 +29,22 @@ class DepartureView: UIView {
             if let label = tableView.viewWithTag(1) {
                 label.removeFromSuperview()
             }
-            tableView.reloadData()
             if refreshControl.isRefreshing {
                 refreshControl.endRefreshing()
             }
             if activityAnimation.isAnimating {
                 activityAnimation.stopAnimating()
             }
+            cellFlippedStates.removeAll()
             for _ in trip.departures {
-                cellHeights.append((expanded: false, height: Constant.collapsedCellHeight))
+                cellFlippedStates.append((isFlipped: false, isLoaded: false))
             }
             refreshTimestampLabel()
+            tableView.reloadData()
         }
     }
-    var cellHeights = [(expanded: Bool, height: CGFloat)]()
+    var cellFlippedStates = [(isFlipped: Bool, isLoaded: Bool)]()
+    var rowHeight: CGFloat = 136
     var failedLoadLabel: UILabel!
     var timestampLabel: UILabel!
     
@@ -77,7 +74,7 @@ class DepartureView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = Constant.collapsedCellHeight
+        tableView.estimatedRowHeight = rowHeight
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         activityAnimation = UIActivityIndicatorView(style: .whiteLarge)
@@ -150,6 +147,7 @@ class DepartureView: UIView {
     }
     
     func refreshTimestampLabel() {
+        guard let trip = trip else { return }
         let comp = Calendar.current.dateComponents([.second], from: trip.asOf, to: Date())
         if let sec = comp.second {
             let min: Int = sec / 60
@@ -174,40 +172,31 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if cellHeights.count > 0 {
-            return cellHeights[indexPath.row].height
-        } else {
-            return Constant.collapsedCellHeight
-        }
+        return rowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DepartureCell", for: indexPath) as! DepartureCell
         cell.delegate = self
         cell.departure = trip.departures[indexPath.row]
-        cell.isExpanded = cellHeights[indexPath.row].expanded
+        cell.isFlipped = cellFlippedStates[indexPath.row].isFlipped
+        if cellFlippedStates[indexPath.row].isLoaded == false {
+            cell.flipToFront()
+            cellFlippedStates[indexPath.row].isLoaded = true
+        }
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath) as! DepartureCell
-//        
-//        let height = Constant.expandedCellHeight - Constant.collapsedCellHeight
-//        if cellHeights[indexPath.row].expanded {
-//            cellHeights[indexPath.row].expanded = false
-//            cellHeights[indexPath.row].height -= height
-//            cell.collapse()
-//        } else {
-//            cellHeights[indexPath.row].expanded = true
-//            cellHeights[indexPath.row].height += height
-//            cell.expand()
-//        }
-//        
-//        UIView.animate(withDuration: AppVariable.duration, delay: 0, options: .curveEaseInOut, animations: {
-//            self.tableView.beginUpdates()
-//            self.tableView.endUpdates()
-//        }, completion: nil)
+        let cell = tableView.cellForRow(at: indexPath) as! DepartureCell
+        if cellFlippedStates[indexPath.row].isFlipped == false {
+            cellFlippedStates[indexPath.row].isFlipped = true
+            cell.flipToBack()
+        } else {
+            cellFlippedStates[indexPath.row].isFlipped = false
+            cell.flipToFront()
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

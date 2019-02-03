@@ -71,7 +71,7 @@ class DepartureViewController: UIViewController {
         scrollView.addSubview(eveningDepartureView)
         getDepartures(commute: .evening)
         
-        highlightView.backgroundColor = AppColor.Charcoal.color
+        highlightView.backgroundColor = AppColor.Blue.color
         highlightView.layer.cornerRadius = 1
         highlightView.layer.masksToBounds = true
         
@@ -127,7 +127,7 @@ class DepartureViewController: UIViewController {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .automatic
         
-        fabView.backgroundColor = AppColor.Red.color
+        fabView.backgroundColor = AppColor.Blue.color
         fabView.layer.cornerRadius = fabView.frame.width / 2
         fabView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
         fabView.layer.shadowOffset = .zero
@@ -138,15 +138,11 @@ class DepartureViewController: UIViewController {
     }
     
     private func getDepartures(commute: Commute) {
-        var commuteView: DepartureView
-        var origCode: String
-        var destCode: String
+        var commuteView: DepartureView = self.morningDepartureView
+        var origCode: String = AppVariable.origStation!.code
+        var destCode: String = AppVariable.destStation!.code
         
-        if commute == .morning {
-            origCode = AppVariable.origStation!.code
-            destCode = AppVariable.destStation!.code
-            commuteView = self.morningDepartureView
-        } else {
+        if commute == .evening {
             origCode = AppVariable.destStation!.code
             destCode = AppVariable.origStation!.code
             commuteView = self.eveningDepartureView
@@ -258,25 +254,24 @@ class DepartureViewController: UIViewController {
     
     private func updateDeparture(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
         var commuteView: DepartureView
-        var trip: Trip
-        
+
         if commute == .morning {
             commuteView = self.morningDepartureView
         } else {
             commuteView = self.eveningDepartureView
         }
-        trip = commuteView.trip
         
-        // Set the notify property to 'true' for the relevant departure.
-        let updatedDepartures = trip.departures.map { (d) -> Departure in
+        for d in commuteView.trip.departures {
+            var i = 0
             if d.tripId == departure.tripId {
                 let notify = (action == .store) ? true : false
                 d.notify = notify
+                commuteView.trip.departures[i] = departure
+                let indexPath = IndexPath(row: i, section: 0)
+                commuteView.tableView.reloadRows(at: [indexPath], with: .none)
             }
-            return d
+            i += i
         }
-        trip.departures = updatedDepartures
-        commuteView.trip = trip
     }
     
     @objc func getETA() {
@@ -286,10 +281,15 @@ class DepartureViewController: UIViewController {
             getETA()
         } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             guard let location = locationManager.location else { return }
-            let orig: Station = AppVariable.origStation!
-            let dest: Station = AppVariable.destStation!
+            var orig: Station = AppVariable.origStation!
+            var dest: Station = AppVariable.destStation!
+            
+            if commute == .evening {
+                orig = AppVariable.destStation!
+                dest = AppVariable.origStation!
+            }
             CommuterAPI.sharedClient.getEta(location: location, origCode: orig.code, destCode: dest.code, success: { (eta) in
-                self.showETA(eta: eta)
+                self.showETA(eta: eta, destination: dest)
             }) { (_, message) in
                 guard let message = message else { return }
                 print("\(message)")
@@ -297,21 +297,20 @@ class DepartureViewController: UIViewController {
         }
     }
     
-    private func showETA(eta: ETA) {
-        let station = AppVariable.destStation!
+    private func showETA(eta: ETA, destination: Station) {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
         timeFormatter.amSymbol = "am"
         timeFormatter.pmSymbol = "pm"
         let time = timeFormatter.string(from: eta.eta)
-        let title = "ETA: \(time)"
-        let message = "You are closest to \(eta.station.code) and \(eta.etaMin) min from \(station.code)."
+        let title = "Arrival: \(time)"
+        let message = "Based on your current location you are \(eta.etaMin) min from \(destination.name)."
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         
         let share = UIAlertAction(title: "Share", style: .default) { (_) in
-            let eta = "Arriving \(station.code) at \(time)"
+            let eta = "Arriving \(destination.code) at \(time)"
             let activity = UIActivityViewController(activityItems: [eta], applicationActivities: nil)
             
             self.present(activity, animated: true, completion: nil)
