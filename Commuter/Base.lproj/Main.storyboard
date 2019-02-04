@@ -67,20 +67,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8n-uy-gwi">
                                 <rect key="frame" x="303" y="595" width="56" height="56"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send-50" translatesAutoresizingMaskIntoConstraints="NO" id="k31-CM-H7W">
-                                        <rect key="frame" x="12.5" y="15.5" width="28" height="28"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWc-cj-S52">
+                                        <rect key="frame" x="12" y="12" width="32" height="32"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="kWw-MF-wU6"/>
-                                            <constraint firstAttribute="width" constant="28" id="up9-pU-rXK"/>
+                                            <constraint firstAttribute="width" constant="32" id="DEi-p6-HKG"/>
+                                            <constraint firstAttribute="height" constant="32" id="Lti-ws-3tQ"/>
                                         </constraints>
-                                    </imageView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="k31-CM-H7W" firstAttribute="centerX" secondItem="p8n-uy-gwi" secondAttribute="centerX" multiplier="0.95" id="4IN-rC-kR1"/>
+                                    <constraint firstItem="kWc-cj-S52" firstAttribute="centerY" secondItem="p8n-uy-gwi" secondAttribute="centerY" id="1DB-Kk-i2a"/>
+                                    <constraint firstItem="kWc-cj-S52" firstAttribute="centerX" secondItem="p8n-uy-gwi" secondAttribute="centerX" id="EcO-gi-Ivh"/>
                                     <constraint firstAttribute="height" constant="56" id="Jmg-Mr-Lzo"/>
-                                    <constraint firstItem="k31-CM-H7W" firstAttribute="centerY" secondItem="p8n-uy-gwi" secondAttribute="centerY" multiplier="1.05" id="QsS-Dv-ld2"/>
                                     <constraint firstAttribute="width" constant="56" id="qem-eb-2Lf"/>
                                 </constraints>
                             </view>
@@ -171,7 +173,4 @@
             <point key="canvasLocation" x="40.799999999999997" y="25.637181409295355"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="send-50" width="37.5" height="37.5"/>
-    </resources>
 </document>
