@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class SelectOrigViewController: UIViewController {
 
+    @IBOutlet weak var pickerContainerView: UIView!
     @IBOutlet weak var stationPickerView: UIPickerView!
     @IBOutlet weak var selectButton: UIButton!
     
+    var activityAnimation: UIActivityIndicatorView!
     var stations = [Station]()
     var selectedStation: Station?
     
@@ -22,10 +25,33 @@ class SelectOrigViewController: UIViewController {
         stationPickerView.delegate = self
         stationPickerView.dataSource = self
         
+        activityAnimation = UIActivityIndicatorView(style: .whiteLarge)
+        stationPickerView.isHidden = true
+        pickerContainerView.addSubview(activityAnimation)
+        activityAnimation.color = AppColor.MediumGray.color
+        activityAnimation.startAnimating()
+        
+        selectButton.setTitle("Next", for: .normal)
+        selectButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        selectButton.backgroundColor = AppColor.Blue.color
+        selectButton.tintColor = UIColor.white
+        selectButton.layer.cornerRadius = 4
+        
+        loadStations()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        activityAnimation.center = pickerContainerView.convert(pickerContainerView.center, from: pickerContainerView.superview)
+    }
+    
+    func loadStations() {
         CommuterAPI.sharedClient.getStations(success: { (stations) in
             AppVariable.stations = stations
             self.stations = stations
             self.stationPickerView.reloadAllComponents()
+            self.activityAnimation.stopAnimating()
+            self.stationPickerView.isHidden = false
             guard let startingRow = stations.firstIndex(where: { (station) -> Bool in
                 station.code == "PHIL"
             }) else {
@@ -37,18 +63,24 @@ class SelectOrigViewController: UIViewController {
         }) { (_, message) in
             guard let message = message else { return }
             print("\(message)")
+            self.activityAnimation.stopAnimating()
+            self.showFailedLoadBanner()
         }
-        
-        selectButton.setTitle("Next", for: .normal)
-        selectButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        selectButton.backgroundColor = AppColor.Blue.color
-        selectButton.tintColor = UIColor.white
-        selectButton.layer.cornerRadius = 4
     }
     
     @IBAction func onTapSelectButton(_ sender: UIButton) {
         AppVariable.origStation = selectedStation
         performSegue(withIdentifier: "SelectDestSegue", sender: nil)
+    }
+    
+    func showFailedLoadBanner() {
+        let banner = NotificationBanner(title: "No Connection", subtitle: "We couldn't load the stations. Tap here to try again.", style: .warning)
+        banner.autoDismiss = false
+        banner.onTap = {
+            self.activityAnimation.startAnimating()
+            self.loadStations()
+        }
+        banner.show()
     }
 }
 

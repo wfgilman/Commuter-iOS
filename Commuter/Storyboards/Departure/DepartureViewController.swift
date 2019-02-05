@@ -33,7 +33,6 @@ class DepartureViewController: UIViewController {
     var pageWidth: CGFloat!
     var pageHeight: CGFloat!
     var fab: UIImageView!
-    var bannerDisplayDuration: TimeInterval = 3
     
     private var notifDeparture: Departure?
     private var notifCommute: Commute?
@@ -160,7 +159,7 @@ class DepartureViewController: UIViewController {
     private func checkRealTime(trip: Trip) {
         if trip.includesRealTime == false {
             let banner = NotificationBanner(title: "No Real-Time", subtitle: "Real-time data didn't load. Pull to refresh.", style: .warning)
-            banner.duration = bannerDisplayDuration
+            banner.duration = AppVariable.bannerDuration
             if NotificationBannerQueue.default.numberOfBanners == 0 {
                 banner.show()
             }
@@ -374,7 +373,7 @@ extension DepartureViewController: DepartureViewDelegate {
     
     func displayMessage(message: String) {
         let banner = NotificationBanner(title: "No Connection", subtitle: message, style: .warning)
-        banner.duration = bannerDisplayDuration
+        banner.duration = AppVariable.bannerDuration
         // Only show the banner once.
         if NotificationBannerQueue.default.numberOfBanners == 0 {
             banner.show()
