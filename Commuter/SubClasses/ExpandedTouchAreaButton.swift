@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class ExpandedTouchAreaButton: UIButton {
 
-    @IBInspectable var margin: CGFloat = 20.0
+    @IBInspectable var margin: CGFloat = 8.0
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         //increase touch area for control in all directions by 20
         

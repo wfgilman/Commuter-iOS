@@ -33,6 +33,7 @@ class DepartureViewController: UIViewController {
     var pageWidth: CGFloat!
     var pageHeight: CGFloat!
     var fab: UIImageView!
+    var calculatingAlertController: UIAlertController!
     
     private var notifDeparture: Departure?
     private var notifCommute: Commute?
@@ -274,26 +275,46 @@ class DepartureViewController: UIViewController {
     }
     
     @objc func getETA() {
+        showCalculatingIndicator()
+        
         let locationManager = CLLocationManager()
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
             getETA()
+            
         } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             guard let location = locationManager.location else { return }
             var orig: Station = AppVariable.origStation!
             var dest: Station = AppVariable.destStation!
-            
+
             if commute == .evening {
                 orig = AppVariable.destStation!
                 dest = AppVariable.origStation!
             }
             CommuterAPI.sharedClient.getEta(location: location, origCode: orig.code, destCode: dest.code, success: { (eta) in
-                self.showETA(eta: eta, destination: dest)
+                self.calculatingAlertController.dismiss(animated: false, completion: {
+                    self.showETA(eta: eta, destination: dest)
+                })
             }) { (_, message) in
                 guard let message = message else { return }
-                print("\(message)")
+                self.calculatingAlertController.dismiss(animated: false, completion: {
+                    let banner = NotificationBanner(title: "No ETA", subtitle: message, style: .warning)
+                    banner.duration = AppVariable.bannerDuration
+                    banner.show()
+                })
             }
         }
+    }
+    
+    private func showCalculatingIndicator() {
+        calculatingAlertController = UIAlertController(title: "Calculating", message: nil, preferredStyle: .alert)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.tag = 1
+        activityIndicator.frame = activityIndicator.frame.offsetBy(dx: 40, dy: (calculatingAlertController.view.bounds.height - activityIndicator.frame.height) / 2)
+        activityIndicator.autoresizingMask = [.flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+        activityIndicator.startAnimating()
+        calculatingAlertController.view.addSubview(activityIndicator)
+        present(calculatingAlertController, animated: true, completion: nil)
     }
     
     private func showETA(eta: ETA, destination: Station) {
