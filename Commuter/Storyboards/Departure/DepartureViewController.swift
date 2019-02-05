@@ -275,15 +275,17 @@ class DepartureViewController: UIViewController {
     }
     
     @objc func getETA() {
-        showCalculatingIndicator()
-        
         let locationManager = CLLocationManager()
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
             getETA()
             
         } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            guard let location = locationManager.location else { return }
+            showCalculatingIndicator()
+            guard let location = locationManager.location else {
+                self.calculatingAlertController.dismiss(animated: true, completion: nil)
+                return
+            }
             var orig: Station = AppVariable.origStation!
             var dest: Station = AppVariable.destStation!
 
