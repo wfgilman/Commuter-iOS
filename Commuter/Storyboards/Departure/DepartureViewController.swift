@@ -85,6 +85,8 @@ class DepartureViewController: UIViewController {
         settingsButton.setTitleTextAttributes([
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)
         ], for: .normal)
+        
+        getAdvisory()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -341,6 +343,17 @@ class DepartureViewController: UIViewController {
         alert.addAction(dismiss)
         alert.addAction(share)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func getAdvisory() {
+        CommuterAPI.sharedClient.getAdvisory(success: { (advisory) in
+            guard let advisory = advisory else { return }
+            let banner = StatusBarNotificationBanner(title: advisory, style: .danger)
+            banner.autoDismiss = false
+            banner.show()
+        }) { (_, _) in
+            return
+        }
     }
 }
 

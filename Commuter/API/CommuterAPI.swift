@@ -182,6 +182,28 @@ class CommuterAPI: NSObject {
         })
     }
     
+    func getAdvisory(success: @escaping (String?) -> (), failure: @escaping (Error, String?) -> ()) {
+        let url: URLConvertible = self.baseURL + "/advisories"
+        af?.request(url).validate().responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                if let result = response.result.value {
+                    let response = result as! Dictionary<String, Any>
+                    let count = response["count"] as! Int
+                    let advisory = response["advisory"] as! String
+                    if count == 0 {
+                        success(nil)
+                    } else {
+                        success(advisory)
+                    }
+                }
+            case .failure(let error):
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
+    
     private func getErrorMessage(error: Error, response: DataResponse<Any>) -> String? {
         if let data = response.data {
             do {
