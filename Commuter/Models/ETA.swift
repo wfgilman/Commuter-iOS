@@ -10,7 +10,8 @@ import Foundation
 import Unbox
 
 class ETA: Unboxable {
-    var station: Station
+    var nextStation: Station
+    var nextStationEtaMin: Int
     var eta: Date
     var etaMin: Int
     
@@ -18,7 +19,8 @@ class ETA: Unboxable {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         
-        station = try unboxer.unbox(key: "station")
+        nextStation = try unboxer.unbox(key: "next_station")
+        nextStationEtaMin = try unboxer.unbox(key: "next_station_eta_min")
         eta = try unboxer.unbox(key: "eta", formatter: dateFormatter)
         etaMin = try unboxer.unbox(key: "eta_min")
     }

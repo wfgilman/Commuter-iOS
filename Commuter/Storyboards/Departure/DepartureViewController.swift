@@ -299,12 +299,12 @@ class DepartureViewController: UIViewController {
                 self.calculatingAlertController.dismiss(animated: false, completion: {
                     self.showETA(eta: eta, destination: dest)
                 })
-            }) { (_, message) in
-                guard let message = message else { return }
+            }) { (_, _) in
                 self.calculatingAlertController.dismiss(animated: false, completion: {
-                    let banner = NotificationBanner(title: "No ETA", subtitle: message, style: .warning)
-                    banner.duration = AppVariable.bannerDuration
-                    banner.show()
+                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimated an arrival time based on your current location.", preferredStyle: .alert)
+                    let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                    alert.addAction(dismiss)
+                    self.present(alert, animated: true, completion: nil)
                 })
             }
         }
@@ -328,7 +328,10 @@ class DepartureViewController: UIViewController {
         timeFormatter.pmSymbol = "pm"
         let time = timeFormatter.string(from: eta.eta)
         let title = "Arrival: \(time)"
-        let message = "Based on your current location you are \(eta.etaMin) min from \(destination.name)."
+        var message = "Based on your current location you are \(eta.nextStationEtaMin) min from \(eta.nextStation.name) and \(eta.etaMin) min from your destination."
+        if eta.nextStation.code == destination.code {
+            message = "Based on your current location you are \(eta.etaMin) min from your destination."
+        }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
@@ -397,12 +400,12 @@ extension DepartureViewController: DepartureViewDelegate {
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
+        actions.addAction(share)
         if action == .store {
             actions.addAction(setNotif)
         } else {
             actions.addAction(deleteNotif)
         }
-        actions.addAction(share)
         actions.addAction(cancel)
         present(actions, animated: true, completion: nil)
     }
