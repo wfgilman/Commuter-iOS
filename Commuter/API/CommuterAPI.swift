@@ -78,9 +78,9 @@ class CommuterAPI: NSObject {
         case delete
     }
     
-    func setNotification(deviceId: String, tripId: Int, stationId: Int, action: NotificationAction, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
+    func setNotification(deviceId: String, tripId: Int, stationCode: String, action: NotificationAction, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
         let url: URLConvertible = self.baseURL + "/notifications"
-        var params: Parameters = ["device_id" : deviceId, "trip_id" : tripId, "station_id" : stationId]
+        var params: Parameters = ["device_id" : deviceId, "trip_id" : tripId, "station_code" : stationCode]
         if action == .delete {
             params["remove"] = true
         }

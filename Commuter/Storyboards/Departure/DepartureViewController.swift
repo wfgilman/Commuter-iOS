@@ -234,22 +234,31 @@ class DepartureViewController: UIViewController {
                 guard let token: String = AppVariable.deviceId else {
                     print("no device token")
                     // Device didn't register correctly. Prompt to try again.
+                    DispatchQueue.main.async {
+                        self.notifDeparture = departure
+                        self.notifCommute = commute
+                        self.notifAction = action
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                     return
                 }
                 let station: Station = (commute == .morning) ? AppVariable.origStation! : AppVariable.destStation!
-                CommuterAPI.sharedClient.setNotification(deviceId: token, tripId: departure.tripId, stationId: station.id, action: action, success: {
+                CommuterAPI.sharedClient.setNotification(deviceId: token, tripId: departure.tripId, stationCode: station.code, action: action, success: {
                     // Cascade update to notify property to corresponding view.
                     self.updateDeparture(departure: departure, commute: commute, action: action)
-                }, failure: { (_, message) in
-                    // Failed to store the notification. Do nothing.
-                    guard let message = message else { return }
-                    print("\(message)")
+                }, failure: { (_, _) in
+                    let banner = NotificationBanner.init(title: "Something went wrong", subtitle: "We couldn't set your notification. Our bad.", style: .warning)
+                    banner.duration = AppVariable.bannerDuration
+                    banner.show()
                 })
                 
             } else {
                 // User didn't allow notifications. Remind him.
-                print("user didn't allow notifications")
-                return
+                DispatchQueue.main.async {
+                    let banner = NotificationBanner.init(title: "Notifications Disabled", subtitle: "Enable them for Commuter in your Settings.", style: .info)
+                    banner.duration = AppVariable.bannerDuration
+                    banner.show()
+                }
             }
         }
     }
