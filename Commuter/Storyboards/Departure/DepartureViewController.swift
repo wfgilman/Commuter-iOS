@@ -338,8 +338,14 @@ class DepartureViewController: UIViewController {
         let time = timeFormatter.string(from: eta.eta)
         let title = "Arrival: \(time)"
         var message = "Based on your current location you are \(eta.nextStationEtaMin) min from \(eta.nextStation.name) and \(eta.etaMin) min from your destination."
+        if (eta.nextStation.code == destination.code) && (eta.nextStationEtaMin == 0) {
+            message = "Based on your current location you are presently arriving at your destination."
+        }
         if eta.nextStation.code == destination.code {
             message = "Based on your current location you are \(eta.etaMin) min from your destination."
+        }
+        if eta.nextStationEtaMin == 0 {
+            message = "Based on your current location you are approaching \(eta.nextStation.name) and \(eta.etaMin) min from your destination."
         }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
