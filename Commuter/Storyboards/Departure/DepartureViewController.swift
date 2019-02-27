@@ -310,7 +310,7 @@ class DepartureViewController: UIViewController {
                 })
             }) { (_, _) in
                 self.calculatingAlertController.dismiss(animated: false, completion: {
-                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimated an arrival time based on your current location.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimate an arrival time based on your current location.", preferredStyle: .alert)
                     let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
                     alert.addAction(dismiss)
                     self.present(alert, animated: true, completion: nil)
