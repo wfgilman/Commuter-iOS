@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		BE05E3F12206A65500A69B75 /* ExpandedTouchAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */; };
 		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
+		BE0B48DE22282E74003CC87A /* StationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48DD22282E74003CC87A /* StationView.xib */; };
+		BE0B48E022282E8C003CC87A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0B48DF22282E8C003CC87A /* StationView.swift */; };
+		BE0B48E822297AB4003CC87A /* Heebo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E122297AB3003CC87A /* Heebo-Medium.ttf */; };
+		BE0B48E922297AB4003CC87A /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E222297AB3003CC87A /* Heebo-Light.ttf */; };
+		BE0B48EA22297AB4003CC87A /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E322297AB3003CC87A /* Heebo-Regular.ttf */; };
+		BE0B48EB22297AB4003CC87A /* Heebo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E422297AB3003CC87A /* Heebo-Black.ttf */; };
+		BE0B48EC22297AB4003CC87A /* Heebo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E522297AB4003CC87A /* Heebo-Bold.ttf */; };
+		BE0B48ED22297AB4003CC87A /* Heebo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E622297AB4003CC87A /* Heebo-ExtraBold.ttf */; };
+		BE0B48EE22297AB4003CC87A /* Heebo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E722297AB4003CC87A /* Heebo-Thin.ttf */; };
 		BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B664D21FAA9BA002E2A96 /* ETA.swift */; };
 		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
@@ -30,24 +39,6 @@
 		BEBA57A321BDB2D400CDB586 /* DepartureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57A221BDB2D400CDB586 /* DepartureView.xib */; };
 		BEBA57A521BDD09800CDB586 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57A421BDD09800CDB586 /* UIColor.swift */; };
 		BEBA57A721BDD0CE00CDB586 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57A621BDD0CE00CDB586 /* AppColor.swift */; };
-		BEBA57BB21BDD52500CDB586 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57A921BDD52100CDB586 /* Lato-BoldItalic.ttf */; };
-		BEBA57BC21BDD52500CDB586 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57AA21BDD52100CDB586 /* Lato-Light.ttf */; };
-		BEBA57BD21BDD52500CDB586 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57AB21BDD52100CDB586 /* Lato-Bold.ttf */; };
-		BEBA57BE21BDD52500CDB586 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57AC21BDD52100CDB586 /* Lato-Thin.ttf */; };
-		BEBA57BF21BDD52500CDB586 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57AD21BDD52100CDB586 /* Lato-Medium.ttf */; };
-		BEBA57C021BDD52500CDB586 /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57AE21BDD52100CDB586 /* Lato-HeavyItalic.ttf */; };
-		BEBA57C121BDD52500CDB586 /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57AF21BDD52100CDB586 /* Lato-Hairline.ttf */; };
-		BEBA57C221BDD52500CDB586 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B021BDD52100CDB586 /* Lato-LightItalic.ttf */; };
-		BEBA57C321BDD52500CDB586 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B121BDD52200CDB586 /* Lato-Black.ttf */; };
-		BEBA57C421BDD52500CDB586 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B221BDD52200CDB586 /* Lato-Regular.ttf */; };
-		BEBA57C521BDD52500CDB586 /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B321BDD52200CDB586 /* Lato-Semibold.ttf */; };
-		BEBA57C621BDD52500CDB586 /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B421BDD52300CDB586 /* Lato-SemiboldItalic.ttf */; };
-		BEBA57C721BDD52500CDB586 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B521BDD52400CDB586 /* Lato-BlackItalic.ttf */; };
-		BEBA57C821BDD52500CDB586 /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B621BDD52400CDB586 /* Lato-MediumItalic.ttf */; };
-		BEBA57C921BDD52500CDB586 /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B721BDD52500CDB586 /* Lato-HairlineItalic.ttf */; };
-		BEBA57CA21BDD52500CDB586 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B821BDD52500CDB586 /* Lato-ThinItalic.ttf */; };
-		BEBA57CB21BDD52500CDB586 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57B921BDD52500CDB586 /* Lato-Italic.ttf */; };
-		BEBA57CC21BDD52500CDB586 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBA57BA21BDD52500CDB586 /* Lato-Heavy.ttf */; };
 		BEBA57CE21BDD5FB00CDB586 /* AppFontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57CD21BDD5FB00CDB586 /* AppFontName.swift */; };
 		BEBA57D221BDD69A00CDB586 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA57D121BDD69A00CDB586 /* UIFont.swift */; };
 		BEE8E02421D2C98600F3AA0F /* CommuteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */; };
@@ -65,6 +56,15 @@
 		6451D2C341554AF11F776027 /* Pods_Commuter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Commuter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedTouchAreaButton.swift; sourceTree = "<group>"; };
 		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		BE0B48DD22282E74003CC87A /* StationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationView.xib; sourceTree = "<group>"; };
+		BE0B48DF22282E8C003CC87A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		BE0B48E122297AB3003CC87A /* Heebo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Medium.ttf"; sourceTree = "<group>"; };
+		BE0B48E222297AB3003CC87A /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
+		BE0B48E322297AB3003CC87A /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Regular.ttf"; sourceTree = "<group>"; };
+		BE0B48E422297AB3003CC87A /* Heebo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Black.ttf"; sourceTree = "<group>"; };
+		BE0B48E522297AB4003CC87A /* Heebo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Bold.ttf"; sourceTree = "<group>"; };
+		BE0B48E622297AB4003CC87A /* Heebo-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-ExtraBold.ttf"; sourceTree = "<group>"; };
+		BE0B48E722297AB4003CC87A /* Heebo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Thin.ttf"; sourceTree = "<group>"; };
 		BE1B664D21FAA9BA002E2A96 /* ETA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA.swift; sourceTree = "<group>"; };
 		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,24 +88,6 @@
 		BEBA57A221BDB2D400CDB586 /* DepartureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureView.xib; sourceTree = "<group>"; };
 		BEBA57A421BDD09800CDB586 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BEBA57A621BDD0CE00CDB586 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
-		BEBA57A921BDD52100CDB586 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57AA21BDD52100CDB586 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
-		BEBA57AB21BDD52100CDB586 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
-		BEBA57AC21BDD52100CDB586 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
-		BEBA57AD21BDD52100CDB586 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
-		BEBA57AE21BDD52100CDB586 /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57AF21BDD52100CDB586 /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
-		BEBA57B021BDD52100CDB586 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57B121BDD52200CDB586 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
-		BEBA57B221BDD52200CDB586 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
-		BEBA57B321BDD52200CDB586 /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
-		BEBA57B421BDD52300CDB586 /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57B521BDD52400CDB586 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57B621BDD52400CDB586 /* Lato-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-MediumItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57B721BDD52500CDB586 /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57B821BDD52500CDB586 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
-		BEBA57B921BDD52500CDB586 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
-		BEBA57BA21BDD52500CDB586 /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
 		BEBA57CD21BDD5FB00CDB586 /* AppFontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFontName.swift; sourceTree = "<group>"; };
 		BEBA57D121BDD69A00CDB586 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		BEE8E02221D2C98600F3AA0F /* CommuteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteCell.swift; sourceTree = "<group>"; };
@@ -244,6 +226,8 @@
 				BEBA579021B97E6400CDB586 /* Onboard.storyboard */,
 				BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */,
 				BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */,
+				BE0B48DD22282E74003CC87A /* StationView.xib */,
+				BE0B48DF22282E8C003CC87A /* StationView.swift */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -263,24 +247,13 @@
 		BEBA57A821BDD4C000CDB586 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				BEBA57B121BDD52200CDB586 /* Lato-Black.ttf */,
-				BEBA57B521BDD52400CDB586 /* Lato-BlackItalic.ttf */,
-				BEBA57AB21BDD52100CDB586 /* Lato-Bold.ttf */,
-				BEBA57A921BDD52100CDB586 /* Lato-BoldItalic.ttf */,
-				BEBA57AF21BDD52100CDB586 /* Lato-Hairline.ttf */,
-				BEBA57B721BDD52500CDB586 /* Lato-HairlineItalic.ttf */,
-				BEBA57BA21BDD52500CDB586 /* Lato-Heavy.ttf */,
-				BEBA57AE21BDD52100CDB586 /* Lato-HeavyItalic.ttf */,
-				BEBA57B921BDD52500CDB586 /* Lato-Italic.ttf */,
-				BEBA57AA21BDD52100CDB586 /* Lato-Light.ttf */,
-				BEBA57B021BDD52100CDB586 /* Lato-LightItalic.ttf */,
-				BEBA57AD21BDD52100CDB586 /* Lato-Medium.ttf */,
-				BEBA57B621BDD52400CDB586 /* Lato-MediumItalic.ttf */,
-				BEBA57B221BDD52200CDB586 /* Lato-Regular.ttf */,
-				BEBA57B321BDD52200CDB586 /* Lato-Semibold.ttf */,
-				BEBA57B421BDD52300CDB586 /* Lato-SemiboldItalic.ttf */,
-				BEBA57AC21BDD52100CDB586 /* Lato-Thin.ttf */,
-				BEBA57B821BDD52500CDB586 /* Lato-ThinItalic.ttf */,
+				BE0B48E422297AB3003CC87A /* Heebo-Black.ttf */,
+				BE0B48E522297AB4003CC87A /* Heebo-Bold.ttf */,
+				BE0B48E622297AB4003CC87A /* Heebo-ExtraBold.ttf */,
+				BE0B48E222297AB3003CC87A /* Heebo-Light.ttf */,
+				BE0B48E122297AB3003CC87A /* Heebo-Medium.ttf */,
+				BE0B48E322297AB3003CC87A /* Heebo-Regular.ttf */,
+				BE0B48E722297AB4003CC87A /* Heebo-Thin.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -370,33 +343,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEBA57C721BDD52500CDB586 /* Lato-BlackItalic.ttf in Resources */,
 				BEF7F97721D986CB005A44ED /* MuteNotificationsCell.xib in Resources */,
 				BEF7F97B21D98A4A005A44ED /* NotificationCell.xib in Resources */,
-				BEBA57C121BDD52500CDB586 /* Lato-Hairline.ttf in Resources */,
+				BE0B48EB22297AB4003CC87A /* Heebo-Black.ttf in Resources */,
+				BE0B48E822297AB4003CC87A /* Heebo-Medium.ttf in Resources */,
+				BE0B48ED22297AB4003CC87A /* Heebo-ExtraBold.ttf in Resources */,
+				BE0B48EA22297AB4003CC87A /* Heebo-Regular.ttf in Resources */,
 				BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */,
 				BEBA57A321BDB2D400CDB586 /* DepartureView.xib in Resources */,
+				BE0B48EE22297AB4003CC87A /* Heebo-Thin.ttf in Resources */,
 				BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */,
-				BEBA57BF21BDD52500CDB586 /* Lato-Medium.ttf in Resources */,
-				BEBA57CB21BDD52500CDB586 /* Lato-Italic.ttf in Resources */,
-				BEBA57C621BDD52500CDB586 /* Lato-SemiboldItalic.ttf in Resources */,
-				BEBA57CA21BDD52500CDB586 /* Lato-ThinItalic.ttf in Resources */,
-				BEBA57C021BDD52500CDB586 /* Lato-HeavyItalic.ttf in Resources */,
+				BE0B48DE22282E74003CC87A /* StationView.xib in Resources */,
+				BE0B48E922297AB4003CC87A /* Heebo-Light.ttf in Resources */,
 				BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */,
-				BEBA57C821BDD52500CDB586 /* Lato-MediumItalic.ttf in Resources */,
-				BEBA57CC21BDD52500CDB586 /* Lato-Heavy.ttf in Resources */,
 				BEBA579121B97E6400CDB586 /* Onboard.storyboard in Resources */,
-				BEBA57C921BDD52500CDB586 /* Lato-HairlineItalic.ttf in Resources */,
-				BEBA57BB21BDD52500CDB586 /* Lato-BoldItalic.ttf in Resources */,
+				BE0B48EC22297AB4003CC87A /* Heebo-Bold.ttf in Resources */,
 				BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */,
-				BEBA57BE21BDD52500CDB586 /* Lato-Thin.ttf in Resources */,
-				BEBA57C521BDD52500CDB586 /* Lato-Semibold.ttf in Resources */,
-				BEBA57C421BDD52500CDB586 /* Lato-Regular.ttf in Resources */,
-				BEBA57BD21BDD52500CDB586 /* Lato-Bold.ttf in Resources */,
-				BEBA57BC21BDD52500CDB586 /* Lato-Light.ttf in Resources */,
-				BEBA57C321BDD52500CDB586 /* Lato-Black.ttf in Resources */,
 				BEE8E02521D2C98600F3AA0F /* CommuteCell.xib in Resources */,
-				BEBA57C221BDD52500CDB586 /* Lato-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA578E21B82D8300CDB586 /* SelectDestViewController.swift in Sources */,
+				BE0B48E022282E8C003CC87A /* StationView.swift in Sources */,
 				BEBA57A521BDD09800CDB586 /* UIColor.swift in Sources */,
 				BEBA57CE21BDD5FB00CDB586 /* AppFontName.swift in Sources */,
 				BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */,
