@@ -66,6 +66,6 @@ extension SelectDestViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return CGFloat(40)
+        return CGFloat(60)
     }
 }

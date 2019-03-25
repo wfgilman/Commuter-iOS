@@ -11,14 +11,11 @@
 		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
 		BE0B48DE22282E74003CC87A /* StationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48DD22282E74003CC87A /* StationView.xib */; };
 		BE0B48E022282E8C003CC87A /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0B48DF22282E8C003CC87A /* StationView.swift */; };
-		BE0B48E822297AB4003CC87A /* Heebo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E122297AB3003CC87A /* Heebo-Medium.ttf */; };
-		BE0B48E922297AB4003CC87A /* Heebo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E222297AB3003CC87A /* Heebo-Light.ttf */; };
-		BE0B48EA22297AB4003CC87A /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E322297AB3003CC87A /* Heebo-Regular.ttf */; };
-		BE0B48EB22297AB4003CC87A /* Heebo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E422297AB3003CC87A /* Heebo-Black.ttf */; };
-		BE0B48EC22297AB4003CC87A /* Heebo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E522297AB4003CC87A /* Heebo-Bold.ttf */; };
-		BE0B48ED22297AB4003CC87A /* Heebo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E622297AB4003CC87A /* Heebo-ExtraBold.ttf */; };
-		BE0B48EE22297AB4003CC87A /* Heebo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE0B48E722297AB4003CC87A /* Heebo-Thin.ttf */; };
 		BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B664D21FAA9BA002E2A96 /* ETA.swift */; };
+		BE5D6936223FD7B200B46398 /* StationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D6934223FD7B200B46398 /* StationCell.swift */; };
+		BE5D6937223FD7B200B46398 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D6935223FD7B200B46398 /* StationCell.xib */; };
+		BE5D6939224125E700B46398 /* Heebo-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE5D6938224125E700B46398 /* Heebo-Black.ttf */; };
+		BE5D694822412BBD00B46398 /* Heebo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE5D694722412BBD00B46398 /* Heebo-Regular.ttf */; };
 		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
@@ -58,14 +55,11 @@
 		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		BE0B48DD22282E74003CC87A /* StationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationView.xib; sourceTree = "<group>"; };
 		BE0B48DF22282E8C003CC87A /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
-		BE0B48E122297AB3003CC87A /* Heebo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Medium.ttf"; sourceTree = "<group>"; };
-		BE0B48E222297AB3003CC87A /* Heebo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Light.ttf"; sourceTree = "<group>"; };
-		BE0B48E322297AB3003CC87A /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Regular.ttf"; sourceTree = "<group>"; };
-		BE0B48E422297AB3003CC87A /* Heebo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Black.ttf"; sourceTree = "<group>"; };
-		BE0B48E522297AB4003CC87A /* Heebo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Bold.ttf"; sourceTree = "<group>"; };
-		BE0B48E622297AB4003CC87A /* Heebo-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-ExtraBold.ttf"; sourceTree = "<group>"; };
-		BE0B48E722297AB4003CC87A /* Heebo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Thin.ttf"; sourceTree = "<group>"; };
 		BE1B664D21FAA9BA002E2A96 /* ETA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA.swift; sourceTree = "<group>"; };
+		BE5D6934223FD7B200B46398 /* StationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCell.swift; sourceTree = "<group>"; };
+		BE5D6935223FD7B200B46398 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
+		BE5D6938224125E700B46398 /* Heebo-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Heebo-Black.ttf"; sourceTree = "<group>"; };
+		BE5D694722412BBD00B46398 /* Heebo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Heebo-Regular.ttf"; path = "../../../../../Downloads/Commuter-App/Fonts/Heebo-Regular.ttf"; sourceTree = "<group>"; };
 		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +222,8 @@
 				BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */,
 				BE0B48DD22282E74003CC87A /* StationView.xib */,
 				BE0B48DF22282E8C003CC87A /* StationView.swift */,
+				BE5D6934223FD7B200B46398 /* StationCell.swift */,
+				BE5D6935223FD7B200B46398 /* StationCell.xib */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -247,13 +243,8 @@
 		BEBA57A821BDD4C000CDB586 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				BE0B48E422297AB3003CC87A /* Heebo-Black.ttf */,
-				BE0B48E522297AB4003CC87A /* Heebo-Bold.ttf */,
-				BE0B48E622297AB4003CC87A /* Heebo-ExtraBold.ttf */,
-				BE0B48E222297AB3003CC87A /* Heebo-Light.ttf */,
-				BE0B48E122297AB3003CC87A /* Heebo-Medium.ttf */,
-				BE0B48E322297AB3003CC87A /* Heebo-Regular.ttf */,
-				BE0B48E722297AB4003CC87A /* Heebo-Thin.ttf */,
+				BE5D694722412BBD00B46398 /* Heebo-Regular.ttf */,
+				BE5D6938224125E700B46398 /* Heebo-Black.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -343,21 +334,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE5D6939224125E700B46398 /* Heebo-Black.ttf in Resources */,
+				BE5D6937223FD7B200B46398 /* StationCell.xib in Resources */,
 				BEF7F97721D986CB005A44ED /* MuteNotificationsCell.xib in Resources */,
+				BE5D694822412BBD00B46398 /* Heebo-Regular.ttf in Resources */,
 				BEF7F97B21D98A4A005A44ED /* NotificationCell.xib in Resources */,
-				BE0B48EB22297AB4003CC87A /* Heebo-Black.ttf in Resources */,
-				BE0B48E822297AB4003CC87A /* Heebo-Medium.ttf in Resources */,
-				BE0B48ED22297AB4003CC87A /* Heebo-ExtraBold.ttf in Resources */,
-				BE0B48EA22297AB4003CC87A /* Heebo-Regular.ttf in Resources */,
 				BEBA577821B49DB900CDB586 /* LaunchScreen.storyboard in Resources */,
 				BEBA57A321BDB2D400CDB586 /* DepartureView.xib in Resources */,
-				BE0B48EE22297AB4003CC87A /* Heebo-Thin.ttf in Resources */,
 				BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */,
 				BE0B48DE22282E74003CC87A /* StationView.xib in Resources */,
-				BE0B48E922297AB4003CC87A /* Heebo-Light.ttf in Resources */,
 				BEBA577521B49DB900CDB586 /* Assets.xcassets in Resources */,
 				BEBA579121B97E6400CDB586 /* Onboard.storyboard in Resources */,
-				BE0B48EC22297AB4003CC87A /* Heebo-Bold.ttf in Resources */,
 				BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */,
 				BEE8E02521D2C98600F3AA0F /* CommuteCell.xib in Resources */,
 			);
@@ -440,6 +427,7 @@
 				BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */,
 				BEBA578621B4A21300CDB586 /* Departure.swift in Sources */,
 				BEBA579E21BB570100CDB586 /* DepartureCell.swift in Sources */,
+				BE5D6936223FD7B200B46398 /* StationCell.swift in Sources */,
 				BEF7F97321D98226005A44ED /* Notification.swift in Sources */,
 				BEF7F97A21D98A4A005A44ED /* NotificationCell.swift in Sources */,
 				BEE8E02421D2C98600F3AA0F /* CommuteCell.swift in Sources */,

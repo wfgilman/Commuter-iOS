@@ -27,9 +27,8 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Lato-Regular.ttf</string>
-		<string>Lato-Light.ttf</string>
-		<string>Lato-Semibold.ttf</string>
+		<string>Heebo-Regular.ttf</string>
+		<string>Heebo-Black.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

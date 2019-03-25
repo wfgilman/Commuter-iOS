@@ -9,9 +9,10 @@
 import UIKit
 
 struct AppFontName {
-    static let regular = "Lato-Regular"
-    static let semibold = "Lato-Semibold"
-    static let light = "Lato-Light"
-    static let heavy = "Lato-Heavy"
-    static let bold = "Lato-Bold"
+    static let regular = "Heebo-Regular"
+//    static let semibold = "Heebo-Medium"
+//    static let light = "Heebo-Light"
+//    static let heavy = "Heebo-ExtraBold"
+//    static let bold = "Heebo-Bold"
+    static let black = "Heebo-Black"
 }
