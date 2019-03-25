@@ -8,26 +8,27 @@
 
 import UIKit
 import NotificationBannerSwift
+import PickerView
 
 class SelectOrigViewController: UIViewController {
 
-    @IBOutlet weak var pickerContainerView: UIView!
+    @IBOutlet weak var pickerView: UIView!
     @IBOutlet weak var stationPickerView: UIPickerView!
     @IBOutlet weak var selectButton: UIButton!
     
     var activityAnimation: UIActivityIndicatorView!
     var stations = [Station]()
     var selectedStation: Station?
+    var rowHeight: CGFloat = 80
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        stationPickerView.delegate = self
-        stationPickerView.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         activityAnimation = UIActivityIndicatorView(style: .whiteLarge)
-        stationPickerView.isHidden = true
-        pickerContainerView.addSubview(activityAnimation)
+        pickerView.addSubview(activityAnimation)
         activityAnimation.color = AppColor.MediumGray.color
         activityAnimation.startAnimating()
         
@@ -81,6 +82,29 @@ class SelectOrigViewController: UIViewController {
             self.loadStations()
         }
         banner.show()
+    }
+}
+
+extension SelectOrigViewController: PickerViewDataSource, PickerViewDelegate {
+    
+    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
+        return stations.count
+    }
+    
+    func pickerView(_ pickerView: PickerView, titleForRow row: Int) -> String {
+        return stations[row].name
+    }
+    
+    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
+        return rowHeight
+    }
+    
+    func pickerView(_ pickerView: PickerView, didSelectRow row: Int) {
+        selectedStation = stations[row]
+    }
+    
+    func pickerView(_ pickerView: PickerView, viewForRow row: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {
+        <#code#>
     }
 }
 

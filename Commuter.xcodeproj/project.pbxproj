@@ -10,6 +10,8 @@
 		BE05E3F12206A65500A69B75 /* ExpandedTouchAreaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */; };
 		BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE08ECC221BE05D1000410FB /* UINavigationBar.swift */; };
 		BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B664D21FAA9BA002E2A96 /* ETA.swift */; };
+		BE5D694A224913BE00B46398 /* StationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D6949224913BE00B46398 /* StationView.xib */; };
+		BE5D694C224913CD00B46398 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D694B224913CD00B46398 /* StationView.swift */; };
 		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
@@ -66,6 +68,8 @@
 		BE05E3F02206A65500A69B75 /* ExpandedTouchAreaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedTouchAreaButton.swift; sourceTree = "<group>"; };
 		BE08ECC221BE05D1000410FB /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		BE1B664D21FAA9BA002E2A96 /* ETA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA.swift; sourceTree = "<group>"; };
+		BE5D6949224913BE00B46398 /* StationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationView.xib; sourceTree = "<group>"; };
+		BE5D694B224913CD00B46398 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 				BEBA579021B97E6400CDB586 /* Onboard.storyboard */,
 				BEBA578921B774E600CDB586 /* SelectOrigViewController.swift */,
 				BEBA578D21B82D8300CDB586 /* SelectDestViewController.swift */,
+				BE5D6949224913BE00B46398 /* StationView.xib */,
+				BE5D694B224913CD00B46398 /* StationView.swift */,
 			);
 			path = Onboard;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 				BEBA579F21BB570100CDB586 /* DepartureCell.xib in Resources */,
 				BEBA57BF21BDD52500CDB586 /* Lato-Medium.ttf in Resources */,
 				BEBA57CB21BDD52500CDB586 /* Lato-Italic.ttf in Resources */,
+				BE5D694A224913BE00B46398 /* StationView.xib in Resources */,
 				BEBA57C621BDD52500CDB586 /* Lato-SemiboldItalic.ttf in Resources */,
 				BEBA57CA21BDD52500CDB586 /* Lato-ThinItalic.ttf in Resources */,
 				BEBA57C021BDD52500CDB586 /* Lato-HeavyItalic.ttf in Resources */,
@@ -437,6 +444,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PickerView/PickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
 			);
@@ -447,6 +455,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
 			);
@@ -463,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBA578E21B82D8300CDB586 /* SelectDestViewController.swift in Sources */,
+				BE5D694C224913CD00B46398 /* StationView.swift in Sources */,
 				BEBA57A521BDD09800CDB586 /* UIColor.swift in Sources */,
 				BEBA57CE21BDD5FB00CDB586 /* AppFontName.swift in Sources */,
 				BE08ECC321BE05D1000410FB /* UINavigationBar.swift in Sources */,

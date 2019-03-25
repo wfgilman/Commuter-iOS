@@ -1,15 +1,17 @@
 PODS:
-  - Alamofire (4.8.0)
-  - MarqueeLabel/Swift (3.2.0)
-  - NotificationBannerSwift (1.8.0):
+  - Alamofire (4.8.1)
+  - MarqueeLabel/Swift (3.2.1)
+  - NotificationBannerSwift (2.0.1):
     - MarqueeLabel/Swift (~> 3.2.0)
-    - SnapKit (~> 4.0.1)
-  - SnapKit (4.0.1)
+    - SnapKit (~> 4.2.0)
+  - PickerView (0.4.0)
+  - SnapKit (4.2.0)
   - Unbox (2.5.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - NotificationBannerSwift
+  - PickerView
   - Unbox (~> 2.4)
 
 SPEC REPOS:
@@ -17,16 +19,18 @@ SPEC REPOS:
     - Alamofire
     - MarqueeLabel
     - NotificationBannerSwift
+    - PickerView
     - SnapKit
     - Unbox
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
-  NotificationBannerSwift: 49fc4be7fabada55b189b50e72184c92edd5f7f7
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
+  NotificationBannerSwift: 007774aa590cc9680647b92b2f217bef5c00c32c
+  PickerView: a736ea986d992aa3ef32423f475fdf3f3a0cf7d4
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
 
-PODFILE CHECKSUM: a3b4f0dfa7c890ecb20ade4c96dd954b4db878b7
+PODFILE CHECKSUM: b6eb53e10baf19f1707f8c1a65a474dad778860c
 
 COCOAPODS: 1.5.3
