@@ -25,6 +25,19 @@ class StationView: UIView {
             stationLabel.text = station.name
         }
     }
+    var highlighted: Bool! {
+        didSet {
+            if highlighted == true {
+                stationLabel.textColor = AppColor.Blue.color
+                markerView.backgroundColor = AppColor.Blue.color
+                stationLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
+            } else {
+                stationLabel.textColor = AppColor.Charcoal.color
+                markerView.backgroundColor = AppColor.MediumGray.color
+                stationLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+            }
+        }
+    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
@@ -45,12 +58,24 @@ class StationView: UIView {
     }
     
     func setupView() {
+        contentView.backgroundColor = AppColor.PaleGray.color
+        
+        stationLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        stationLabel.textColor = AppColor.Charcoal.color
+        
         markerView.layer.cornerRadius = 5
+        markerView.backgroundColor = AppColor.MediumGray.color
         topDot1View.layer.cornerRadius = 1.5
+        topDot1View.backgroundColor = AppColor.MediumGray.color
         topDot2View.layer.cornerRadius = 1.5
+        topDot2View.backgroundColor = AppColor.MediumGray.color
         topDot3View.layer.cornerRadius = 1.5
+        topDot3View.backgroundColor = AppColor.MediumGray.color
         bottomDot1View.layer.cornerRadius = 1.5
+        bottomDot1View.backgroundColor = AppColor.MediumGray.color
         bottomDot2View.layer.cornerRadius = 1.5
+        bottomDot2View.backgroundColor = AppColor.MediumGray.color
         bottomDot3View.layer.cornerRadius = 1.5
+        bottomDot3View.backgroundColor = AppColor.MediumGray.color
     }
 }

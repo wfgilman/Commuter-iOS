@@ -25,9 +25,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kX1-bq-gxM">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <rect key="frame" x="62" y="592" width="251" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="C0o-9R-TFO"/>
+                                    <constraint firstAttribute="width" secondItem="kX1-bq-gxM" secondAttribute="height" multiplier="280:48" id="6gh-jj-Tc1"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -35,21 +35,21 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsO-HT-YLH" customClass="PickerView" customModule="PickerView">
-                                <rect key="frame" x="20" y="219.5" width="335" height="383.5"/>
+                                <rect key="frame" x="65.5" y="219.5" width="244" height="372.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kX1-bq-gxM" secondAttribute="trailing" constant="20" id="1tc-pF-DbT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kX1-bq-gxM" secondAttribute="bottom" constant="20" id="GHg-cW-wDF"/>
+                            <constraint firstItem="vsO-HT-YLH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="46f-2M-QXq"/>
+                            <constraint firstItem="kX1-bq-gxM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.84" id="92l-cj-bp6"/>
+                            <constraint firstItem="kX1-bq-gxM" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.67" id="9HF-cf-oAP"/>
+                            <constraint firstItem="vsO-HT-YLH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.65" id="Cei-rX-cam"/>
+                            <constraint firstItem="kX1-bq-gxM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IVI-1v-Xqa"/>
                             <constraint firstItem="gE8-Gw-jqn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.6" id="JFM-LR-Hjr"/>
-                            <constraint firstItem="vsO-HT-YLH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="N7W-1M-6kg"/>
                             <constraint firstItem="vsO-HT-YLH" firstAttribute="top" secondItem="gE8-Gw-jqn" secondAttribute="bottom" id="PNX-xS-F0e"/>
-                            <constraint firstItem="kX1-bq-gxM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Q6y-3N-H5j"/>
                             <constraint firstItem="gE8-Gw-jqn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.7" id="YIS-59-Kbd"/>
                             <constraint firstItem="kX1-bq-gxM" firstAttribute="top" secondItem="vsO-HT-YLH" secondAttribute="bottom" id="h9L-kc-9PB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vsO-HT-YLH" secondAttribute="trailing" constant="20" id="iiZ-EA-kXb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -57,6 +57,7 @@
                     <connections>
                         <outlet property="pickerView" destination="vsO-HT-YLH" id="9Dk-bh-jeo"/>
                         <outlet property="selectButton" destination="kX1-bq-gxM" id="ZO9-44-J4R"/>
+                        <outlet property="titleLabel" destination="gE8-Gw-jqn" id="x94-d9-uPr"/>
                         <segue destination="y4N-40-I0R" kind="show" identifier="SelectDestSegue" id="mnl-xv-c6R"/>
                     </connections>
                 </viewController>
