@@ -54,6 +54,12 @@ class SelectOrigViewController: UIViewController {
         selectButton.layer.shadowOpacity = 1
         selectButton.layer.shadowRadius = 8
         
+        if let navBar = navigationController?.navigationBar {
+            navBar.isTranslucent = true
+            navBar.setBackgroundImage(UIImage(), for: .default)
+            navBar.shadowImage = UIImage()
+        }
+        
         loadStations()
     }
     
@@ -118,7 +124,6 @@ extension SelectOrigViewController: PickerViewDataSource, PickerViewDelegate {
     
     func pickerView(_ pickerView: PickerView, didSelectRow row: Int) {
         selectedStation = stations[row]
-        print(selectedStation?.name)
     }
     
     func pickerView(_ pickerView: PickerView, viewForRow row: Int, highlighted: Bool, reusingView view: UIView?) -> UIView? {

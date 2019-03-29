@@ -30,11 +30,11 @@ class StationView: UIView {
             if highlighted == true {
                 stationLabel.textColor = AppColor.Blue.color
                 markerView.backgroundColor = AppColor.Blue.color
-                stationLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
+                stationLabel.font = UIFont.systemFont(ofSize: 17, weight: .black)
             } else {
                 stationLabel.textColor = AppColor.Charcoal.color
                 markerView.backgroundColor = AppColor.MediumGray.color
-                stationLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+                stationLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
             }
         }
     }
@@ -60,7 +60,7 @@ class StationView: UIView {
     func setupView() {
         contentView.backgroundColor = AppColor.PaleGray.color
         
-        stationLabel.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+        stationLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         stationLabel.textColor = AppColor.Charcoal.color
         
         markerView.layer.cornerRadius = 5
