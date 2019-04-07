@@ -50,9 +50,9 @@ class SelectOrigViewController: UIViewController {
         selectButton.tintColor = UIColor.white
         selectButton.layer.cornerRadius = 20
         selectButton.layer.shadowColor = AppColor.Blue.color.withAlphaComponent(0.5).cgColor
-        selectButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        selectButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         selectButton.layer.shadowOpacity = 1
-        selectButton.layer.shadowRadius = 8
+        selectButton.layer.shadowRadius = 4
         
         if let navBar = navigationController?.navigationBar {
             navBar.isTranslucent = true

@@ -64,6 +64,7 @@ class StationView: UIView {
         stationLabel.textColor = AppColor.Charcoal.color
         
         markerView.layer.cornerRadius = 5
+        markerView.layer.masksToBounds = true
         markerView.backgroundColor = AppColor.MediumGray.color
         topDot1View.layer.cornerRadius = 1.5
         topDot1View.backgroundColor = AppColor.MediumGray.color

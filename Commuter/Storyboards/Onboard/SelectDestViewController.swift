@@ -53,9 +53,9 @@ class SelectDestViewController: UIViewController {
         selectButton.tintColor = UIColor.white
         selectButton.layer.cornerRadius = 20
         selectButton.layer.shadowColor = AppColor.Blue.color.withAlphaComponent(0.5).cgColor
-        selectButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        selectButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         selectButton.layer.shadowOpacity = 1
-        selectButton.layer.shadowRadius = 8
+        selectButton.layer.shadowRadius = 4
         
         if let navBar = navigationController?.navigationBar {
             navBar.isTranslucent = true
@@ -71,8 +71,19 @@ class SelectDestViewController: UIViewController {
     }
 
     @IBAction func onTapSelectButton(_ sender: UIButton) {
-        AppVariable.destStation = selectedStation
-        performSegue(withIdentifier: "MainSegue", sender: nil)
+        guard let orig = AppVariable.origStation else { return }
+        guard let dest = selectedStation else { return }
+        CommuterAPI.sharedClient.checkCommute(origCode: orig.code, destCode: dest.code
+            , success: {
+                AppVariable.destStation = self.selectedStation
+                self.performSegue(withIdentifier: "MainSegue", sender: nil)
+        }) { (_, message) in
+            let alert = UIAlertController(title: "Station Transfer Required", message: message, preferredStyle: .alert)
+            let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
+            alert.addAction(okay)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
 }

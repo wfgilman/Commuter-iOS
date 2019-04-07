@@ -204,6 +204,19 @@ class CommuterAPI: NSObject {
         })
     }
     
+    func checkCommute(origCode: String, destCode: String, success: @escaping () -> (), failure: @escaping (Error, String?) -> ()) {
+        let url: URLConvertible = self.baseURL + "/commutes?orig=\(origCode)&dest=\(destCode)"
+        af?.request(url).validate().responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success:
+                success()
+            case .failure(let error):
+                let message = self.getErrorMessage(error: error, response: response)
+                failure(error, message)
+            }
+        })
+    }
+    
     private func getErrorMessage(error: Error, response: DataResponse<Any>) -> String? {
         if let data = response.data {
             do {

@@ -18,11 +18,13 @@ enum Commute: String {
 
 class DepartureViewController: UIViewController {
 
+    @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var origCommuteLabel: UILabel!
     @IBOutlet weak var destCommuteLabel: UILabel!
     @IBOutlet weak var highlightView: UIView!
+    @IBOutlet weak var commuteLabelStackView: UIStackView!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var hightlightViewLeft: NSLayoutConstraint!
     @IBOutlet weak var fabView: UIView!
@@ -34,8 +36,8 @@ class DepartureViewController: UIViewController {
     var pageHeight: CGFloat!
     var fab: UIImageView!
     var calculatingAlertController: UIAlertController!
-    var highlightOrigMinX: CGFloat!
-    var highlightDestMinX: CGFloat!
+    var highlightOrigMinX: CGFloat = 0
+    var highlightDestMinX: CGFloat = 0
     
     private var notifDeparture: Departure?
     private var notifCommute: Commute?
@@ -104,19 +106,21 @@ class DepartureViewController: UIViewController {
         morningDepartureView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
         eveningDepartureView.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: pageHeight)
         
-        if commute == .morning {
-            scrollView.contentOffset.x = 0
-        } else {
-            scrollView.contentOffset.x = pageWidth
-            
-        }
-        
+        highlightView.layoutIfNeeded()
+        commuteLabelStackView.layoutIfNeeded()
         let origCenterX = origCommuteLabel.frame.midX
         let destCenterX = destCommuteLabel.frame.midX
-        let widthCenter = highlightView.frame.width / 2
+        let widthCenter = highlightView.bounds.width / 2
         highlightOrigMinX = origCenterX - widthCenter
         highlightDestMinX = destCenterX - widthCenter
-        hightlightViewLeft.constant = highlightOrigMinX
+        
+        if commute == .morning {
+            scrollView.contentOffset.x = 0
+            hightlightViewLeft.constant = origCenterX - widthCenter
+        } else {
+            scrollView.contentOffset.x = pageWidth
+            hightlightViewLeft.constant = destCenterX - widthCenter
+        }
     }
     
     private func formatNavigationBar() {
@@ -126,7 +130,7 @@ class DepartureViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        self.view.backgroundColor = AppColor.Blue.color
+        navBarView.backgroundColor = AppColor.Blue.color
         tabBarView.backgroundColor = AppColor.Blue.color
         
         scrollView.delegate = self
@@ -138,8 +142,8 @@ class DepartureViewController: UIViewController {
         
         fabView.backgroundColor = AppColor.Blue.color
         fabView.layer.cornerRadius = fabView.frame.width / 2
-        fabView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
-        fabView.layer.shadowOffset = .zero
+        fabView.layer.shadowColor = AppColor.Blue.color.withAlphaComponent(0.5).cgColor
+        fabView.layer.shadowOffset = CGSize(width: 0, height: 4)
         fabView.layer.shadowOpacity = 1
         fabView.layer.shadowRadius = 4
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(getETA))
@@ -317,7 +321,7 @@ class DepartureViewController: UIViewController {
                 })
             }) { (_, _) in
                 self.calculatingAlertController.dismiss(animated: false, completion: {
-                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimated an arrival time based on your current location.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimate an arrival time based on your current location.", preferredStyle: .alert)
                     let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
                     alert.addAction(dismiss)
                     self.present(alert, animated: true, completion: nil)

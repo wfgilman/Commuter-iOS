@@ -15,6 +15,7 @@ enum CommuteDirection: String {
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     var commuteStations = [Station]()
@@ -34,7 +35,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = AppColor.Blue.color
+        navBarView.backgroundColor = AppColor.Blue.color
         
         orig = AppVariable.origStation!
         dest = AppVariable.destStation!

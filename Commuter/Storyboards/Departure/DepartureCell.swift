@@ -33,6 +33,7 @@ class DepartureCell: UITableViewCell {
     // Back View
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var backViewTop: NSLayoutConstraint!
+    @IBOutlet weak var backDividerView: UIView!
     @IBOutlet weak var headsignCodeLabel: UILabel!
     @IBOutlet weak var backEtdMinLabel: UILabel!
     @IBOutlet weak var schedLabel: UILabel!
@@ -77,7 +78,7 @@ class DepartureCell: UITableViewCell {
         configureFrontView()
         configureBackView()
     }
-    
+
     func configureDefaultState() {
         self.backViewTop.constant = self.frontViewTop.constant
         backView.isHidden = true
@@ -144,8 +145,11 @@ class DepartureCell: UITableViewCell {
         backView.layer.borderColor = AppColor.PaleGray.color.cgColor
         backView.layer.masksToBounds = true
         
+        backDividerView.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        
         headsignCodeLabel.font = UIFont.systemFont(ofSize: 28, weight: .light)
         headsignCodeLabel.textColor = UIColor.white
+        headsignCodeLabel.adjustsFontSizeToFitWidth = true
         backEtdMinLabel.font = UIFont.systemFont(ofSize: 13)
         backEtdMinLabel.textColor = AppColor.Charcoal.color
         
@@ -176,6 +180,11 @@ class DepartureCell: UITableViewCell {
         timeFormatter.amSymbol = "am"
         timeFormatter.pmSymbol = "pm"
         
+        if let headsignCode = departure.headsignCode {
+            headsignCodeLabel.text = headsignCode
+        } else {
+            headsignCodeLabel.text = "-"
+        }
         backEtdMinLabel.text = "\(departure.etdMin) min"
         stdLabel.text = timeFormatter.string(from: departure.std)
         if departure.realTime == true {
