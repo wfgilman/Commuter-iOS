@@ -25,7 +25,6 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var etdLabel: UILabel!
     @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var isEmptyLabel: UILabel!
-    @IBOutlet weak var isEmptyView: UIView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var notifcationImageView: UIImageView!
     @IBOutlet weak var departLabel: UILabel!
@@ -102,25 +101,22 @@ class DepartureCell: UITableViewCell {
         headsignLabel.textColor = AppColor.Charcoal.color
         
         etdMinLabel.font = UIFont.systemFont(ofSize: 32, weight: .light)
-        etdMinLabel.textColor = AppColor.Charcoal.color
+        etdMinLabel.textColor = AppColor.Blue.color
         
         departLabel.font = UIFont.systemFont(ofSize: 13)
         departLabel.textColor = AppColor.MediumGray.color
         etdLabel.font = UIFont.systemFont(ofSize: 15)
-        etdLabel.textColor = AppColor.Charcoal.color
+        etdLabel.textColor = AppColor.Blue.color
         
         arriveLabel.font = UIFont.systemFont(ofSize: 13)
         arriveLabel.textColor = AppColor.MediumGray.color
         etaLabel.font = UIFont.systemFont(ofSize: 15)
-        etaLabel.textColor = AppColor.Charcoal.color
+        etaLabel.textColor = AppColor.Blue.color
         
         dividerView.backgroundColor = AppColor.MediumGray.color
         
-        isEmptyLabel.font = UIFont.systemFont(ofSize: 10)
-        isEmptyLabel.textColor = UIColor.white
-        isEmptyView.backgroundColor = AppColor.Blue.color
-        isEmptyView.layer.cornerRadius = 4
-        isEmptyView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        isEmptyLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        isEmptyLabel.textColor = AppColor.Blue.color
     }
     
     func setFrontViewData(departure: Departure) {
@@ -139,7 +135,7 @@ class DepartureCell: UITableViewCell {
         // Formatted strings.
         etdMinLabel.text = String(describing: departure.etdMin)
         
-        isEmptyView.isHidden = !departure.isEmpty
+        isEmptyLabel.isHidden = !departure.isEmpty
         notifcationImageView.isHidden = !departure.notify
     }
     
