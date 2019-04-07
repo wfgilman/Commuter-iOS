@@ -58,6 +58,18 @@ class DepartureView: UIView {
         initSubviews()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        tableView.layoutIfNeeded()
+        timestampLabel = UILabel()
+        timestampLabel.font = UIFont.mySystemFont(ofSize: 13)
+        timestampLabel.textColor = AppColor.MediumGray.color
+        timestampLabel.textAlignment = .center
+        tableView.addSubview(timestampLabel)
+        timestampLabel.frame = CGRect(x: 0, y: -24, width: tableView.bounds.width, height: 20)
+        timestampLabel.isHidden = true
+    }
+    
     func initSubviews() {
         let nib = UINib(nibName: "DepartureView", bundle: nil)
         nib.instantiate(withOwner: self, options: nil)
@@ -81,14 +93,6 @@ class DepartureView: UIView {
         tableView.backgroundView = activityAnimation
         activityAnimation.color = AppColor.MediumGray.color
         activityAnimation.startAnimating()
-        
-        timestampLabel = UILabel()
-        timestampLabel.font = UIFont.mySystemFont(ofSize: 13)
-        timestampLabel.textColor = AppColor.MediumGray.color
-        timestampLabel.textAlignment = .center
-        tableView.addSubview(timestampLabel)
-        timestampLabel.frame = CGRect(x: 0, y: -24, width: tableView.bounds.width, height: 20)
-        timestampLabel.isHidden = true
     }
     
     func setupRefreshControl() {

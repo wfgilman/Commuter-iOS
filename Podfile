@@ -9,4 +9,5 @@ target 'Commuter' do
   pod 'Alamofire', '~> 4.4'
   pod 'Unbox', '~> 2.4'
   pod 'NotificationBannerSwift'
+  pod 'PickerView'
 end
