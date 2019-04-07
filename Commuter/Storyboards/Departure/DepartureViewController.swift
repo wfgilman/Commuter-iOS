@@ -18,11 +18,13 @@ enum Commute: String {
 
 class DepartureViewController: UIViewController {
 
+    @IBOutlet weak var navBarView: UIView!
     @IBOutlet weak var tabBarView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var origCommuteLabel: UILabel!
     @IBOutlet weak var destCommuteLabel: UILabel!
     @IBOutlet weak var highlightView: UIView!
+    @IBOutlet weak var commuteLabelStackView: UIStackView!
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var hightlightViewLeft: NSLayoutConstraint!
     @IBOutlet weak var fabView: UIView!
@@ -34,6 +36,8 @@ class DepartureViewController: UIViewController {
     var pageHeight: CGFloat!
     var fab: UIImageView!
     var calculatingAlertController: UIAlertController!
+    var highlightOrigMinX: CGFloat = 0
+    var highlightDestMinX: CGFloat = 0
     
     private var notifDeparture: Departure?
     private var notifCommute: Commute?
@@ -71,8 +75,9 @@ class DepartureViewController: UIViewController {
         scrollView.addSubview(eveningDepartureView)
         getDepartures(commute: .evening)
         
-        highlightView.backgroundColor = AppColor.Blue.color
-        highlightView.layer.cornerRadius = 1
+        highlightView.backgroundColor = UIColor.white
+        highlightView.layer.cornerRadius = 2
+        highlightView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         highlightView.layer.masksToBounds = true
         
         setupSubviews()
@@ -89,12 +94,6 @@ class DepartureViewController: UIViewController {
         getAdvisory()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
-        formatNavigationBar()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -107,21 +106,33 @@ class DepartureViewController: UIViewController {
         morningDepartureView.frame = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
         eveningDepartureView.frame = CGRect(x: pageWidth, y: 0, width: pageWidth, height: pageHeight)
         
+        highlightView.layoutIfNeeded()
+        commuteLabelStackView.layoutIfNeeded()
+        let origCenterX = origCommuteLabel.frame.midX
+        let destCenterX = destCommuteLabel.frame.midX
+        let widthCenter = highlightView.bounds.width / 2
+        highlightOrigMinX = origCenterX - widthCenter
+        highlightDestMinX = destCenterX - widthCenter
+        
         if commute == .morning {
             scrollView.contentOffset.x = 0
+            hightlightViewLeft.constant = origCenterX - widthCenter
         } else {
             scrollView.contentOffset.x = pageWidth
-            
+            hightlightViewLeft.constant = destCenterX - widthCenter
         }
     }
     
     private func formatNavigationBar() {
         if let navBar = navigationController?.navigationBar {
-            navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: false, isTranslucent: true)
+            navBar.setup(titleColor: UIColor.white, hasBottomBorder: false, isTranslucent: true)
         }
     }
     
     private func setupSubviews() {
+        navBarView.backgroundColor = AppColor.Blue.color
+        tabBarView.backgroundColor = AppColor.Blue.color
+        
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
@@ -131,8 +142,8 @@ class DepartureViewController: UIViewController {
         
         fabView.backgroundColor = AppColor.Blue.color
         fabView.layer.cornerRadius = fabView.frame.width / 2
-        fabView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.16).cgColor
-        fabView.layer.shadowOffset = .zero
+        fabView.layer.shadowColor = AppColor.Blue.color.withAlphaComponent(0.5).cgColor
+        fabView.layer.shadowOffset = CGSize(width: 0, height: 4)
         fabView.layer.shadowOpacity = 1
         fabView.layer.shadowRadius = 4
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(getETA))
@@ -310,7 +321,7 @@ class DepartureViewController: UIViewController {
                 })
             }) { (_, _) in
                 self.calculatingAlertController.dismiss(animated: false, completion: {
-                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimated an arrival time based on your current location.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "No ETA", message: "We couldn't estimate an arrival time based on your current location.", preferredStyle: .alert)
                     let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
                     alert.addAction(dismiss)
                     self.present(alert, animated: true, completion: nil)
@@ -338,8 +349,14 @@ class DepartureViewController: UIViewController {
         let time = timeFormatter.string(from: eta.eta)
         let title = "Arrival: \(time)"
         var message = "Based on your current location you are \(eta.nextStationEtaMin) min from \(eta.nextStation.name) and \(eta.etaMin) min from your destination."
+        if (eta.nextStation.code == destination.code) && (eta.nextStationEtaMin == 0) {
+            message = "Based on your current location you are presently arriving at your destination."
+        }
         if eta.nextStation.code == destination.code {
             message = "Based on your current location you are \(eta.etaMin) min from your destination."
+        }
+        if eta.nextStationEtaMin == 0 {
+            message = "Based on your current location you are approaching \(eta.nextStation.name) and \(eta.etaMin) min from your destination."
         }
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -372,7 +389,9 @@ class DepartureViewController: UIViewController {
 extension DepartureViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        hightlightViewLeft.constant = scrollView.contentOffset.x / 2
+        let percentage = scrollView.contentOffset.x / pageWidth
+        let leftConstant = (highlightDestMinX - highlightOrigMinX) * percentage
+        hightlightViewLeft.constant = leftConstant + highlightOrigMinX
     }
 }
 

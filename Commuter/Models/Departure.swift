@@ -19,6 +19,7 @@ class Departure: Unboxable {
     var durationMin: Int
     var length: Int?
     var headsign: String
+    var headsignCode: String?
     var stops: Int
     var priorStops: Int
     private var routeHexColor: String
@@ -40,6 +41,7 @@ class Departure: Unboxable {
         durationMin = try unboxer.unbox(key: "duration_min")
         length = unboxer.unbox(key: "length")
         headsign = try unboxer.unbox(key: "headsign")
+        headsignCode = unboxer.unbox(key: "headsign_code")
         stops = try unboxer.unbox(key: "stops")
         priorStops = try unboxer.unbox(key: "prior_stops")
         routeHexColor = try unboxer.unbox(key: "route_hex_color")

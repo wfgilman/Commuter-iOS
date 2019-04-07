@@ -25,7 +25,6 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var etdLabel: UILabel!
     @IBOutlet weak var dividerView: UIView!
     @IBOutlet weak var isEmptyLabel: UILabel!
-    @IBOutlet weak var isEmptyView: UIView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var notifcationImageView: UIImageView!
     @IBOutlet weak var departLabel: UILabel!
@@ -34,18 +33,17 @@ class DepartureCell: UITableViewCell {
     // Back View
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var backViewTop: NSLayoutConstraint!
+    @IBOutlet weak var backDividerView: UIView!
+    @IBOutlet weak var headsignCodeLabel: UILabel!
+    @IBOutlet weak var backEtdMinLabel: UILabel!
     @IBOutlet weak var schedLabel: UILabel!
     @IBOutlet weak var stdLabel: UILabel!
     @IBOutlet weak var delayLabel: UILabel!
     @IBOutlet weak var delayMinLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var durationMinLabel: UILabel!
     @IBOutlet weak var trainLengthLabel: UILabel!
     @IBOutlet weak var lengthLabel: UILabel!
     @IBOutlet weak var priorStopsTitleLabel: UILabel!
     @IBOutlet weak var priorStopsLabel: UILabel!
-    @IBOutlet weak var stopsTitleLabel: UILabel!
-    @IBOutlet weak var stopsLabel: UILabel!
     
     
     var delegate: DepartureCellDelegate!
@@ -80,7 +78,7 @@ class DepartureCell: UITableViewCell {
         configureFrontView()
         configureBackView()
     }
-    
+
     func configureDefaultState() {
         self.backViewTop.constant = self.frontViewTop.constant
         backView.isHidden = true
@@ -102,25 +100,22 @@ class DepartureCell: UITableViewCell {
         headsignLabel.textColor = AppColor.Charcoal.color
         
         etdMinLabel.font = UIFont.systemFont(ofSize: 32, weight: .light)
-        etdMinLabel.textColor = AppColor.Charcoal.color
+        etdMinLabel.textColor = AppColor.Blue.color
         
         departLabel.font = UIFont.systemFont(ofSize: 13)
         departLabel.textColor = AppColor.MediumGray.color
         etdLabel.font = UIFont.systemFont(ofSize: 15)
-        etdLabel.textColor = AppColor.Charcoal.color
+        etdLabel.textColor = AppColor.Blue.color
         
         arriveLabel.font = UIFont.systemFont(ofSize: 13)
         arriveLabel.textColor = AppColor.MediumGray.color
         etaLabel.font = UIFont.systemFont(ofSize: 15)
-        etaLabel.textColor = AppColor.Charcoal.color
+        etaLabel.textColor = AppColor.Blue.color
         
-        dividerView.backgroundColor = AppColor.MediumGray.color
+        dividerView.backgroundColor = AppColor.PaleGray.color
         
-        isEmptyLabel.font = UIFont.systemFont(ofSize: 10)
-        isEmptyLabel.textColor = UIColor.white
-        isEmptyView.backgroundColor = AppColor.Blue.color
-        isEmptyView.layer.cornerRadius = 4
-        isEmptyView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        isEmptyLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        isEmptyLabel.textColor = AppColor.Blue.color
     }
     
     func setFrontViewData(departure: Departure) {
@@ -139,45 +134,44 @@ class DepartureCell: UITableViewCell {
         // Formatted strings.
         etdMinLabel.text = String(describing: departure.etdMin)
         
-        isEmptyView.isHidden = !departure.isEmpty
+        isEmptyLabel.isHidden = !departure.isEmpty
         notifcationImageView.isHidden = !departure.notify
     }
     
     func configureBackView() {
+        backView.backgroundColor = AppColor.MediumGray.color
         backView.layer.cornerRadius = 8
         backView.layer.borderWidth = 0.5
         backView.layer.borderColor = AppColor.PaleGray.color.cgColor
         backView.layer.masksToBounds = true
         
+        backDividerView.backgroundColor = UIColor.white.withAlphaComponent(0.25)
+        
+        headsignCodeLabel.font = UIFont.systemFont(ofSize: 28, weight: .light)
+        headsignCodeLabel.textColor = UIColor.white
+        headsignCodeLabel.adjustsFontSizeToFitWidth = true
+        backEtdMinLabel.font = UIFont.systemFont(ofSize: 13)
+        backEtdMinLabel.textColor = AppColor.Charcoal.color
+        
         schedLabel.font = UIFont.systemFont(ofSize: 13)
-        schedLabel.textColor = AppColor.MediumGray.color
+        schedLabel.textColor = AppColor.Charcoal.color
         stdLabel.font = UIFont.systemFont(ofSize: 15)
-        stdLabel.textColor = AppColor.Charcoal.color
+        stdLabel.textColor = UIColor.white
         
         delayLabel.font = UIFont.systemFont(ofSize: 13)
-        delayLabel.textColor = AppColor.MediumGray.color
-        delayMinLabel.textColor = AppColor.Charcoal.color
+        delayLabel.textColor = AppColor.Charcoal.color
+        delayMinLabel.textColor = UIColor.white
         delayMinLabel.font = UIFont.systemFont(ofSize: 15)
         
-        durationLabel.font = UIFont.systemFont(ofSize: 13)
-        durationLabel.textColor = AppColor.MediumGray.color
-        durationMinLabel.textColor = AppColor.Charcoal.color
-        durationMinLabel.font = UIFont.systemFont(ofSize: 15)
-        
         trainLengthLabel.font = UIFont.systemFont(ofSize: 13)
-        trainLengthLabel.textColor = AppColor.MediumGray.color
-        lengthLabel.textColor = AppColor.Charcoal.color
+        trainLengthLabel.textColor = AppColor.Charcoal.color
+        lengthLabel.textColor = UIColor.white
         lengthLabel.font = UIFont.systemFont(ofSize: 15)
         
         priorStopsTitleLabel.font = UIFont.systemFont(ofSize: 13)
-        priorStopsTitleLabel.textColor = AppColor.MediumGray.color
-        priorStopsLabel.textColor = AppColor.Charcoal.color
+        priorStopsTitleLabel.textColor = AppColor.Charcoal.color
+        priorStopsLabel.textColor = UIColor.white
         priorStopsLabel.font = UIFont.systemFont(ofSize: 15)
-        
-        stopsTitleLabel.font = UIFont.systemFont(ofSize: 13)
-        stopsTitleLabel.textColor = AppColor.MediumGray.color
-        stopsLabel.textColor = AppColor.Charcoal.color
-        stopsLabel.font = UIFont.systemFont(ofSize: 15)
     }
     
     func setBackViewData(departure: Departure) {
@@ -186,6 +180,12 @@ class DepartureCell: UITableViewCell {
         timeFormatter.amSymbol = "am"
         timeFormatter.pmSymbol = "pm"
         
+        if let headsignCode = departure.headsignCode {
+            headsignCodeLabel.text = headsignCode
+        } else {
+            headsignCodeLabel.text = "-"
+        }
+        backEtdMinLabel.text = "\(departure.etdMin) min"
         stdLabel.text = timeFormatter.string(from: departure.std)
         if departure.realTime == true {
             if departure.delayMin == 0 {
@@ -197,14 +197,12 @@ class DepartureCell: UITableViewCell {
         } else {
             delayMinLabel.text = "-"
         }
-        durationMinLabel.text = "\(departure.durationMin) min"
         if let length = departure.length {
             lengthLabel.text = "\(length) cars"
         } else {
             lengthLabel.text = "-"
         }
         priorStopsLabel.text = "\(departure.priorStops)"
-        stopsLabel.text = "\(departure.stops)"
     }
     
     func flipToBack() {
@@ -230,6 +228,6 @@ class DepartureCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        delayMinLabel.textColor = AppColor.Charcoal.color
+        delayMinLabel.textColor = UIColor.white
     }
 }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StationView">
+            <connections>
+                <outlet property="bottomDot1View" destination="5ks-xK-3Vc" id="b6v-rf-BkL"/>
+                <outlet property="bottomDot2View" destination="eOQ-hW-Wf1" id="UaV-zS-wS3"/>
+                <outlet property="bottomDot3View" destination="4pO-Jf-arj" id="o7v-gW-2Ys"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="7KY-nB-Z5C"/>
+                <outlet property="markerView" destination="URG-ZZ-jfp" id="fsx-cs-h18"/>
+                <outlet property="stationLabel" destination="UOn-pn-M4H" id="blX-q4-PxI"/>
+                <outlet property="topDot1View" destination="FdJ-dL-HvU" id="60E-xR-3ZX"/>
+                <outlet property="topDot2View" destination="rX3-NJ-iiu" id="K4J-74-X0I"/>
+                <outlet property="topDot3View" destination="IaY-4x-t5e" id="fnS-o3-1GP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="348" height="86"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="wSA-sH-NtJ">
+                    <rect key="frame" x="0.0" y="11" width="10" height="64"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bht-gb-OTm">
+                            <rect key="frame" x="3.5" y="0.0" width="3" height="15"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FdJ-dL-HvU">
+                                    <rect key="frame" x="0.0" y="0.0" width="3" height="3"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="3" id="gHh-pv-Hsn"/>
+                                        <constraint firstAttribute="height" constant="3" id="wz1-yO-a67"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rX3-NJ-iiu">
+                                    <rect key="frame" x="0.0" y="6" width="3" height="3"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="3" id="ChJ-wp-Q6M"/>
+                                        <constraint firstAttribute="height" constant="3" id="dyz-wV-Elu"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IaY-4x-t5e">
+                                    <rect key="frame" x="0.0" y="12" width="3" height="3"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="3" id="3a3-Dq-R2i"/>
+                                        <constraint firstAttribute="width" constant="3" id="AG9-fo-8Yn"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="URG-ZZ-jfp">
+                            <rect key="frame" x="0.0" y="27" width="10" height="10"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="10" id="2UF-ia-Ciz"/>
+                                <constraint firstAttribute="height" constant="10" id="yuE-MO-tbv"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="y5t-h6-anm">
+                            <rect key="frame" x="3.5" y="49" width="3" height="15"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ks-xK-3Vc">
+                                    <rect key="frame" x="0.0" y="0.0" width="3" height="3"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="3" id="O1f-M8-FIa"/>
+                                        <constraint firstAttribute="width" constant="3" id="qQ0-KG-I5n"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOQ-hW-Wf1">
+                                    <rect key="frame" x="0.0" y="6" width="3" height="3"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="3" id="aq8-Dt-dnN"/>
+                                        <constraint firstAttribute="width" constant="3" id="ioh-8B-kLE"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pO-Jf-arj">
+                                    <rect key="frame" x="0.0" y="12" width="3" height="3"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="3" id="qzR-yP-IIu"/>
+                                        <constraint firstAttribute="width" constant="3" id="uN7-Xx-gBU"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pleasant Hill/Contra Costa Center" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOn-pn-M4H">
+                    <rect key="frame" x="50" y="31" width="292" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="UOn-pn-M4H" firstAttribute="leading" secondItem="wSA-sH-NtJ" secondAttribute="trailing" constant="40" id="5BF-lH-SRd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UOn-pn-M4H" secondAttribute="trailing" id="H9p-a8-dcq"/>
+                <constraint firstItem="UOn-pn-M4H" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="X9H-DA-XOI"/>
+                <constraint firstItem="wSA-sH-NtJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="YnF-Nw-9hw"/>
+                <constraint firstItem="wSA-sH-NtJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="v4f-Ov-Sou"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-9.5999999999999996" y="-81.859070464767626"/>
+        </view>
+    </objects>
+</document>
