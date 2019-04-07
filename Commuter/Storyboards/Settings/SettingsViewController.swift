@@ -34,6 +34,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = AppColor.Blue.color
+        
         orig = AppVariable.origStation!
         dest = AppVariable.destStation!
         
@@ -58,7 +60,7 @@ class SettingsViewController: UIViewController {
         setupTableView()
         
         if let navBar = navigationController?.navigationBar {
-            navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: true, isTranslucent: true)
+            navBar.setup(titleColor: UIColor.white, hasBottomBorder: false, isTranslucent: true)
             navigationItem.title = "Settings"
         }
     }

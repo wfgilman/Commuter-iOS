@@ -92,12 +92,6 @@ class DepartureViewController: UIViewController {
         getAdvisory()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
-        formatNavigationBar()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
