@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HP6-Kz-zuL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HP6-Kz-zuL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,37 +27,37 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hS-F3-Gfu">
-                                        <rect key="frame" x="0.0" y="32" width="187.5" height="4"/>
+                                        <rect key="frame" x="0.0" y="36" width="94" height="4"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="xJX-xj-WwK"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hR-Uy-Rp0">
-                                        <rect key="frame" x="0.0" y="4" width="187.5" height="20"/>
+                                        <rect key="frame" x="0.0" y="8" width="187.5" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlb-lm-JaY">
-                                        <rect key="frame" x="187.5" y="4" width="187.5" height="20.5"/>
+                                        <rect key="frame" x="187.5" y="8" width="187.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="5hS-F3-Gfu" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="7S0-gl-FSz"/>
-                                    <constraint firstItem="Qlb-lm-JaY" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" constant="4" id="Esj-W1-vsK"/>
+                                    <constraint firstItem="Qlb-lm-JaY" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" constant="8" id="Esj-W1-vsK"/>
                                     <constraint firstItem="Qlb-lm-JaY" firstAttribute="leading" secondItem="3hR-Uy-Rp0" secondAttribute="trailing" id="Rv5-AZ-w0l"/>
                                     <constraint firstAttribute="trailing" secondItem="Qlb-lm-JaY" secondAttribute="trailing" id="WdY-Dd-8vo"/>
                                     <constraint firstItem="3hR-Uy-Rp0" firstAttribute="leading" secondItem="LlH-Us-WaR" secondAttribute="leading" id="dAO-Rr-5oo"/>
-                                    <constraint firstAttribute="bottom" secondItem="5hS-F3-Gfu" secondAttribute="bottom" constant="4" id="iQk-0p-8PZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="5hS-F3-Gfu" secondAttribute="bottom" id="iQk-0p-8PZ"/>
                                     <constraint firstAttribute="height" constant="40" id="qbj-Mt-ub5"/>
-                                    <constraint firstItem="3hR-Uy-Rp0" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" constant="4" id="tmb-QZ-cWR"/>
+                                    <constraint firstItem="3hR-Uy-Rp0" firstAttribute="top" secondItem="LlH-Us-WaR" secondAttribute="top" constant="8" id="tmb-QZ-cWR"/>
                                     <constraint firstItem="Qlb-lm-JaY" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="uIv-fa-fiG"/>
-                                    <constraint firstItem="5hS-F3-Gfu" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="w3d-jb-EmT"/>
+                                    <constraint firstItem="5hS-F3-Gfu" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.25" id="w3d-jb-EmT"/>
                                     <constraint firstItem="3hR-Uy-Rp0" firstAttribute="width" secondItem="LlH-Us-WaR" secondAttribute="width" multiplier="0.5" id="xoe-J2-q9a"/>
                                 </constraints>
                             </view>

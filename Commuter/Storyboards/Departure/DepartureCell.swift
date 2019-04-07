@@ -219,6 +219,6 @@ class DepartureCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        delayMinLabel.textColor = AppColor.Charcoal.color
+        delayMinLabel.textColor = UIColor.white
     }
 }

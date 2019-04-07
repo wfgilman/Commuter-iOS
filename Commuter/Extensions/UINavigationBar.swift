@@ -11,7 +11,7 @@ import UIKit
 extension UINavigationBar {
     
     func setup(titleColor: UIColor?, hasBottomBorder: Bool, isTranslucent: Bool) {
-        self.tintColor = AppColor.Charcoal.color
+        self.tintColor = UIColor.white
         self.barTintColor = UIColor.white
 //        self.backIndicatorImage = UIImage(named: "left_chevron")
 //        self.backIndicatorTransitionMaskImage = UIImage(named: "left_chevron")

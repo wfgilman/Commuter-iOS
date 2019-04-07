@@ -34,6 +34,8 @@ class DepartureViewController: UIViewController {
     var pageHeight: CGFloat!
     var fab: UIImageView!
     var calculatingAlertController: UIAlertController!
+    var highlightOrigMinX: CGFloat!
+    var highlightDestMinX: CGFloat!
     
     private var notifDeparture: Departure?
     private var notifCommute: Commute?
@@ -71,8 +73,9 @@ class DepartureViewController: UIViewController {
         scrollView.addSubview(eveningDepartureView)
         getDepartures(commute: .evening)
         
-        highlightView.backgroundColor = AppColor.Blue.color
-        highlightView.layer.cornerRadius = 1
+        highlightView.backgroundColor = UIColor.white
+        highlightView.layer.cornerRadius = 2
+        highlightView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         highlightView.layer.masksToBounds = true
         
         setupSubviews()
@@ -113,15 +116,25 @@ class DepartureViewController: UIViewController {
             scrollView.contentOffset.x = pageWidth
             
         }
+        
+        let origCenterX = origCommuteLabel.frame.midX
+        let destCenterX = destCommuteLabel.frame.midX
+        let widthCenter = highlightView.frame.width / 2
+        highlightOrigMinX = origCenterX - widthCenter
+        highlightDestMinX = destCenterX - widthCenter
+        hightlightViewLeft.constant = highlightOrigMinX
     }
     
     private func formatNavigationBar() {
         if let navBar = navigationController?.navigationBar {
-            navBar.setup(titleColor: AppColor.Charcoal.color, hasBottomBorder: false, isTranslucent: true)
+            navBar.setup(titleColor: UIColor.white, hasBottomBorder: false, isTranslucent: true)
         }
     }
     
     private func setupSubviews() {
+        self.view.backgroundColor = AppColor.Blue.color
+        tabBarView.backgroundColor = AppColor.Blue.color
+        
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
@@ -378,7 +391,9 @@ class DepartureViewController: UIViewController {
 extension DepartureViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        hightlightViewLeft.constant = scrollView.contentOffset.x / 2
+        let percentage = scrollView.contentOffset.x / pageWidth
+        let leftConstant = (highlightDestMinX - highlightOrigMinX) * percentage
+        hightlightViewLeft.constant = leftConstant + highlightOrigMinX
     }
 }
 
