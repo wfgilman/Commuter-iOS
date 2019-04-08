@@ -24,6 +24,7 @@ class DepartureCell: UITableViewCell {
     @IBOutlet weak var etaLabel: UILabel!
     @IBOutlet weak var etdLabel: UILabel!
     @IBOutlet weak var dividerView: UIView!
+    @IBOutlet weak var isEmptyView: UIView!
     @IBOutlet weak var isEmptyLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var notifcationImageView: UIImageView!
@@ -114,8 +115,11 @@ class DepartureCell: UITableViewCell {
         
         dividerView.backgroundColor = AppColor.PaleGray.color
         
-        isEmptyLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-        isEmptyLabel.textColor = AppColor.Blue.color
+        isEmptyLabel.font = UIFont.systemFont(ofSize: 11, weight: .regular)
+        isEmptyLabel.text = "Empty"
+        isEmptyView.backgroundColor = AppColor.Blue.color
+        isEmptyView.layer.cornerRadius = 10
+        isEmptyLabel.textColor = UIColor.white
     }
     
     func setFrontViewData(departure: Departure) {
@@ -134,7 +138,7 @@ class DepartureCell: UITableViewCell {
         // Formatted strings.
         etdMinLabel.text = String(describing: departure.etdMin)
         
-        isEmptyLabel.isHidden = !departure.isEmpty
+        isEmptyView.isHidden = !departure.isEmpty
         notifcationImageView.isHidden = !departure.notify
     }
     
