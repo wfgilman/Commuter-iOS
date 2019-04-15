@@ -10,4 +10,5 @@ target 'Commuter' do
   pod 'Unbox', '~> 2.4'
   pod 'NotificationBannerSwift'
   pod 'PickerView'
+  pod 'Mixpanel-swift', '~> 2.6.1'
 end

@@ -1,6 +1,9 @@
 PODS:
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - MarqueeLabel/Swift (3.2.1)
+  - Mixpanel-swift (2.6.2):
+    - Mixpanel-swift/Complete (= 2.6.2)
+  - Mixpanel-swift/Complete (2.6.2)
   - NotificationBannerSwift (2.0.1):
     - MarqueeLabel/Swift (~> 3.2.0)
     - SnapKit (~> 4.2.0)
@@ -10,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - Mixpanel-swift (~> 2.6.1)
   - NotificationBannerSwift
   - PickerView
   - Unbox (~> 2.4)
@@ -18,19 +22,21 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - MarqueeLabel
+    - Mixpanel-swift
     - NotificationBannerSwift
     - PickerView
     - SnapKit
     - Unbox
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
+  Mixpanel-swift: eea98bb65fd80e992a9ecb3a0a421eca542ea72f
   NotificationBannerSwift: 007774aa590cc9680647b92b2f217bef5c00c32c
   PickerView: a736ea986d992aa3ef32423f475fdf3f3a0cf7d4
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
 
-PODFILE CHECKSUM: b6eb53e10baf19f1707f8c1a65a474dad778860c
+PODFILE CHECKSUM: cc7b8952d419a7b63b6a068b2f8d137a1b04930e
 
 COCOAPODS: 1.5.3
