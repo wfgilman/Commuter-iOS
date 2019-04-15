@@ -83,7 +83,7 @@ class DepartureView: UIView {
         activityAnimation.startAnimating()
         
         timestampLabel = UILabel()
-        timestampLabel.font = UIFont.mySystemFont(ofSize: 13)
+        timestampLabel.font = UIFont.systemFont(ofSize: 13)
         timestampLabel.textColor = AppColor.MediumGray.color
         timestampLabel.textAlignment = .center
         tableView.addSubview(timestampLabel)
