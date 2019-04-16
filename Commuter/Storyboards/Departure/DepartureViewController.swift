@@ -10,6 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import UserNotifications
 import MapKit
+import Mixpanel
 
 enum Commute: String {
     case morning
@@ -91,6 +92,7 @@ class DepartureViewController: UIViewController {
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)
         ], for: .normal)
         
+        Mixpanel.mainInstance().track(event: "Viewed Departures")
         getAdvisory()
     }
     
@@ -175,6 +177,7 @@ class DepartureViewController: UIViewController {
             let banner = NotificationBanner(title: "No Real-Time", subtitle: "Real-time data didn't load. Pull to refresh.", style: .warning)
             banner.duration = AppVariable.bannerDuration
             if NotificationBannerQueue.default.numberOfBanners == 0 {
+                Mixpanel.mainInstance().track(event: "Displayed No Real-Time Banner")
                 banner.show()
             }
         }
@@ -183,6 +186,7 @@ class DepartureViewController: UIViewController {
     private func addListener() {
         let name = NSNotification.Name("refreshTrip")
         NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { (notification) in
+            Mixpanel.mainInstance().track(event: "Refreshed Departures")
             guard let commute: Commute = notification.object as? Commute else {
                 // User changed commute. Wipe and reload the data.
                 self.getDepartures(commute: .morning)
@@ -232,6 +236,7 @@ class DepartureViewController: UIViewController {
             if settings.authorizationStatus == .notDetermined {
                 client.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { (granted, error) in
                     if granted == true {
+                        Mixpanel.mainInstance().track(event: "Granted Notification Authorization")
                         DispatchQueue.main.async {
                             // Store the notification parameters so the notification can be set after the device token is issued to complete the function.
                             self.notifDeparture = departure
@@ -239,6 +244,8 @@ class DepartureViewController: UIViewController {
                             self.notifAction = action
                             UIApplication.shared.registerForRemoteNotifications()
                         }
+                    } else {
+                        Mixpanel.mainInstance().track(event: "Rejected Notification Authorization")
                     }
                 })
             } else if settings.authorizationStatus == .authorized {
@@ -268,6 +275,7 @@ class DepartureViewController: UIViewController {
                 DispatchQueue.main.async {
                     let banner = NotificationBanner.init(title: "Notifications Disabled", subtitle: "Enable them for Commuter in your Settings.", style: .info)
                     banner.duration = AppVariable.bannerDuration
+                    Mixpanel.mainInstance().track(event: "Displayed Notifications Disabled Banner")
                     banner.show()
                 }
             }
@@ -299,6 +307,7 @@ class DepartureViewController: UIViewController {
     @objc func getETA() {
         let locationManager = CLLocationManager()
         if CLLocationManager.authorizationStatus() == .notDetermined {
+            Mixpanel.mainInstance().track(event: "Requested Location Authorization")
             locationManager.requestWhenInUseAuthorization()
             getETA()
             
@@ -342,6 +351,7 @@ class DepartureViewController: UIViewController {
     }
     
     private func showETA(eta: ETA, destination: Station) {
+        Mixpanel.mainInstance().track(event: "Viewed ETA")
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
         timeFormatter.amSymbol = "am"
@@ -363,6 +373,7 @@ class DepartureViewController: UIViewController {
         let dismiss = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         
         let share = UIAlertAction(title: "Share", style: .default) { (_) in
+            Mixpanel.mainInstance().track(event: "Shared ETA")
             let eta = "Arriving \(destination.code) at \(time)"
             let activity = UIActivityViewController(activityItems: [eta], applicationActivities: nil)
             
@@ -379,6 +390,7 @@ class DepartureViewController: UIViewController {
             guard let advisory = advisory else { return }
             let banner = StatusBarNotificationBanner(title: advisory, style: .danger)
             banner.autoDismiss = false
+            Mixpanel.mainInstance().track(event: "Displayed Advisory Banner")
             banner.show()
         }) { (_, _) in
             return
@@ -401,14 +413,17 @@ extension DepartureViewController: DepartureViewDelegate {
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let setNotif = UIAlertAction(title: "Set Notification", style: .default) { (_) in
+            Mixpanel.mainInstance().track(event: "Set Notification", properties: ["tripId" : departure.tripId, "isEmpty" : departure.isEmpty])
             self.setNotification(departure: departure, commute: commute, action: .store)
         }
         
         let deleteNotif = UIAlertAction(title: "Delete Notification", style: .destructive) { (_) in
+            Mixpanel.mainInstance().track(event: "Deleted Notification", properties: ["tripId" : departure.tripId, "isEmpty" : departure.isEmpty])
             self.setNotification(departure: departure, commute: commute, action: .delete)
         }
         
         let share = UIAlertAction(title: "Share ETA", style: .default) { (_) in
+            Mixpanel.mainInstance().track(event: "Shared Departure ETA")
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "h:mm a"
             timeFormatter.amSymbol = "am"
@@ -443,6 +458,7 @@ extension DepartureViewController: DepartureViewDelegate {
         banner.duration = AppVariable.bannerDuration
         // Only show the banner once.
         if NotificationBannerQueue.default.numberOfBanners == 0 {
+            Mixpanel.mainInstance().track(event: "No Connection Banner Displayed")
             banner.show()
         }
     }

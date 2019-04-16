@@ -8,6 +8,7 @@
 
 import UIKit
 import PickerView
+import Mixpanel
 
 class SelectDestViewController: UIViewController {
 
@@ -73,11 +74,13 @@ class SelectDestViewController: UIViewController {
     @IBAction func onTapSelectButton(_ sender: UIButton) {
         guard let orig = AppVariable.origStation else { return }
         guard let dest = selectedStation else { return }
+        Mixpanel.mainInstance().track(event: "Selected Destination Station", properties: ["code" : dest.code])
         CommuterAPI.sharedClient.checkCommute(origCode: orig.code, destCode: dest.code
             , success: {
                 AppVariable.destStation = self.selectedStation
                 self.performSegue(withIdentifier: "MainSegue", sender: nil)
         }) { (_, message) in
+            Mixpanel.mainInstance().track(event: "Destination Requires Transfer")
             let alert = UIAlertController(title: "Station Transfer Required", message: message, preferredStyle: .alert)
             let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
             alert.addAction(okay)

@@ -9,6 +9,7 @@
 import UIKit
 import NotificationBannerSwift
 import PickerView
+import Mixpanel
 
 class SelectOrigViewController: UIViewController {
 
@@ -61,6 +62,8 @@ class SelectOrigViewController: UIViewController {
         }
         
         loadStations()
+        
+        Mixpanel.mainInstance().track(event: "Started Onboarding")
     }
     
     override func viewDidLayoutSubviews() {
@@ -84,9 +87,8 @@ class SelectOrigViewController: UIViewController {
             }
             self.selectedStation = self.stations[startingRow]
             self.pickerView.selectRow(startingRow, animated: false)
-        }) { (_, message) in
-            guard let message = message else { return }
-            print("\(message)")
+        }) { (_, _) in
+            Mixpanel.mainInstance().track(event: "Failed to Load Stations")
             self.activityAnimation.stopAnimating()
             self.showFailedLoadBanner()
         }
@@ -94,11 +96,14 @@ class SelectOrigViewController: UIViewController {
     
     @IBAction func onTapSelectButton(_ sender: UIButton) {
         AppVariable.origStation = selectedStation
+        if let code = selectedStation?.code {
+            Mixpanel.mainInstance().track(event: "Selected Origin Station", properties: ["code" : code])
+        }
         performSegue(withIdentifier: "SelectDestSegue", sender: nil)
     }
     
     func showFailedLoadBanner() {
-        let banner = NotificationBanner(title: "No Connection", subtitle: "We couldn't load the stations. Tap here to try again.", style: .warning)
+        let banner = NotificationBanner(title: "No Connection", subtitle: "We couldn't load your stations. Tap here to try again.", style: .warning)
         banner.autoDismiss = false
         banner.onTap = {
             self.activityAnimation.startAnimating()

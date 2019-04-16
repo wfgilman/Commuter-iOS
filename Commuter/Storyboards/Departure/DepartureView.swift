@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mixpanel
 
 protocol DepartureViewDelegate {
  
@@ -110,6 +111,7 @@ class DepartureView: UIView {
     func addListener() {
         let name = NSNotification.Name("failedLoad")
         NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main) { (_) in
+            Mixpanel.mainInstance().track(event: "Failed to Load Departures")
             if self.errorStateIsDisplayed() == false {
                 if self.dataInitiallyLoaded() == false {
                     // Only show an error in the background if the initial load fails.

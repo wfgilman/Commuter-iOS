@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        #if DEBUG
+            print("debug mode")
+            Mixpanel.initialize(token: "")
+        #else
+            Mixpanel.initialize(token: AppVariable.mixpanelToken)
+        #endif
         
         let orig = AppVariable.origStation
         let dest = AppVariable.destStation

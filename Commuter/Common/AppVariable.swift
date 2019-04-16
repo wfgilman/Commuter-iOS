@@ -15,6 +15,7 @@ struct AppVariable {
     static let baseURL = "https://commuter.gigalixirapp.com/api/v1"
     static let grantedNotificationAuth = NSNotification.Name("grantedNotificationAuth")
     static let bannerDuration: TimeInterval = 3.0
+    static let mixpanelToken: String = "6dfcb2f34bc2ba96fbe9d7a0db735d26"
     
     static var deviceId: String? {
         get {
