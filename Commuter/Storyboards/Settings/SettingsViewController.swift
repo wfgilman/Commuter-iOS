@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mixpanel
 
 enum CommuteDirection: String {
     case from
@@ -64,6 +65,7 @@ class SettingsViewController: UIViewController {
             navBar.setup(titleColor: UIColor.white, hasBottomBorder: false, isTranslucent: true)
             navigationItem.title = "Settings"
         }
+        Mixpanel.mainInstance().track(event: "Viewed Settings")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -203,6 +205,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            Mixpanel.mainInstance().track(event: "Deleted Notification")
             CommuterAPI.sharedClient.deleteNotification(notification: notifications[indexPath.row], success: {
                 self.didDeleteNotification = true
                 self.notifications.remove(at: indexPath.row)
@@ -243,9 +246,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let okay = UIAlertAction(title: "Okay", style: .default) { (_) in
             guard let selectedStation: Station = self.selectedStation else { return }
             if direction == .from {
+                Mixpanel.mainInstance().track(event: "Changed Origin Station", properties: ["oldStation" : self.orig.code, "newStation" : selectedStation.code])
                 AppVariable.origStation = selectedStation
                 self.commuteStations[0] = selectedStation
             } else {
+                Mixpanel.mainInstance().track(event: "Changed Destination Station", properties: ["oldStation" : self.dest.code, "newStation" : selectedStation.code])
                 AppVariable.destStation = selectedStation
                 self.commuteStations[1] = selectedStation
             }
@@ -287,6 +292,11 @@ extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension SettingsViewController: MuteNotificationsCellDelegate {
     
     func changedNotificationSetting(action: CommuterAPI.NotificationSettingAction) {
+        if action == .mute {
+            Mixpanel.mainInstance().track(event: "Muted Notifications")
+        } else {
+            Mixpanel.mainInstance().track(event: "Unmuted Notifications")
+        }
         CommuterAPI.sharedClient.setDeviceNotificationSetting(action: action, success: {
             let muted: Bool = (action == .mute) ? true : false
             AppVariable.muted = muted
