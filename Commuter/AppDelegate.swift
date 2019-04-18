@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         #if DEBUG
             print("debug mode")
-            Mixpanel.initialize(token: "")
+            Mixpanel.initialize(token: "", optOutTrackingByDefault: true)
         #else
-            Mixpanel.initialize(token: AppVariable.mixpanelToken)
+            Mixpanel.initialize(token: AppVariable.mixpanelToken, optOutTrackingByDefault: true)
+            Mixpanel.mainInstance().identify(distinctId: Mixpanel.mainInstance().distinctId)
         #endif
         
         let orig = AppVariable.origStation
@@ -68,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         AppVariable.deviceId = token
+        Mixpanel.mainInstance().people.addPushDeviceToken(deviceToken)
         NotificationCenter.default.post(name: AppVariable.grantedNotificationAuth, object: nil)
     }
     
