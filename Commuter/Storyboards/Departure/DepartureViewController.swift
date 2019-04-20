@@ -307,7 +307,6 @@ class DepartureViewController: UIViewController {
     @objc func getETA() {
         let locationManager = CLLocationManager()
         if CLLocationManager.authorizationStatus() == .notDetermined {
-            Mixpanel.mainInstance().track(event: "Requested Location Authorization")
             locationManager.requestWhenInUseAuthorization()
             getETA()
             
@@ -410,6 +409,7 @@ extension DepartureViewController: UIScrollViewDelegate {
 extension DepartureViewController: DepartureViewDelegate {
     
     func showActions(departure: Departure, commute: Commute, action: CommuterAPI.NotificationAction) {
+        Mixpanel.mainInstance().track(event: "Viewed Departure Options")
         let actions = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let setNotif = UIAlertAction(title: "Set Notification", style: .default) { (_) in

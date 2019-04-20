@@ -199,9 +199,11 @@ extension DepartureView: UITableViewDelegate, UITableViewDataSource {
         if cellFlippedStates[indexPath.row].isFlipped == false {
             cellFlippedStates[indexPath.row].isFlipped = true
             cell.flipToBack()
+            Mixpanel.mainInstance().track(event: "Flipped Departure to Back")
         } else {
             cellFlippedStates[indexPath.row].isFlipped = false
             cell.flipToFront()
+            Mixpanel.mainInstance().track(event: "Flipped Departure to Front")
         }
     }
     

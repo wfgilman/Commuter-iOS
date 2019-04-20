@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Mixpanel
 
 protocol DepartureCellDelegate {
     
@@ -211,7 +210,6 @@ class DepartureCell: UITableViewCell {
     }
     
     func flipToBack() {
-        Mixpanel.mainInstance().track(event: "Flipped Departure to Back", properties: ["eta" : departure.etdMin])
         UIView.transition(with: self.contentView, duration: 0.5, options: .transitionFlipFromTop, animations: {
             self.frontView.isHidden = true
             self.backView.isHidden = false
@@ -219,7 +217,6 @@ class DepartureCell: UITableViewCell {
     }
     
     func flipToFront() {
-        Mixpanel.mainInstance().track(event: "Flipped Departure to Front", properties: ["eta" : departure.etdMin])
         UIView.transition(with: self.contentView, duration: 0.5, options: .transitionFlipFromTop, animations: {
             self.backView.isHidden = true
             self.frontView.isHidden = false

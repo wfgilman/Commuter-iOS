@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         #if DEBUG
             print("debug mode")
-            Mixpanel.initialize(token: "", optOutTrackingByDefault: true)
+            Mixpanel.initialize(token: "")
         #else
-            Mixpanel.initialize(token: AppVariable.mixpanelToken, optOutTrackingByDefault: true)
+            Mixpanel.initialize(token: AppVariable.mixpanelToken)
             Mixpanel.mainInstance().identify(distinctId: Mixpanel.mainInstance().distinctId)
         #endif
-        
+
         let orig = AppVariable.origStation
         let dest = AppVariable.destStation
         if (orig == nil) || (dest == nil) {
