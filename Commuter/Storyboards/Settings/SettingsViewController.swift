@@ -242,24 +242,43 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             s.code == station.code
         }) else { return }
         pickerView.selectRow(startingRow, inComponent: 0, animated: false)
+        selectedStation = stations[startingRow]
         
         let okay = UIAlertAction(title: "Okay", style: .default) { (_) in
             guard let selectedStation: Station = self.selectedStation else { return }
+            var otherStation: Station
             if direction == .from {
-                Mixpanel.mainInstance().track(event: "Changed Origin Station", properties: ["oldStation" : self.orig.code, "newStation" : selectedStation.code])
-                AppVariable.origStation = selectedStation
-                self.commuteStations[0] = selectedStation
+                otherStation = self.dest
             } else {
-                Mixpanel.mainInstance().track(event: "Changed Destination Station", properties: ["oldStation" : self.dest.code, "newStation" : selectedStation.code])
-                AppVariable.destStation = selectedStation
-                self.commuteStations[1] = selectedStation
+                otherStation = self.orig
             }
-            self.tableView.reloadData()
+            CommuterAPI.sharedClient.checkCommute(origCode: selectedStation.code, destCode: otherStation.code, success: {
+                self.saveSelectedStation(direction: direction, station: selectedStation)
+                self.tableView.reloadData()
+            }, failure: { (_, message) in
+                Mixpanel.mainInstance().track(event: "Destination Requires Transfer")
+                let alert = UIAlertController(title: "Station Transfer Required", message: message, preferredStyle: .alert)
+                let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alert.addAction(okay)
+                self.present(alert, animated: true, completion: nil)
+            })
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(okay)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func saveSelectedStation(direction: CommuteDirection, station: Station) {
+        if direction == .from {
+            Mixpanel.mainInstance().track(event: "Changed Origin Station", properties: ["oldStation" : self.orig.code, "newStation" : selectedStation.code])
+            AppVariable.origStation = selectedStation
+            commuteStations[0] = selectedStation
+        } else {
+            Mixpanel.mainInstance().track(event: "Changed Destination Station", properties: ["oldStation" : self.dest.code, "newStation" : selectedStation.code])
+            AppVariable.destStation = selectedStation
+            commuteStations[1] = selectedStation
+        }
     }
     
 }
