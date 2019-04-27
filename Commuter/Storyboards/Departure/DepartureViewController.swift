@@ -387,8 +387,8 @@ class DepartureViewController: UIViewController {
     func getAdvisory() {
         CommuterAPI.sharedClient.getAdvisory(success: { (advisory) in
             guard let advisory = advisory else { return }
-            let banner = StatusBarNotificationBanner(title: advisory, style: .danger)
-            banner.autoDismiss = false
+            let banner =  StatusBarNotificationBanner(title: advisory, style: .danger)
+            banner.duration = 15
             Mixpanel.mainInstance().track(event: "Displayed Advisory Banner")
             banner.show()
         }) { (_, _) in
