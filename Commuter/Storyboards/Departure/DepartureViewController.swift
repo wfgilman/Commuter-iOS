@@ -125,6 +125,12 @@ class DepartureViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+            AppStoreReviewManager.requestReviewIfAppropriate()
+        }
+    }
+    
     private func formatNavigationBar() {
         if let navBar = navigationController?.navigationBar {
             navBar.setup(titleColor: UIColor.white, hasBottomBorder: false, isTranslucent: true)

@@ -12,6 +12,7 @@
 		BE1B664E21FAA9BA002E2A96 /* ETA.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1B664D21FAA9BA002E2A96 /* ETA.swift */; };
 		BE5D694A224913BE00B46398 /* StationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D6949224913BE00B46398 /* StationView.xib */; };
 		BE5D694C224913CD00B46398 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D694B224913CD00B46398 /* StationView.swift */; };
+		BE78D0102279D7430017E32D /* AppStoreReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE78D00F2279D7430017E32D /* AppStoreReviewManager.swift */; };
 		BEB7207D21CC87EC00112AF0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */; };
 		BEBA576E21B49DB800CDB586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA576D21B49DB800CDB586 /* AppDelegate.swift */; };
 		BEBA577321B49DB800CDB586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBA577121B49DB800CDB586 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 		BE1B664D21FAA9BA002E2A96 /* ETA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETA.swift; sourceTree = "<group>"; };
 		BE5D6949224913BE00B46398 /* StationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationView.xib; sourceTree = "<group>"; };
 		BE5D694B224913CD00B46398 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
+		BE78D00F2279D7430017E32D /* AppStoreReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewManager.swift; sourceTree = "<group>"; };
 		BEB7207C21CC87EC00112AF0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BEBA576A21B49DB800CDB586 /* Commuter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commuter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBA576D21B49DB800CDB586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				BEBA57A621BDD0CE00CDB586 /* AppColor.swift */,
 				BEBA578B21B8279400CDB586 /* AppVariable.swift */,
 				BEBA57CD21BDD5FB00CDB586 /* AppFontName.swift */,
+				BE78D00F2279D7430017E32D /* AppStoreReviewManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				BEBA578C21B8279400CDB586 /* AppVariable.swift in Sources */,
 				BEBA579B21BA1D2800CDB586 /* DepartureViewController.swift in Sources */,
 				BEF7F97621D986CB005A44ED /* MuteNotificationsCell.swift in Sources */,
+				BE78D0102279D7430017E32D /* AppStoreReviewManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
