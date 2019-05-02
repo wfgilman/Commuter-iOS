@@ -125,12 +125,6 @@ class DepartureViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
-            AppStoreReviewManager.requestReviewIfAppropriate()
-        }
-    }
-    
     private func formatNavigationBar() {
         if let navBar = navigationController?.navigationBar {
             navBar.setup(titleColor: UIColor.white, hasBottomBorder: false, isTranslucent: true)
@@ -186,6 +180,15 @@ class DepartureViewController: UIViewController {
                 Mixpanel.mainInstance().track(event: "Displayed No Real-Time Banner")
                 banner.show()
             }
+        } else {
+            // At this point we know the departures loaded successfully, aka a good experience.
+            requestAppStoreReview()
+        }
+    }
+    
+    private func requestAppStoreReview() {
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+            AppStoreReviewManager.requestReviewIfAppropriate()
         }
     }
     
@@ -393,8 +396,10 @@ class DepartureViewController: UIViewController {
     func getAdvisory() {
         CommuterAPI.sharedClient.getAdvisory(success: { (advisory) in
             guard let advisory = advisory else { return }
+            let length = advisory.count
+            let duration = Int(length / 20)
             let banner =  StatusBarNotificationBanner(title: advisory, style: .danger)
-            banner.duration = 15
+            banner.duration = max(TimeInterval(duration), 10)
             Mixpanel.mainInstance().track(event: "Displayed Advisory Banner")
             banner.show()
         }) { (_, _) in

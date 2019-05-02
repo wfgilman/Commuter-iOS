@@ -11,16 +11,15 @@ import StoreKit
 
 enum AppStoreReviewManager {
     
-    static let minimumSessionCount: Int = 5
+    static let minAppStoreReviewActionCount: Int = 10
     
     static func requestReviewIfAppropriate() {
         let defaults = UserDefaults.standard
-        var sessionCount = defaults.integer(forKey: "SessionCount")
-        sessionCount += 1
-        print(sessionCount)
-        UserDefaults.standard.set(sessionCount, forKey: "SessionCount")
+        var appStoreReviewActionCount = defaults.integer(forKey: "AppStoreReviewActionCount")
+        appStoreReviewActionCount += 1
+        UserDefaults.standard.set(appStoreReviewActionCount, forKey: "AppStoreReviewActionCount")
         
-        guard sessionCount >= minimumSessionCount else {
+        guard appStoreReviewActionCount >= minAppStoreReviewActionCount else {
             return
         }
         
@@ -29,6 +28,7 @@ enum AppStoreReviewManager {
         let lastVersion = defaults.string(forKey: "LastReviewRequestAppVersion")
         
         guard lastVersion == nil || lastVersion != currentVersion else {
+            defaults.set(0, forKey: "AppStoreReviewActionCount")
             return
         }
         
