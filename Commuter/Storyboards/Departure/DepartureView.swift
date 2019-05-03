@@ -9,6 +9,11 @@
 import UIKit
 import Mixpanel
 
+enum NoTrainsReason: String {
+    case failedLoad
+    case noneScheduled
+}
+
 protocol DepartureViewDelegate {
  
     func displayMessage(message: String)
@@ -27,8 +32,11 @@ class DepartureView: UIView {
     var commute: Commute!
     var trip: Trip! {
         didSet {
-            if let label = tableView.viewWithTag(1) {
-                label.removeFromSuperview()
+            if let failedLabel = tableView.viewWithTag(1) {
+                failedLabel.removeFromSuperview()
+            }
+            if let noTrainsLabel = tableView.viewWithTag(2) {
+                noTrainsLabel.removeFromSuperview()
             }
             if refreshControl.isRefreshing {
                 refreshControl.endRefreshing()
@@ -42,6 +50,9 @@ class DepartureView: UIView {
             }
             refreshTimestampLabel()
             tableView.reloadData()
+            if trip.departures.count == 0 && !errorStateIsDisplayed() {
+                showEmptyState(reason: .noneScheduled)
+            }
         }
     }
     var cellFlippedStates = [(isFlipped: Bool, isLoaded: Bool)]()
@@ -116,15 +127,7 @@ class DepartureView: UIView {
                 if self.dataInitiallyLoaded() == false {
                     // Only show an error in the background if the initial load fails.
                     self.activityAnimation.stopAnimating()
-                    let margin: CGFloat = 32
-                    let frame = CGRect(x: margin, y: self.tableView.bounds.height / 3, width: self.tableView.bounds.width - margin * 2, height: 44)
-                    let label = UILabel(frame: frame)
-                    label.text = "Oops, we couldn't to load your commute."
-                    label.font = UIFont.systemFont(ofSize: 17)
-                    label.textAlignment = .center
-                    label.numberOfLines = 0
-                    label.tag = 1
-                    self.tableView.addSubview(label)
+                    self.showEmptyState(reason: .failedLoad)
                     return
                 }
             }
@@ -134,6 +137,23 @@ class DepartureView: UIView {
                 self.refreshControl.endRefreshing()
             }
         }
+    }
+    
+    func showEmptyState(reason: NoTrainsReason) {
+        let margin: CGFloat = 32
+        let frame = CGRect(x: margin, y: self.tableView.bounds.height / 3, width: self.tableView.bounds.width - margin * 2, height: 44)
+        let label = UILabel(frame: frame)
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        if reason == .failedLoad {
+            label.text = "Oops, we couldn't to load your commute."
+            label.tag = 1
+        } else {
+            label.text = "No more trains today 😕"
+            label.tag = 2
+        }
+        tableView.addSubview(label)
     }
     
     private func errorStateIsDisplayed() -> Bool {

@@ -173,6 +173,9 @@ class DepartureViewController: UIViewController {
     }
     
     private func checkRealTime(trip: Trip) {
+        guard trip.departures.count > 0 else {
+            return
+        }
         if trip.includesRealTime == false {
             let banner = NotificationBanner(title: "No Real-Time", subtitle: "Real-time data didn't load. Pull to refresh.", style: .warning)
             banner.duration = AppVariable.bannerDuration
