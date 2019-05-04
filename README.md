@@ -1,7 +1,7 @@
 # Commuter-iOS
-Intuitive BART transit app for the SF Bay Aread daily commuter.
+Intuitive BART transit app for the SF Bay Area daily commuter.
 
-
+<img src="Design/Screenshots/screenshot_1.jpg" width="100"> <img src="Design/Screenshots/screenshot_2.jpg" width="100"> <<img src="Design/Screenshots/screenshot_3.jpg" width="100"> <img src="Design/Screenshots/screenshot_4.jpg" width="100"> <img src="Design/Screenshots/screenshot_5.jpg" width="100"> <img src="Design/Screenshots/screenshot_6.jpg" width="100">
 
 ### Features
 - Set your commute with two quick taps
@@ -20,6 +20,8 @@ Intuitive BART transit app for the SF Bay Aread daily commuter.
 - Usage analytics: [Mixpanel](https://mixpanel.com)
 - In-app banners: https://github.com/Daltron/NotificationBanner
 - Onboarding picker view: https://github.com/filipealva/PickerView
+- App Design: https://www.fiverr.com/paudmartins
+- App Store Preview Design: https://www.fiverr.com/armanimughal
 
 ### Feedback
 PRs and feedback welcome!
