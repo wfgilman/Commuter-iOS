@@ -17,6 +17,8 @@ Intuitive BART transit app for the SF Bay Area daily commuter.
 
 ### Credits
 - Commuter's backend is powered by Elixir and Phoenix 🤩 https://github.com/wfgilman/commuter
+- BART train schedule data: https://www.bart.gov/schedules/developers/gtfs
+- BART real-time API: http://api.bart.gov/docs/overview/index.aspx
 - Usage analytics: [Mixpanel](https://mixpanel.com)
 - In-app banners: https://github.com/Daltron/NotificationBanner
 - Onboarding picker view: https://github.com/filipealva/PickerView
