@@ -165,7 +165,10 @@ class DepartureViewController: UIViewController {
         
         CommuterAPI.sharedClient.getTrip(origCode: origCode, destCode: destCode, success: { (trip) in
             commuteView.trip = trip
-            self.checkRealTime(trip: trip)
+            if self.commute == commute {
+                // Only validate real-time for the commute currently being displayed.
+                self.checkRealTime(trip: trip)
+            }
         }) { (_, message) in
             guard let message = message else { return }
             print("\(message)")
