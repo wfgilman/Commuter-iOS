@@ -12,8 +12,9 @@ Intuitive BART transit app for the SF Bay Area daily commuter.
 - No sign-up necessary
 
 ### Roadmap
-- Support commutes requiring station transfer
-- Predict car occupancy based on ridership data
+- [ ] Customize notification period
+- [ ] Support commutes requiring station transfer
+- [ ] Predict car occupancy based on ridership data
 
 ### Credits
 - Commuter's backend is powered by Elixir and Phoenix 🤩 https://github.com/wfgilman/commuter
