@@ -1,6 +1,8 @@
 # Commuter-iOS
 Intuitive BART transit app for the SF Bay Area daily commuter.
 
+[Available in the App Store!](https://itunes.apple.com/us/app/commuter-bart/id1460215481?ls=1&mt=8)
+
 <img src="Design/Screenshots/screenshot_1.jpg" width="100"> <img src="Design/Screenshots/screenshot_2.jpg" width="100"> <img src="Design/Screenshots/screenshot_3.jpg" width="100"> <img src="Design/Screenshots/screenshot_4.jpg" width="100"> <img src="Design/Screenshots/screenshot_5.jpg" width="100"> <img src="Design/Screenshots/screenshot_6.jpg" width="100">
 
 ### Features
@@ -12,8 +14,9 @@ Intuitive BART transit app for the SF Bay Area daily commuter.
 - No sign-up necessary
 
 ### Roadmap
-- Support commutes requiring station transfer
-- Predict car occupancy based on ridership data
+- [ ] Customize notification period
+- [ ] Support commutes requiring station transfer
+- [ ] Predict car occupancy based on ridership data
 
 ### Credits
 - Commuter's backend is powered by Elixir and Phoenix 🤩 https://github.com/wfgilman/commuter
