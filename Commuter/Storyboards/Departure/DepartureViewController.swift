@@ -230,12 +230,14 @@ class DepartureViewController: UIViewController {
     }
     
     @objc func showMorningView() {
+        commute = .morning
         UIView.animate(withDuration: AppVariable.duration) {
             self.scrollView.contentOffset.x = 0
         }
     }
     
     @objc func showEveningView() {
+        commute = .evening
         UIView.animate(withDuration: AppVariable.duration) {
             self.scrollView.contentOffset.x = self.pageWidth
         }
