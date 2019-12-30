@@ -16,6 +16,7 @@ Intuitive BART transit app for the SF Bay Area daily commuter.
 ### Roadmap
 - [ ] Customize notification period
 - [ ] Support commutes requiring station transfer
+- [ ] Add widget
 - [ ] Predict car occupancy based on ridership data
 
 ### Credits
